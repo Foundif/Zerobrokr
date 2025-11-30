@@ -78,9 +78,9 @@ const CurrentProjects = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="group"
+              className="group flex"
             >
-              <div className="bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2">
+              <div className="bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
                   <Image 
@@ -98,7 +98,7 @@ const CurrentProjects = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-5 md:p-6">
+                <div className="p-5 md:p-6 flex flex-col flex-grow">
                   <h3 className="font-poppins text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
@@ -127,7 +127,7 @@ const CurrentProjects = () => {
                   </div>
 
                   {/* Amenities */}
-                  <div className="mb-4">
+                  <div className="mb-4 flex-grow">
                     <div className="text-sm font-semibold mb-2">Key Amenities:</div>
                     <div className="flex flex-wrap gap-2">
                       {project.amenities.slice(0, 3).map((amenity, i) => (
@@ -143,7 +143,7 @@ const CurrentProjects = () => {
                   </div>
 
                   <Button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group mt-auto"
                     asChild
                   >
                     <Link href={`/project/${project.id}`}>
