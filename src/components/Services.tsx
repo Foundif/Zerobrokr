@@ -1,31 +1,35 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Building2, Home, Ruler, Palette } from 'lucide-react';
+import { Building2, Home, Ruler, Palette, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const services = [
   {
     icon: Building2,
-    title: 'Basic Package - Rs.599',
-    description: 'Perfect for nearby properties within 10km. Direct owner, no brokerage, 75% home loan support available.',
+    title: 'Basic Package',
+    price: '₹599',
+    description: 'Perfect for nearby properties within 10km.',
     features: ['3 House/Land Site Visits', 'Pickup & Drop Service', '1 Site Visit Support', '1 Register Office Visit', 'Below 10Km Only']
   },
   {
     icon: Home,
-    title: 'Standard Package - Rs.799',
-    description: 'Extended coverage for properties 10-15km away. Complete A to Z support for your property journey.',
+    title: 'Standard Package',
+    price: '₹799',
+    description: 'Extended coverage for properties 10-15km away.',
     features: ['3 House/Land Site Visits', 'Pickup & Drop Service', '1 Site Visit Support', '1 Register Office Visit', 'Above 10Km to 15Km']
   },
   {
     icon: Ruler,
-    title: 'Premium Package - Rs.999',
-    description: 'More visits, more options nearby. Ideal for those who want to explore multiple properties thoroughly.',
+    title: 'Premium Package',
+    price: '₹999',
+    description: 'More visits, more options nearby.',
     features: ['5 House/Land Site Visits', 'Pickup & Drop Service', '1 Site Visit Support', '1 Register Office Visit', 'Below 10Km Only']
   },
   {
     icon: Palette,
-    title: 'Deluxe Package - Rs.1299',
-    description: 'Our most comprehensive package with extended coverage. Maximum flexibility for your property search.',
+    title: 'Deluxe Package',
+    price: '₹1299',
+    description: 'Our most comprehensive package.',
     features: ['5 House/Land Site Visits', 'Pickup & Drop Service', '1 Site Visit Support', '1 Register Office Visit', 'Above 10Km to 15Km']
   },
 ];
@@ -47,14 +51,14 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
-            Service <span className="text-gradient-gold">Details</span>
+            Service <span className="text-gradient-gold">Packages</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
             Direct Owner, No Brokerage, 75% Home Loan - We Start With A to Z Support With You
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -63,40 +67,54 @@ const Services = () => {
               transition={{ duration: 0.6, delay: index * 0.15 }}
               className="group"
             >
-              <div className="bg-card p-8 md:p-10 rounded-2xl shadow-premium hover:shadow-gold transition-all duration-500 border border-border hover:border-accent/50 h-full">
-                {/* Icon */}
-                <motion.div
-                  initial={{ scale: 0.8, rotate: -10 }}
-                  animate={inView ? { scale: 1, rotate: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.15 + 0.2 }}
-                  className="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-gold"
-                >
-                  <service.icon className="w-8 h-8 md:w-10 md:h-10 text-white" />
-                </motion.div>
+              <div className="bg-card p-8 rounded-2xl shadow-premium hover:shadow-gold transition-all duration-500 border border-border hover:border-accent/50 h-full flex flex-col">
+                {/* Icon and Title */}
+                <div className="flex items-center gap-4 mb-4">
+                  <div
+                    className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-gold flex-shrink-0"
+                  >
+                    <service.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-playfair text-xl font-bold group-hover:text-accent transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+                </div>
 
-                {/* Content */}
-                <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-4 group-hover:text-accent transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                {/* Price */}
+                <div className="my-4">
+                  <span className="text-4xl font-bold font-playfair">{service.price}</span>
+                  <span className="text-muted-foreground text-sm">/package</span>
+                </div>
+
+                <p className="text-muted-foreground mb-6 leading-relaxed text-sm h-12">
                   {service.description}
                 </p>
 
                 {/* Features */}
-                <div className="space-y-3">
+                <div className="space-y-3 mb-8 flex-grow">
                   {service.features.map((feature, idx) => (
                     <motion.div
                       key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.4, delay: index * 0.15 + idx * 0.1 + 0.3 }}
-                      className="flex items-center text-sm"
+                      className="flex items-center text-sm gap-3"
                     >
-                      <div className="w-1.5 h-1.5 bg-accent rounded-full mr-3" />
+                      <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
                       <span>{feature}</span>
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Button */}
+                <Button 
+                  className="w-full mt-auto bg-primary hover:bg-primary/90 group-hover:bg-accent group-hover:text-secondary transition-colors"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Choose Plan
+                </Button>
               </div>
             </motion.div>
           ))}
