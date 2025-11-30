@@ -58,7 +58,7 @@ const Testimonials = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
             Client <span className="text-gradient-gold">Testimonials</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
@@ -106,7 +106,7 @@ const Testimonials = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center"
         >
-          <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-8">
+          <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-8">
             300+ Builder Partners With Us
           </h3>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
@@ -136,7 +136,7 @@ const Testimonials = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-20 max-w-4xl mx-auto bg-gradient-to-br from-primary/10 to-accent/10 p-8 md:p-12 rounded-3xl border border-primary/20 text-center"
         >
-          <h3 className="font-playfair text-3xl font-bold mb-4">
+          <h3 className="font-poppins text-3xl font-bold mb-4">
             Real Client Success Stories
           </h3>
           <p className="text-muted-foreground mb-6">

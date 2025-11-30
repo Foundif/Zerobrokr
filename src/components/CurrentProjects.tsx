@@ -63,7 +63,7 @@ const CurrentProjects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
             Current <span className="text-gradient-gold">Ongoing Projects</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
@@ -99,7 +99,7 @@ const CurrentProjects = () => {
 
                 {/* Content */}
                 <div className="p-5 md:p-6">
-                  <h3 className="font-playfair text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-poppins text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
                   

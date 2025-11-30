@@ -57,7 +57,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+            <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
               Get in <span className="text-gradient-gold">Touch</span>
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
@@ -123,7 +123,7 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="bg-card p-6 md:p-8 lg:p-10 rounded-2xl shadow-premium border border-border">
-                <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-6">Send us a Message</h3>
+                <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-6">Send us a Message</h3>
                 <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                   <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
                     <div>
@@ -211,7 +211,7 @@ const Contact = () => {
       >
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
-            <div className="font-playfair font-bold text-lg">Ready to Find Your Dream Property?</div>
+            <div className="font-poppins font-bold text-lg">Ready to Find Your Dream Property?</div>
             <div className="text-sm text-white/80">Zero brokerage - Get started today</div>
           </div>
           <Button 

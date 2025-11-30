@@ -142,7 +142,7 @@ export default function ProjectDetail() {
               <div className="inline-block bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm mb-4">
                 {project.status}
               </div>
-              <h1 className="font-playfair text-4xl md:text-6xl font-bold text-white mb-2">
+              <h1 className="font-poppins text-4xl md:text-6xl font-bold text-white mb-2">
                 {project.title}
               </h1>
               <div className="flex items-center text-white/90 text-lg">
@@ -163,14 +163,14 @@ export default function ProjectDetail() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
               >
-                <h2 className="font-playfair text-3xl font-bold mb-4">About This Project</h2>
+                <h2 className="font-poppins text-3xl font-bold mb-4">About This Project</h2>
                 <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Specifications */}
                 <div className="bg-card rounded-2xl p-6 md:p-8 mb-8 shadow-premium">
-                  <h3 className="font-playfair text-2xl font-bold mb-6">Specifications</h3>
+                  <h3 className="font-poppins text-2xl font-bold mb-6">Specifications</h3>
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
                       <Bed className="w-8 h-8 mx-auto mb-2 text-primary" />
@@ -197,7 +197,7 @@ export default function ProjectDetail() {
 
                 {/* Amenities */}
                 <div className="mb-8">
-                  <h3 className="font-playfair text-2xl font-bold mb-6">World-Class Amenities</h3>
+                  <h3 className="font-poppins text-2xl font-bold mb-6">World-Class Amenities</h3>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {project.amenities.map((amenity, index) => (
                       <motion.div
@@ -216,7 +216,7 @@ export default function ProjectDetail() {
 
                 {/* Highlights */}
                 <div>
-                  <h3 className="font-playfair text-2xl font-bold mb-6">Key Highlights</h3>
+                  <h3 className="font-poppins text-2xl font-bold mb-6">Key Highlights</h3>
                   <div className="space-y-3">
                     {project.highlights.map((highlight, index) => (
                       <motion.div
@@ -246,7 +246,7 @@ export default function ProjectDetail() {
                 <div className="bg-card rounded-2xl p-6 shadow-premium">
                   <div className="mb-6">
                     <div className="text-sm text-muted-foreground mb-2">Starting Price</div>
-                    <div className="font-playfair text-3xl font-bold text-accent">
+                    <div className="font-poppins text-3xl font-bold text-accent">
                       {project.price}
                     </div>
                   </div>

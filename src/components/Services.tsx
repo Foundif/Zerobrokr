@@ -50,7 +50,7 @@ const Services = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
             Service <span className="text-gradient-gold">Packages</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
@@ -76,7 +76,7 @@ const Services = () => {
                     <service.icon className="w-7 h-7 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-playfair text-xl font-bold group-hover:text-accent transition-colors">
+                    <h3 className="font-poppins text-xl font-bold group-hover:text-accent transition-colors">
                       {service.title}
                     </h3>
                   </div>
@@ -84,7 +84,7 @@ const Services = () => {
 
                 {/* Price */}
                 <div className="my-4">
-                  <span className="text-4xl font-bold font-playfair">{service.price}</span>
+                  <span className="text-4xl font-bold font-poppins">{service.price}</span>
                   <span className="text-muted-foreground text-sm">/package</span>
                 </div>
 
@@ -127,7 +127,7 @@ const Services = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-12 md:mt-16 text-center max-w-3xl mx-auto p-8 md:p-10 bg-gradient-to-r from-primary via-primary/90 to-primary rounded-2xl md:rounded-3xl text-white shadow-2xl"
         >
-          <h3 className="font-playfair text-2xl md:text-3xl font-bold mb-3 md:mb-4">
+          <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-3 md:mb-4">
             Ready to Start Your Property Journey?
           </h3>
           <p className="text-white/90 mb-5 md:mb-6 text-base md:text-lg">

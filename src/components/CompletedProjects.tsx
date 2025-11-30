@@ -70,7 +70,7 @@ const CompletedProjects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
             Our Successful <span className="text-gradient-gold">Projects</span>
           </h2>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
@@ -117,7 +117,7 @@ const CompletedProjects = () => {
                   <CheckCircle className="w-5 h-5 md:w-6 md:h-6 text-accent" />
                   <span className="text-accent font-semibold text-sm md:text-base">{currentProject.status}</span>
                 </div>
-                <h3 className="font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3">
+                <h3 className="font-poppins text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3">
                   {currentProject.title}
                 </h3>
                 <div className="flex flex-wrap gap-2 md:gap-4 text-gray-300 text-sm md:text-base mb-3">
@@ -177,7 +177,7 @@ const CompletedProjects = () => {
             { value: '0%', label: 'Brokerage Fee' },
           ].map((stat, index) => (
             <div key={index} className="text-center p-4 md:p-6 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-              <div className="font-playfair text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 md:mb-2">{stat.value}</div>
+              <div className="font-poppins text-2xl sm:text-3xl md:text-4xl font-bold text-accent mb-1 md:mb-2">{stat.value}</div>
               <div className="text-gray-300 text-xs md:text-sm">{stat.label}</div>
             </div>
           ))}

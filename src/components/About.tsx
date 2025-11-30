@@ -29,7 +29,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
             About <span className="text-gradient-gold">ZeroBrokr</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
@@ -48,7 +48,7 @@ const About = () => {
               className="text-center p-6 bg-card rounded-lg shadow-premium border border-border hover:shadow-gold transition-all duration-300 hover:scale-105"
             >
               <stat.icon className="w-12 h-12 mx-auto mb-4 text-accent" />
-              <div className="font-playfair text-4xl md:text-5xl font-bold mb-2 text-primary">
+              <div className="font-poppins text-4xl md:text-5xl font-bold mb-2 text-primary">
                 {stat.value}
               </div>
               <div className="text-muted-foreground text-sm md:text-base">{stat.label}</div>
@@ -71,7 +71,7 @@ const About = () => {
               transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
               className="p-8 bg-gradient-to-br from-card to-muted/30 rounded-lg border border-border hover:border-accent/50 transition-all duration-300 group"
             >
-              <h3 className="font-playfair text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+              <h3 className="font-poppins text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
                 {value.title}
               </h3>
               <p className="text-muted-foreground leading-relaxed">{value.description}</p>
@@ -86,7 +86,7 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-20 text-center max-w-4xl mx-auto p-10 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-2xl border border-primary/20"
         >
-          <h3 className="font-playfair text-3xl font-bold mb-4">Our Mission</h3>
+          <h3 className="font-poppins text-3xl font-bold mb-4">Our Mission</h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
             To revolutionize property transactions by eliminating brokerage fees and providing transparent, 
             efficient service. We help you buy, sell, and invest with confidence, speed, and zero commission.

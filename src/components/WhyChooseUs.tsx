@@ -55,7 +55,7 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-playfair text-4xl md:text-6xl font-bold mb-4">
+          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
             Why <span className="text-gradient-gold">Choose Us</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
@@ -82,7 +82,7 @@ const WhyChooseUs = () => {
                 >
                   <usp.icon className="w-7 h-7 text-white" />
                 </motion.div>
-                <h3 className="font-playfair text-xl font-bold mb-3 group-hover:text-accent transition-colors">
+                <h3 className="font-poppins text-xl font-bold mb-3 group-hover:text-accent transition-colors">
                   {usp.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -108,7 +108,7 @@ const WhyChooseUs = () => {
               transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
               className="text-center"
             >
-              <div className="mb-1 md:mb-2 font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-accent">
+              <div className="mb-1 md:mb-2 font-poppins text-3xl md:text-4xl lg:text-5xl font-bold text-accent">
                 <StatsCounter end={counter.target} suffix={counter.suffix} />
               </div>
               <div className="text-muted-foreground font-medium text-sm md:text-base">{counter.label}</div>
@@ -123,7 +123,7 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h3 className="font-playfair text-3xl font-bold mb-8">
+          <h3 className="font-poppins text-3xl font-bold mb-8">
             Our <span className="text-gradient-gold">Guarantees</span>
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
