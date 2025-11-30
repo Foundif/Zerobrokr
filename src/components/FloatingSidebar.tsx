@@ -1,3 +1,4 @@
+'use client'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Phone, Mail, MessageSquare, ArrowUp, X } from 'lucide-react';
@@ -17,29 +18,33 @@ const FloatingSidebar = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false);
   };
 
   const quickActions = [
     {
       icon: Phone,
       label: 'Call Now',
-      href: 'tel:+15551234567',
+      href: 'tel:+919087048878',
       color: 'bg-green-500',
       hoverColor: 'hover:bg-green-600',
+      action: () => {}
     },
     {
       icon: Mail,
       label: 'Email Us',
-      href: 'mailto:info@premierconstruction.com',
+      href: 'mailto:contact@zerobrokr.com',
       color: 'bg-blue-500',
       hoverColor: 'hover:bg-blue-600',
+      action: () => {}
     },
     {
       icon: MessageSquare,
       label: 'WhatsApp',
-      href: 'https://wa.me/15551234567',
+      href: 'https://wa.me/919087048878',
       color: 'bg-emerald-500',
       hoverColor: 'hover:bg-emerald-600',
+      action: () => {}
     },
   ];
 
@@ -50,7 +55,7 @@ const FloatingSidebar = () => {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
-        className="fixed right-6 bottom-24 z-40"
+        className="fixed right-4 md:right-6 bottom-6 z-40"
       >
         <Button
           onClick={() => setIsOpen(!isOpen)}
@@ -92,8 +97,39 @@ const FloatingSidebar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed right-6 bottom-40 z-40 flex flex-col gap-3"
+            className="fixed right-4 md:right-6 bottom-24 z-40 flex flex-col items-end gap-3"
           >
+            {/* Scroll to Top Button */}
+            <AnimatePresence>
+              {showScrollTop && (
+                <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 100, opacity: 0 }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
+                    className="group"
+                >
+                  <div className="flex items-center gap-3">
+                    <motion.span
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="bg-background/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-lg shadow-lg text-sm font-semibold whitespace-nowrap border border-border opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      Scroll to Top
+                    </motion.span>
+                    <Button
+                      onClick={scrollToTop}
+                      size="icon"
+                      className="w-12 h-12 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium hover:scale-110 transition-all duration-300"
+                    >
+                      <ArrowUp className="w-5 h-5" />
+                    </Button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             {quickActions.map((action, index) => (
               <motion.a
                 key={action.label}
@@ -103,14 +139,14 @@ const FloatingSidebar = () => {
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: (quickActions.length - 1 - index) * 0.1 }}
                 className="group"
               >
                 <div className="flex items-center gap-3">
                   <motion.span
                     initial={{ opacity: 0, x: 10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
+                    transition={{ delay: 0.3 + (quickActions.length - 1 - index) * 0.1 }}
                     className="bg-background/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-lg shadow-lg text-sm font-semibold whitespace-nowrap border border-border opacity-0 group-hover:opacity-100 transition-opacity"
                   >
                     {action.label}
@@ -123,27 +159,6 @@ const FloatingSidebar = () => {
                 </div>
               </motion.a>
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.div
-            initial={{ scale: 0, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed right-6 bottom-6 z-40"
-          >
-            <Button
-              onClick={scrollToTop}
-              size="icon"
-              className="w-12 h-12 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium hover:scale-110 transition-all duration-300"
-            >
-              <ArrowUp className="w-5 h-5" />
-            </Button>
           </motion.div>
         )}
       </AnimatePresence>
