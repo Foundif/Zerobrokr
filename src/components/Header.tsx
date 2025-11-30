@@ -126,13 +126,14 @@ const Header = () => {
                   <Menu className="h-6 w-6" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80 bg-gradient-to-b from-background via-background to-muted/50 backdrop-blur-xl border-l-2 border-accent/20">
+              <SheetContent side="right" className="w-full sm:w-80 bg-gradient-to-b from-background via-background to-muted/50 backdrop-blur-xl border-l-2 border-accent/20 p-0">
                 <div className="flex flex-col h-full pt-8 relative">
                   {/* Background Decoration */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl" />
                   <div className="absolute bottom-20 left-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
+                  
                   {/* Mobile Logo */}
-                  <div className="flex items-center mb-12 relative z-10">
+                  <div className="flex items-center mb-8 relative z-10 px-6">
                     <Image 
                       src={zeroBrokrLogo}
                       alt="ZeroBrokr - No Commission"
@@ -142,7 +143,7 @@ const Header = () => {
                   </div>
 
                   {/* Mobile Navigation */}
-                  <nav className="flex-1 space-y-2 relative z-10">
+                  <nav className="flex-1 space-y-2 relative z-10 overflow-y-auto px-6">
                     {navigation.map((item, index) => (
                       <motion.button
                         key={item.name}
@@ -150,7 +151,7 @@ const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
                         onClick={() => scrollToSection(item.href)}
-                        className="w-full text-left px-6 py-4 text-lg font-medium rounded-xl hover:bg-muted transition-all duration-300 group"
+                        className="w-full text-left px-4 py-4 text-lg font-medium rounded-xl hover:bg-muted transition-all duration-300 group"
                       >
                         <span className="flex items-center justify-between">
                           {item.name}
@@ -161,15 +162,15 @@ const Header = () => {
                   </nav>
 
                   {/* Mobile Contact Info */}
-                  <div className="border-t border-border/50 pt-6 space-y-4 relative z-10">
+                  <div className="border-t border-border/50 p-6 space-y-4 relative z-10 mt-auto">
                     <a
                       href="tel:+919087048878"
                       className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
                     >
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Phone className="w-5 h-5 text-primary" />
                       </div>
-                      <div>
+      <div>
                         <div className="text-xs text-muted-foreground">Call Us</div>
                         <div className="font-semibold">+91 90870 48878</div>
                       </div>
@@ -178,7 +179,7 @@ const Header = () => {
                       href="mailto:contact@zerobrokr.com"
                       className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
                     >
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Mail className="w-5 h-5 text-primary" />
                       </div>
                       <div>
