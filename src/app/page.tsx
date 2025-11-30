@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
@@ -14,7 +15,7 @@ import FloatingSidebar from '@/components/FloatingSidebar';
 import LoadingScreen from '@/components/LoadingScreen';
 import AnimatedBackground from '@/components/AnimatedBackground';
 
-const Index = () => {
+export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -53,6 +54,4 @@ const Index = () => {
       )}
     </>
   );
-};
-
-export default Index;
+}

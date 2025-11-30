@@ -1,5 +1,7 @@
+'use client'
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
+import Image from 'next/image';
 
 const Footer = () => {
   return (
@@ -8,10 +10,11 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <img 
+            <Image 
               src={zeroBrokrLogo}
               alt="ZeroBrokr - No Commission"
               className="h-16 w-auto mb-4"
+              unoptimized
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
               More than 5 years in real estate. Your trusted partner with 300+ builder partnerships and zero brokerage guarantee.

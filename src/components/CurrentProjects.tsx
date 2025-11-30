@@ -1,11 +1,13 @@
+'use client'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { useNavigate } from 'react-router-dom';
 import { MapPin, Bed, Bath, Square, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import project1 from '@/assets/project1.jpg';
 import project2 from '@/assets/project2.jpg';
 import project3 from '@/assets/project3.jpg';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const projects = [
   {
@@ -51,7 +53,6 @@ const projects = [
 
 const CurrentProjects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
-  const navigate = useNavigate();
 
   return (
     <section id="projects" ref={ref} className="py-24 bg-gradient-to-b from-background to-muted/30">
@@ -82,10 +83,13 @@ const CurrentProjects = () => {
               <div className="bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2">
                 {/* Image */}
                 <div className="relative h-64 overflow-hidden">
-                  <img 
+                  <Image 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    layout="fill"
+                    objectFit="cover"
+                    className="group-hover:scale-110 transition-transform duration-700"
+                    unoptimized
                   />
                   <div className="absolute top-4 right-4 bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
                     {project.status}
@@ -140,10 +144,12 @@ const CurrentProjects = () => {
 
                   <Button 
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group"
-                    onClick={() => navigate(`/project/${project.id}`)}
+                    asChild
                   >
-                    View Details
-                    <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    <Link href={`/project/${project.id}`}>
+                      View Details
+                      <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </Link>
                   </Button>
                 </div>
               </div>

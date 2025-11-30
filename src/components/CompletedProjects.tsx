@@ -1,3 +1,4 @@
+'use client'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ChevronLeft, ChevronRight, CheckCircle } from 'lucide-react';
@@ -6,6 +7,7 @@ import { useState } from 'react';
 import project1 from '@/assets/project1.jpg';
 import project2 from '@/assets/project2.jpg';
 import project3 from '@/assets/project3.jpg';
+import Image from 'next/image';
 
 const completedProjects = [
   {
@@ -85,16 +87,22 @@ const CompletedProjects = () => {
         >
           {/* Main Image */}
           <div className="relative h-[400px] sm:h-[500px] md:h-[600px] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl">
-            <motion.img
+            <motion.div
               key={currentIndex}
-              src={currentProject.image}
-              alt={currentProject.title}
-              className="w-full h-full object-cover"
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-            />
+              className="w-full h-full"
+            >
+              <Image
+                src={currentProject.image}
+                alt={currentProject.title}
+                layout="fill"
+                objectFit="cover"
+                unoptimized
+              />
+            </motion.div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
             {/* Project Info Overlay */}

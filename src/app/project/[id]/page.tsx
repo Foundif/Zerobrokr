@@ -1,5 +1,6 @@
+'use client'
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,8 @@ import FloatingSidebar from '@/components/FloatingSidebar';
 import project1 from '@/assets/project1.jpg';
 import project2 from '@/assets/project2.jpg';
 import project3 from '@/assets/project3.jpg';
+import Image from 'next/image';
+import Link from 'next/link';
 
 const projectsData = [
   {
@@ -79,9 +82,10 @@ const projectsData = [
   },
 ];
 
-const ProjectDetail = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
+export default function ProjectDetail() {
+  const params = useParams();
+  const router = useRouter();
+  const id = params.id;
   const project = projectsData.find(p => p.id === Number(id));
 
   useEffect(() => {
@@ -93,7 +97,7 @@ const ProjectDetail = () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-          <Button onClick={() => navigate('/')}>Go Back Home</Button>
+          <Button onClick={() => router.push('/')}>Go Back Home</Button>
         </div>
       </div>
     );
@@ -111,10 +115,12 @@ const ProjectDetail = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <img 
+          <Image 
             src={project.image} 
             alt={project.title}
-            className="w-full h-full object-cover"
+            layout="fill"
+            objectFit="cover"
+            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
@@ -122,7 +128,7 @@ const ProjectDetail = () => {
             <Button
               variant="ghost"
               className="mb-4 text-white hover:bg-white/20"
-              onClick={() => navigate('/')}
+              onClick={() => router.push('/')}
             >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Projects
@@ -264,14 +270,9 @@ const ProjectDetail = () => {
                     <Button 
                       className="w-full bg-accent hover:bg-accent/90 text-secondary font-semibold"
                       size="lg"
-                      onClick={() => {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        setTimeout(() => {
-                          navigate('/#contact');
-                        }, 300);
-                      }}
+                      asChild
                     >
-                      Schedule Site Visit
+                      <Link href="/#contact">Schedule Site Visit</Link>
                     </Button>
                     <Button 
                       variant="outline"
@@ -300,6 +301,4 @@ const ProjectDetail = () => {
       <FloatingSidebar />
     </div>
   );
-};
-
-export default ProjectDetail;
+}

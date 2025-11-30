@@ -1,9 +1,11 @@
+'use client'
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, Phone, Mail } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
+import Image from 'next/image';
 
 const navigation = [
   { name: 'Home', href: '#hero' },
@@ -55,10 +57,11 @@ const Header = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <img 
+              <Image 
                 src={zeroBrokrLogo}
                 alt="ZeroBrokr - No Commission"
                 className="h-12 w-auto"
+                unoptimized
               />
             </motion.div>
 
@@ -116,10 +119,11 @@ const Header = () => {
                   <div className="absolute bottom-20 left-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
                   {/* Mobile Logo */}
                   <div className="flex items-center mb-12 relative z-10">
-                    <img 
+                    <Image 
                       src={zeroBrokrLogo}
                       alt="ZeroBrokr - No Commission"
                       className="h-10 w-auto"
+                      unoptimized
                     />
                   </div>
 
@@ -184,9 +188,6 @@ const Header = () => {
           </div>
         </nav>
       </motion.header>
-
-      {/* Spacer to prevent content jump */}
-      <div className="h-20" />
     </>
   );
 };

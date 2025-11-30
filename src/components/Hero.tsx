@@ -1,7 +1,9 @@
+'use client'
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
+import Image from 'next/image';
 
 const Hero = () => {
   return (
@@ -13,9 +15,13 @@ const Hero = () => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.8, ease: "easeOut" }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: `url(${heroBg})` }}
+        <Image 
+          src={heroBg}
+          alt="Hero background"
+          layout="fill"
+          objectFit="cover"
+          className="bg-center bg-fixed"
+          unoptimized
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
         
@@ -79,7 +85,7 @@ const Hero = () => {
             </Button>
             <Button 
               size="lg" 
-              variant="hero"
+              variant="outline"
               className="w-full sm:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
