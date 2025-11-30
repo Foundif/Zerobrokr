@@ -40,10 +40,15 @@ const Header = () => {
   const headerClasses = cn(
     "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
     {
-      'bg-transparent text-white': !isScrolled,
-      'bg-background/95 backdrop-blur-lg shadow-premium border-b border-border text-foreground': isScrolled,
+      'bg-transparent': !isScrolled,
+      'bg-background/95 backdrop-blur-lg shadow-premium border-b border-border': isScrolled,
     }
   );
+  
+  const textColorClass = cn({
+    'text-white': !isScrolled,
+    'text-foreground': isScrolled,
+  });
 
   return (
     <>
@@ -81,7 +86,8 @@ const Header = () => {
                   onClick={() => scrollToSection(item.href)}
                   className={cn(
                     "px-4 py-2 text-sm font-medium rounded-lg transition-colors relative group",
-                    isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
+                    textColorClass,
+                    isScrolled ? "hover:bg-muted" : "hover:bg-white/10"
                   )}
                 >
                   {item.name}
@@ -97,7 +103,7 @@ const Header = () => {
               transition={{ duration: 0.5 }}
               className="hidden lg:flex items-center space-x-4"
             >
-              <a href="tel:+919087048878" className={cn("text-sm flex items-center gap-2 transition-colors", isScrolled ? "hover:text-accent" : "hover:text-accent")}>
+              <a href="tel:+919087048878" className={cn("text-sm flex items-center gap-2 transition-colors hover:text-accent", textColorClass)}>
                 <Phone className="w-4 h-4" />
                 <span className="font-semibold">+91 90870 48878</span>
               </a>
@@ -115,7 +121,7 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className={cn("lg:hidden", !isScrolled && "text-white hover:bg-white/10 hover:text-white")}
+                  className={cn("lg:hidden", textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}
                 >
                   <Menu className="h-6 w-6" />
                 </Button>

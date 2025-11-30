@@ -2,7 +2,6 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
-import { ThemeToggle } from './ThemeToggle';
 
 const Footer = () => {
   return (
@@ -87,7 +86,6 @@ const Footer = () => {
             <div className="flex items-center gap-6">
               <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
-              <ThemeToggle />
             </div>
           </div>
         </div>
