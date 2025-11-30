@@ -9,22 +9,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { findRecommendation, RecommendationResult } from '@/app/(actions)/find-recommendation';
+import { findRecommendation } from '@/app/(actions)/find-recommendation';
+import { recommendationSchema, RecommendationResult } from '@/app/schemas/recommendation-schema';
 import { properties, Property } from '@/app/data/properties';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Image from 'next/image';
 import { Badge } from '../ui/badge';
 import { Separator } from '../ui/separator';
-
-const recommendationSchema = z.object({
-  propertyType: z.string().min(1, 'Property type is required.'),
-  location: z.string().min(1, 'Location is required.'),
-  bedrooms: z.number().min(0, 'Bedrooms must be a positive number.'),
-  bathrooms: z.number().min(0, 'Bathrooms must be a positive number.'),
-  amenities: z.string().optional(),
-  uniqueFeatures: z.string().optional(),
-});
-
 
 type RecommendationFormValues = z.infer<typeof recommendationSchema>;
 
