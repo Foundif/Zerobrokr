@@ -78,7 +78,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">Phone</h3>
+                    <h3 className="font-poppins font-bold text-lg mb-1">Phone</h3>
                     <p className="text-muted-foreground">+91 90870 48878</p>
                   </div>
                 </div>
@@ -88,7 +88,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">Email</h3>
+                    <h3 className="font-poppins font-bold text-lg mb-1">Email</h3>
                     <p className="text-muted-foreground">contact@zerobrokr.com</p>
                   </div>
                 </div>
@@ -98,19 +98,8 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-lg mb-1">Website</h3>
+                    <h3 className="font-poppins font-bold text-lg mb-1">Website</h3>
                     <p className="text-muted-foreground">www.zerobrokr.com</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Map Placeholder */}
-              <div className="w-full h-64 bg-muted rounded-2xl overflow-hidden border border-border shadow-premium">
-                <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 mx-auto mb-3 text-accent" />
-                    <div className="font-semibold">Interactive Map</div>
-                    <div className="text-sm">Visit us at our office</div>
                   </div>
                 </div>
               </div>

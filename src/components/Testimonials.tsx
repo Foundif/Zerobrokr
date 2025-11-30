@@ -89,7 +89,7 @@ const Testimonials = () => {
               </p>
 
               <div className="border-t border-border pt-4">
-                <div className="font-semibold text-foreground">{testimonial.name}</div>
+                <div className="font-poppins font-semibold text-foreground">{testimonial.name}</div>
                 <div className="text-sm text-muted-foreground mb-2">{testimonial.role}</div>
                 <div className="text-xs text-accent font-semibold">
                   Project: {testimonial.project}
@@ -126,29 +126,6 @@ const Testimonials = () => {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* Video Testimonial Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-20 max-w-4xl mx-auto bg-gradient-to-br from-primary/10 to-accent/10 p-8 md:p-12 rounded-3xl border border-primary/20 text-center"
-        >
-          <h3 className="font-poppins text-3xl font-bold mb-4">
-            Real Client Success Stories
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            Hear directly from our satisfied clients about their property journey
-          </p>
-          <div className="aspect-video bg-muted rounded-xl flex items-center justify-center">
-            <div className="text-muted-foreground">
-              <div className="w-20 h-20 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                <div className="w-0 h-0 border-t-8 border-t-transparent border-l-12 border-l-accent border-b-8 border-b-transparent ml-1" />
-              </div>
-              <div className="font-semibold">Video Testimonials Coming Soon</div>
-            </div>
           </div>
         </motion.div>
       </div>
