@@ -86,7 +86,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="w-full sm:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg"
+              className="w-full sm:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg text-white hover:bg-white/10 hover:text-white"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View Projects
