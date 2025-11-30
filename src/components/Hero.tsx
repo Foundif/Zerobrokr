@@ -29,11 +29,11 @@ const Hero = () => {
         <motion.div
           className="absolute inset-0"
           style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
-            backgroundSize: '40px 40px'
+            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)',
+            backgroundSize: '30px 30px'
           }}
           animate={{
-            backgroundPosition: ['0px 0px', '40px 40px']
+            backgroundPosition: ['0px 0px', '30px 30px']
           }}
           transition={{
             duration: 20,
@@ -51,7 +51,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <motion.h1 
-            className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 leading-tight px-4"
+            className="font-playfair text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 md:mb-6 leading-tight"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
@@ -61,7 +61,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 md:mb-10 max-w-3xl mx-auto text-gray-200 font-light px-4"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 md:mb-10 max-w-3xl mx-auto text-gray-200 font-light"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
@@ -86,7 +86,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
-              className="w-full sm:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg text-white hover:bg-white/10 hover:text-white"
+              className="w-full sm:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg text-white hover:bg-white/10 hover:text-white border-white/50 hover:border-white"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
               View Projects

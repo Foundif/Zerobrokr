@@ -6,6 +6,7 @@ import { Menu, Phone, Mail } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 const navigation = [
   { name: 'Home', href: '#hero' },
@@ -36,17 +37,21 @@ const Header = () => {
     }
   };
 
+  const headerClasses = cn(
+    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+    {
+      'bg-transparent text-white': !isScrolled,
+      'bg-background/95 backdrop-blur-lg shadow-premium border-b border-border text-foreground': isScrolled,
+    }
+  );
+
   return (
     <>
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-background/95 backdrop-blur-lg shadow-premium border-b border-border'
-            : 'bg-transparent'
-        }`}
+        className={headerClasses}
       >
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
@@ -74,7 +79,10 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   onClick={() => scrollToSection(item.href)}
-                  className="px-4 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors relative group"
+                  className={cn(
+                    "px-4 py-2 text-sm font-medium rounded-lg transition-colors relative group",
+                    isScrolled ? "text-foreground hover:bg-muted" : "text-white hover:bg-white/10"
+                  )}
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
@@ -89,7 +97,7 @@ const Header = () => {
               transition={{ duration: 0.5 }}
               className="hidden lg:flex items-center space-x-4"
             >
-              <a href="tel:+919087048878" className="text-sm flex items-center gap-2 hover:text-accent transition-colors">
+              <a href="tel:+919087048878" className={cn("text-sm flex items-center gap-2 transition-colors", isScrolled ? "hover:text-accent" : "hover:text-accent")}>
                 <Phone className="w-4 h-4" />
                 <span className="font-semibold">+91 90870 48878</span>
               </a>
@@ -107,7 +115,7 @@ const Header = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="lg:hidden"
+                  className={cn("lg:hidden", !isScrolled && "text-white hover:bg-white/10 hover:text-white")}
                 >
                   <Menu className="h-6 w-6" />
                 </Button>
