@@ -40,7 +40,7 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           <Image 
             src={zeroBrokrLogo}
             alt="ZeroBrokr - No Commission"
-            className="h-24 w-auto"
+            className="h-16 w-auto"
             unoptimized
           />
         </motion.div>

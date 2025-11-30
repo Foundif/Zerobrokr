@@ -70,7 +70,7 @@ const Header = () => {
               <Image 
                 src={zeroBrokrLogo}
                 alt="ZeroBrokr - No Commission"
-                className="h-12 w-auto"
+                className="h-9 w-auto"
                 unoptimized
               />
             </motion.div>
@@ -137,7 +137,7 @@ const Header = () => {
                     <Image 
                       src={zeroBrokrLogo}
                       alt="ZeroBrokr - No Commission"
-                      className="h-12 w-auto"
+                      className="h-9 w-auto"
                       unoptimized
                     />
                   </div>
