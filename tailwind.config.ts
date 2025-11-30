@@ -67,7 +67,7 @@ export default {
       },
       fontFamily: {
         'playfair': ['Playfair Display', 'serif'],
-        'outfit': ['Outfit', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {

@@ -114,7 +114,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
     overflow-x: hidden;
     width: 100%;
   }
