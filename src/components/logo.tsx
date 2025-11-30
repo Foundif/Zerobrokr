@@ -7,11 +7,11 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href="/"
       className={cn(
-        'flex items-center gap-2 text-2xl font-bold font-headline text-primary transition-colors hover:text-primary/80',
+        'flex items-center gap-2 text-3xl font-bold font-headline text-primary transition-colors hover:text-primary/80',
         className
       )}
     >
-      <Home className="h-7 w-7" />
+      <Home className="h-8 w-8" />
       <span>EstateOpus</span>
     </Link>
   );
