@@ -1,3 +1,76 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "A modern house exterior with a pool.",
+      "imageUrl": "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtb2Rlcm4lMjBob3VzZXxlbnwwfHx8fDE3NjQzODU5MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern house"
+    },
+    {
+      "id": "property-1",
+      "description": "Living room of a modern apartment with city view.",
+      "imageUrl": "https://images.unsplash.com/photo-1632829882891-5047ccc421bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW9kZXJuJTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3NjQ0MTU4ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern living room"
+    },
+    {
+      "id": "property-2",
+      "description": "A suburban house with a beautifully landscaped front yard.",
+      "imageUrl": "https://images.unsplash.com/photo-1625603736199-775425d2890a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdWJ1cmJhbiUyMGhvdXNlfGVufDB8fHx8MTc2NDQ3MDc0Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "suburban house"
+    },
+    {
+      "id": "property-3",
+      "description": "A stylish kitchen with marble countertops and an island.",
+      "imageUrl": "https://images.unsplash.com/photo-1592506119503-c0b18879bd5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx8MTc2NDQwNDUyN3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern kitchen"
+    },
+    {
+      "id": "property-4",
+      "description": "A cozy bedroom with a large window and wooden floors.",
+      "imageUrl": "https://images.unsplash.com/photo-1499916078039-922301b0eb9b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb3p5JTIwYmVkcm9vbXxlbnwwfHx8fDE3NjQ0MzExNjh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cozy bedroom"
+    },
+    {
+      "id": "agent-1",
+      "description": "Portrait of a confident female real estate agent.",
+      "imageUrl": "https://images.unsplash.com/photo-1580894732444-8ecded7900cd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwcm9mZXNzaW9uYWwlMjB3b21hbnxlbnwwfHx8fDE3NjQ0MjQ3NjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional woman"
+    },
+    {
+      "id": "agent-2",
+      "description": "Portrait of a friendly male real estate agent.",
+      "imageUrl": "https://images.unsplash.com/flagged/photo-1573603867003-89f5fd7a7576?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8cHJvZmVzc2lvbmFsJTIwbWFufGVufDB8fHx8MTc2NDM5NDcyM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "agent-3",
+      "description": "Portrait of a smiling real estate agent in business attire.",
+      "imageUrl": "https://images.unsplash.com/photo-1758519289636-f4ce8e73c484?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxzbWlsaW5nJTIwcGVyc29uJTIwYnVzaW5lc3N8ZW58MHx8fHwxNzY0NDc5ODQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smiling person business"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "A happy client giving a thumbs up.",
+      "imageUrl": "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxoYXBweSUyMHBlcnNvbnxlbnwwfHx8fDE3NjQzNzc0MDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy person"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "A happy couple in front of their new house.",
+      "imageUrl": "https://images.unsplash.com/photo-1758523671035-742127d77c0d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8aGFwcHklMjBjb3VwbGUlMjBuZXclMjBob3VzZXxlbnwwfHx8fDE3NjQ0Nzk4NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy couple new house"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "A smiling person holding keys.",
+      "imageUrl": "https://images.unsplash.com/photo-1687075430355-ed8df51c1670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBob2xkaW5nJTIwa2V5c3xlbnwwfHx8fDE3NjQ0Nzk4NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person holding keys"
+    },
+    {
+      "id": "map-placeholder",
+      "description": "An aerial view of a city map with location pins.",
+      "imageUrl": "https://images.unsplash.com/photo-1627508080523-2e798cf8eb0a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2l0eSUyMG1hcCUyMGFlcmlhbHxlbnwwfHx8fDE3NjQ0Nzk4NDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "city map aerial"
+    }
+  ]
 }
