@@ -2,6 +2,7 @@
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
+import { ThemeToggle } from './ThemeToggle';
 
 const Footer = () => {
   return (
@@ -83,10 +84,10 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-300 text-sm">
             <p>&copy; 2024 ZeroBrokr. All rights reserved.</p>
-            <div className="flex gap-6">
+            <div className="flex items-center gap-6">
               <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-accent transition-colors">Cookie Policy</a>
+              <ThemeToggle />
             </div>
           </div>
         </div>
