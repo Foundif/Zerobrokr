@@ -1,5 +1,5 @@
 'use client'
-import { Facebook, Youtube, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
 
@@ -13,7 +13,7 @@ const Footer = () => {
             <Image 
               src={zeroBrokrLogo}
               alt="ZeroBrokr - No Commission"
-              className="h-8 w-auto mb-4"
+              className="h-6 w-auto mb-4"
               unoptimized
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
@@ -28,9 +28,6 @@ const Footer = () => {
               </a>
               <a href="https://www.instagram.com/zerobrokr/?utm_source=qr&igsh=MWMzbmk2bTlvZjgxeA%3D%3D" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
                 <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
-                <Linkedin className="w-5 h-5" />
               </a>
             </div>
           </div>
