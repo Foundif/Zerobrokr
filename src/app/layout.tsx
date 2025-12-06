@@ -14,9 +14,9 @@ export const metadata: Metadata = {
   title: 'ZeroBrokr - Real Estate Landing Page',
   description: 'A Next.js application for a real estate website landing page, built with Firebase Studio.',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+    icon: '/favicon-32x32.png',
+    shortcut: '/favicon-32x32.png',
+    apple: '/favicon-32x32.png',
   },
 };
 
