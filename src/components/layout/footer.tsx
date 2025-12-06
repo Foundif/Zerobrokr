@@ -22,7 +22,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Logo />
             <p className="mt-4 text-muted-foreground max-w-sm">
-              Your trusted partner in finding the perfect property. Experience excellence in real estate with EstateOpus.
+              Your trusted partner in finding the perfect property. Experience excellence in real estate with ZeroBrokr.
             </p>
           </div>
           <div>
@@ -50,7 +50,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-border/50 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} EstateOpus. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} ZeroBrokr. All rights reserved.</p>
         </div>
       </div>
     </footer>

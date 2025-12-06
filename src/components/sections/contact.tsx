@@ -58,7 +58,7 @@ export function Contact() {
               Have a question or ready to start your journey? Our team is here to help. Fill out the form, and we'll get back to you shortly.
             </p>
             <div className='mt-8 space-y-4 text-muted-foreground'>
-                <p><strong>Email:</strong> contact@estateopus.com</p>
+                <p><strong>Email:</strong> contact@zerobrokr.com</p>
                 <p><strong>Phone:</strong> (123) 456-7890</p>
                 <p><strong>Address:</strong> 123 Real Estate Ave, Metropolis</p>
             </div>

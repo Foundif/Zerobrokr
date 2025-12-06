@@ -12,7 +12,7 @@ export function Logo({ className }: { className?: string }) {
       )}
     >
       <Home className="h-8 w-8" />
-      <span>EstateOpus</span>
+      <span>ZeroBrokr</span>
     </Link>
   );
 }

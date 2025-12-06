@@ -1,4 +1,4 @@
-# EstateOpus - Real Estate Landing Page
+# ZeroBrokr - Real Estate Landing Page
 
 This is a Next.js application for a real estate website landing page, built with Firebase Studio.
 
