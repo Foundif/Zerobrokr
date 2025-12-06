@@ -1,5 +1,5 @@
 'use client'
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
 
@@ -13,20 +13,20 @@ const Footer = () => {
             <Image 
               src={zeroBrokrLogo}
               alt="ZeroBrokr - No Commission"
-              className="h-9 w-auto mb-4"
+              className="h-8 w-auto mb-4"
               unoptimized
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
               More than 5 years in real estate. Your trusted partner with 300+ builder partnerships and zero brokerage guarantee.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+              <a href="https://www.facebook.com/people/ZeroBrokrcom/61584295989641/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
-                <Twitter className="w-5 h-5" />
+              <a href="https://www.youtube.com/@ZeroBrokr" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+                <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
+              <a href="https://www.instagram.com/zerobrokr/?utm_source=qr&igsh=MWMzbmk2bTlvZjgxeA%3D%3D" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
@@ -39,10 +39,10 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Our Projects</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Services</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Testimonials</a></li>
+              <li><a href="/#about" className="text-gray-300 hover:text-accent transition-colors">About Us</a></li>
+              <li><a href="/#projects" className="text-gray-300 hover:text-accent transition-colors">Our Projects</a></li>
+              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Services</a></li>
+              <li><a href="/#testimonials" className="text-gray-300 hover:text-accent transition-colors">Testimonials</a></li>
               <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Careers</a></li>
             </ul>
           </div>
@@ -51,11 +51,11 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-lg mb-4">Our Services</h4>
             <ul className="space-y-3">
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Zero Brokerage</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Pickup & Drop Service</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Fast Closing</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Verified Properties</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Loan Assistance</a></li>
+              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Zero Brokerage</a></li>
+              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Pickup & Drop Service</a></li>
+              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Fast Closing</a></li>
+              <li><a href="/#about" className="text-gray-300 hover:text-accent transition-colors">Verified Properties</a></li>
+              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Loan Assistance</a></li>
             </ul>
           </div>
 
