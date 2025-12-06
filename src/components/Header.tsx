@@ -8,14 +8,15 @@ import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import Marquee from '@/components/Marquee';
+import Link from 'next/link';
 
 const navigation = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Services', href: '#services' },
-  { name: 'Testimonials', href: '#testimonials' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/#hero' },
+  { name: 'About', href: '/#about' },
+  { name: 'Projects', href: '/#projects' },
+  { name: 'Services', href: '/#services' },
+  { name: 'Testimonials', href: '/#testimonials' },
+  { name: 'Contact', href: '/#contact' },
 ];
 
 const Header = () => {
@@ -29,14 +30,6 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setMobileMenuOpen(false);
-    }
-  };
 
   const headerClasses = cn(
     "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -69,32 +62,37 @@ const Header = () => {
               transition={{ duration: 0.5 }}
               className="flex items-center"
             >
-              <Image 
-                src={zeroBrokrLogo}
-                alt="ZeroBrokr - No Commission"
-                className="h-8 w-auto"
-                unoptimized
-              />
+              <Link href="/">
+                <Image 
+                  src={zeroBrokrLogo}
+                  alt="ZeroBrokr - No Commission"
+                  className="h-8 w-auto"
+                  unoptimized
+                />
+              </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               {navigation.map((item, index) => (
-                <motion.button
+                <motion.div
                   key={item.name}
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  onClick={() => scrollToSection(item.href)}
-                  className={cn(
-                    "px-4 py-2 text-sm font-medium rounded-lg transition-colors relative group",
-                    textColorClass,
-                    isScrolled ? "hover:bg-muted" : "hover:bg-white/10"
-                  )}
                 >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-                </motion.button>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "px-4 py-2 text-sm font-medium rounded-lg transition-colors relative group",
+                      textColorClass,
+                      isScrolled ? "hover:bg-muted" : "hover:bg-white/10"
+                    )}
+                  >
+                    {item.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
+                  </Link>
+                </motion.div>
               ))}
             </div>
 
@@ -111,9 +109,9 @@ const Header = () => {
               </a>
               <Button 
                 className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                asChild
               >
-                Get Quote
+                <Link href="/#contact">Get Quote</Link>
               </Button>
             </motion.div>
 
@@ -147,19 +145,23 @@ const Header = () => {
                   {/* Mobile Navigation */}
                   <nav className="flex-1 space-y-2 relative z-10 overflow-y-auto px-6">
                     {navigation.map((item, index) => (
-                      <motion.button
+                      <motion.div
                         key={item.name}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.05 }}
-                        onClick={() => scrollToSection(item.href)}
-                        className="w-full text-left px-4 py-4 text-lg font-medium rounded-xl hover:bg-muted transition-all duration-300 group"
                       >
-                        <span className="flex items-center justify-between">
-                          {item.name}
-                          <span className="w-2 h-2 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </span>
-                      </motion.button>
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="w-full text-left px-4 py-4 text-lg font-medium rounded-xl hover:bg-muted transition-all duration-300 group block"
+                        >
+                          <span className="flex items-center justify-between">
+                            {item.name}
+                            <span className="w-2 h-2 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </span>
+                        </Link>
+                      </motion.div>
                     ))}
                   </nav>
 
@@ -172,7 +174,7 @@ const Header = () => {
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Phone className="w-5 h-5 text-primary" />
                       </div>
-      <div>
+                      <div>
                         <div className="text-xs text-muted-foreground">Call Us</div>
                         <div className="font-semibold">+91 90870 48878</div>
                       </div>
@@ -191,12 +193,9 @@ const Header = () => {
                     </a>
                     <Button 
                       className="w-full bg-accent hover:bg-accent/90 text-secondary font-semibold py-6 shadow-gold"
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
+                      asChild
                     >
-                      Get Free Quote
+                      <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Free Quote</Link>
                     </Button>
                   </div>
                 </div>

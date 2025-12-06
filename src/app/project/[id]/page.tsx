@@ -107,7 +107,7 @@ export default function ProjectDetail() {
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="pt-24">
+      <main>
         {/* Hero Image */}
         <motion.div 
           className="relative h-[50vh] md:h-[60vh] overflow-hidden"
