@@ -13,7 +13,7 @@ const Footer = () => {
             <Image 
               src={zeroBrokrLogo}
               alt="ZeroBrokr - No Commission"
-              className="h-8 w-auto mb-4"
+              className="h-12 w-auto mb-4"
               unoptimized
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
