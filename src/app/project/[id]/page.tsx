@@ -277,7 +277,7 @@ export default function ProjectDetail() {
                     <p className="text-xs text-muted-foreground text-center">Please inform 5 hours before for booking.</p>
                     <Button 
                       variant="outline"
-                      className="w-full"
+                      className="w-full border-foreground/50 hover:border-accent"
                       size="lg"
                       onClick={() => window.location.href = 'tel:+911234567890'}
                     >
