@@ -67,7 +67,7 @@ const Header = () => {
                   src={zeroBrokrLogo}
                   alt="ZeroBrokr - No Commission"
                   className={cn(
-                    "h-16 w-auto transition-all duration-300",
+                    "h-14 w-auto transition-all duration-300",
                     !isScrolled && "brightness-[10] grayscale"
                   )}
                   unoptimized
@@ -140,7 +140,7 @@ const Header = () => {
                     <Image 
                       src={zeroBrokrLogo}
                       alt="ZeroBrokr - No Commission"
-                      className="h-16 w-auto"
+                      className="h-14 w-auto"
                       unoptimized
                     />
                   </div>
