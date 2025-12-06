@@ -96,7 +96,7 @@ export default function ProjectDetail() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
+          <h1 className="font-poppins text-4xl font-bold mb-4">Project Not Found</h1>
           <Button onClick={() => router.push('/')}>Go Back Home</Button>
         </div>
       </div>
@@ -274,6 +274,7 @@ export default function ProjectDetail() {
                     >
                       <Link href="/#contact">Schedule Site Visit</Link>
                     </Button>
+                    <p className="text-xs text-muted-foreground text-center">Please inform 5 hours before for booking.</p>
                     <Button 
                       variant="outline"
                       className="w-full"
