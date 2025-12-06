@@ -15,6 +15,12 @@ export const metadata: Metadata = {
   description: 'A Next.js application for a real estate website landing page, built with Firebase Studio.',
   icons: {
     icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/favicon.png',
+    },
   },
 };
 
