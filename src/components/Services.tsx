@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Building2, Home, Ruler, Palette, CheckCircle } from 'lucide-react';
+import { Building2, Home, Ruler, Palette, CheckCircle, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const services = [
@@ -58,13 +58,28 @@ const Services = () => {
           </p>
         </motion.div>
 
+        {/* Booking Notice */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-12"
+        >
+          <div className="max-w-2xl mx-auto bg-primary/10 border-2 border-primary/30 rounded-xl p-4 flex items-center justify-center gap-3">
+            <Info className="w-6 h-6 text-primary flex-shrink-0" />
+            <p className="font-semibold text-primary text-center">
+              Site visits are by appointment only. Please inform 5 hours before booking.
+            </p>
+          </div>
+        </motion.div>
+
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              transition={{ duration: 0.6, delay: 0.3 + index * 0.15 }}
               className="group"
             >
               <div className="bg-card p-8 rounded-2xl shadow-premium hover:shadow-gold transition-all duration-500 border border-border hover:border-accent/50 h-full flex flex-col">
@@ -99,7 +114,7 @@ const Services = () => {
                       key={idx}
                       initial={{ opacity: 0, x: -20 }}
                       animate={inView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.4, delay: index * 0.15 + idx * 0.1 + 0.3 }}
+                      transition={{ duration: 0.4, delay: index * 0.15 + idx * 0.1 + 0.5 }}
                       className="flex items-center text-sm gap-3"
                     >
                       <CheckCircle className="w-5 h-5 text-accent flex-shrink-0" />
@@ -124,7 +139,7 @@ const Services = () => {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-12 md:mt-16 text-center max-w-3xl mx-auto p-8 md:p-10 bg-gradient-to-r from-primary via-primary/90 to-primary rounded-2xl md:rounded-3xl text-white shadow-2xl"
         >
           <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-3 md:mb-4">
