@@ -13,23 +13,6 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'ZeroBrokr - Real Estate Landing Page',
   description: 'A Next.js application for a real estate website landing page, built with Firebase Studio.',
-  icons: {
-    icon: [
-      { url: '/favicon.png' },
-      new URL('/favicon.png', 'https://zerobrokr.com'),
-    ],
-    shortcut: ['/favicon.png'],
-    apple: [
-      { url: '/favicon.png' },
-      { url: '/favicon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      {
-        rel: 'apple-touch-icon-precomposed',
-        url: '/favicon.png',
-      },
-    ],
-  },
 };
 
 export default function RootLayout({
