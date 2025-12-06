@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import Marquee from '@/components/Marquee';
 
 const navigation = [
   { name: 'Home', href: '#hero' },
@@ -58,6 +59,7 @@ const Header = () => {
         transition={{ duration: 0.6 }}
         className={headerClasses}
       >
+        <Marquee text="Site visits by appointment only. Please inform 5 hours before for booking." />
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -70,7 +72,7 @@ const Header = () => {
               <Image 
                 src={zeroBrokrLogo}
                 alt="ZeroBrokr - No Commission"
-                className="h-9 w-auto"
+                className="h-8 w-auto"
                 unoptimized
               />
             </motion.div>
@@ -137,7 +139,7 @@ const Header = () => {
                     <Image 
                       src={zeroBrokrLogo}
                       alt="ZeroBrokr - No Commission"
-                      className="h-9 w-auto"
+                      className="h-8 w-auto"
                       unoptimized
                     />
                   </div>
