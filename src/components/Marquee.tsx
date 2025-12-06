@@ -10,7 +10,7 @@ const Marquee = ({ text }: { text: string }) => {
         }}
         transition={{
           ease: 'linear',
-          duration: 15,
+          duration: 25,
           repeat: Infinity,
         }}
       >
