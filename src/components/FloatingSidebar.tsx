@@ -1,12 +1,21 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Phone, Mail, MessageSquare, ArrowUp, X } from 'lucide-react';
+import { Phone, Mail, MessageSquare, ArrowUp, X, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import QRCode from 'qrcode.react';
 
 const FloatingSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showQrCode, setShowQrCode] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,20 +32,26 @@ const FloatingSidebar = () => {
 
   const quickActions = [
     {
+      icon: Share2,
+      label: 'Share Website',
+      href: '#',
+      color: 'bg-blue-500',
+      hoverColor: 'hover:bg-blue-600',
+      action: () => setShowQrCode(true)
+    },
+    {
       icon: Phone,
       label: 'Call Now',
       href: 'tel:+919087048878',
       color: 'bg-green-500',
       hoverColor: 'hover:bg-green-600',
-      action: () => {}
     },
     {
       icon: Mail,
       label: 'Email Us',
       href: 'mailto:contact@zerobrokr.com',
-      color: 'bg-blue-500',
-      hoverColor: 'hover:bg-blue-600',
-      action: () => {}
+      color: 'bg-red-500',
+      hoverColor: 'hover:bg-red-600',
     },
     {
       icon: MessageSquare,
@@ -44,12 +59,28 @@ const FloatingSidebar = () => {
       href: 'https://wa.me/919087048878',
       color: 'bg-emerald-500',
       hoverColor: 'hover:bg-emerald-600',
-      action: () => {}
     },
   ];
 
   return (
     <>
+      {/* QR Code Dialog */}
+      <Dialog open={showQrCode} onOpenChange={setShowQrCode}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-poppins">Share ZeroBrokr</DialogTitle>
+            <DialogDescription>
+              Scan the QR code below to open zerobrokr.com on another device.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center justify-center p-4 bg-muted/50 rounded-lg">
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <QRCode value="https://zerobrokr.com" size={200} />
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+    
       {/* Floating Action Button */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -131,11 +162,8 @@ const FloatingSidebar = () => {
             </AnimatePresence>
 
             {quickActions.map((action, index) => (
-              <motion.a
+              <motion.div
                 key={action.label}
-                href={action.href}
-                target="_blank"
-                rel="noopener noreferrer"
                 initial={{ x: 100, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: 100, opacity: 0 }}
@@ -151,13 +179,22 @@ const FloatingSidebar = () => {
                   >
                     {action.label}
                   </motion.span>
-                  <div
-                    className={`w-12 h-12 ${action.color} ${action.hoverColor} rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer`}
+                  <Button
+                    size="icon"
+                    onClick={action.action}
+                    asChild={!action.action}
+                    className={`w-12 h-12 rounded-full ${action.color} ${action.hoverColor} text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer`}
                   >
-                    <action.icon className="w-5 h-5" />
-                  </div>
+                    {action.action ? (
+                        <action.icon className="w-5 h-5" />
+                    ) : (
+                      <a href={action.href} target="_blank" rel="noopener noreferrer">
+                        <action.icon className="w-5 h-5" />
+                      </a>
+                    )}
+                  </Button>
                 </div>
-              </motion.a>
+              </motion.div>
             ))}
           </motion.div>
         )}
