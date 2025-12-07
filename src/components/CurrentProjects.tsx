@@ -272,10 +272,10 @@ const CurrentProjects = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            Current <span className="text-gradient-gold">Ongoing Projects</span>
+            Current <span className="text-gradient-gold">Available Properties</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Exclusive developments currently available for you
+            Exclusive properties currently available for you
           </p>
         </motion.div>
 
