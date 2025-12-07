@@ -35,38 +35,31 @@ const FloatingSidebar = () => {
       icon: Share2,
       label: 'Share Website',
       href: '#',
-      color: 'bg-blue-500',
-      hoverColor: 'hover:bg-blue-600',
+      className: 'bg-blue-500 hover:bg-blue-600',
       action: () => setShowQrCode(true)
     },
     {
       icon: Phone,
       label: 'Call Now',
       href: 'tel:+919087048878',
-      color: 'bg-green-500',
-      hoverColor: 'hover:bg-green-600',
+      className: 'bg-green-500 hover:bg-green-600',
     },
     {
       icon: Mail,
       label: 'Email Us',
       href: 'mailto:contact@zerobrokr.com',
-      color: 'bg-red-500',
-      hoverColor: 'hover:bg-red-600',
+      className: 'bg-red-500 hover:bg-red-600',
     },
     {
       icon: MessageSquare,
       label: 'WhatsApp',
       href: 'https://wa.me/919087048878',
-      color: 'bg-emerald-500',
-      hoverColor: 'hover:bg-emerald-600',
+      className: 'bg-emerald-500 hover:bg-emerald-600',
     },
   ];
 
   return (
     <>
-      {/* This is a hack to make sure tailwind includes these classes */}
-      <div className="hidden bg-blue-500 hover:bg-blue-600 bg-green-500 hover:bg-green-600 bg-red-500 hover:bg-red-600 bg-emerald-500 hover:bg-emerald-600"></div>
-
       {/* QR Code Dialog */}
       <Dialog open={showQrCode} onOpenChange={setShowQrCode}>
         <DialogContent className="sm:max-w-md">
@@ -186,7 +179,7 @@ const FloatingSidebar = () => {
                     size="icon"
                     onClick={action.action}
                     asChild={!action.action}
-                    className={`w-12 h-12 rounded-full ${action.color} ${action.hoverColor} text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer`}
+                    className={`w-12 h-12 rounded-full text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer ${action.className}`}
                   >
                     {action.action ? (
                         <action.icon className="w-5 h-5" />
