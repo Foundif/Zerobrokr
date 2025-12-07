@@ -42,7 +42,6 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
             width={256}
             height={64}
             className="h-16 w-auto"
-            
           />
         </motion.div>
 

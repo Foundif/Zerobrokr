@@ -15,7 +15,6 @@ const Footer = () => {
               width={192}
               height={48}
               className="h-12 w-auto mb-4"
-              
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
               More than 5 years in real estate. Your trusted partner with 300+ builder partnerships and zero brokerage guarantee.

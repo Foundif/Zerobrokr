@@ -129,7 +129,6 @@ const CurrentProjects = () => {
                               layout="fill"
                               objectFit="cover"
                               className="group-hover:scale-110 transition-transform duration-700"
-                              
                             />
                           </div>
                         </CarouselItem>

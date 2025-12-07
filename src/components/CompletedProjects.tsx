@@ -79,7 +79,6 @@ const CompletedProjects = () => {
                   layout="fill"
                   objectFit="cover"
                   className="group-hover:scale-110 transition-transform duration-500"
-                  
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                 <div className="absolute top-4 right-4 bg-accent text-secondary px-3 py-1 rounded-full font-semibold text-xs">

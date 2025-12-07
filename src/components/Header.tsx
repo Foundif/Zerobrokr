@@ -71,7 +71,6 @@ const Header = () => {
                     "h-14 w-auto transition-all duration-300",
                     !isScrolled && "brightness-[10] grayscale"
                   )}
-                  
                 />
               </Link>
             </motion.div>
@@ -144,7 +143,6 @@ const Header = () => {
                       width={224}
                       height={56}
                       className="h-14 w-auto"
-                      
                     />
                   </div>
 
