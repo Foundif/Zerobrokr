@@ -100,6 +100,7 @@ const Testimonials = () => {
         </div>
 
         {/* Client Logos */}
+        {/*
         <motion.div
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
@@ -128,6 +129,7 @@ const Testimonials = () => {
             ))}
           </div>
         </motion.div>
+        */}
       </div>
     </section>
   );
