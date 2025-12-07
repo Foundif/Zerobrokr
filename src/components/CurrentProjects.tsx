@@ -16,10 +16,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Square } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import project1main from '@/assets/project1-main.jpeg';
+import project1 from '@/assets/project1.jpeg';
 
 type Project = {
     id: number;
-    images: string[];
+    images: (string | StaticImageData)[];
     title: string;
     location: string;
     type: string;
@@ -35,7 +37,7 @@ type Project = {
 const projects: Project[] = [
     {
     id: 1,
-    images: ['/project1-main.jpeg', '/project1.jpeg'],
+    images: [project1main, project1],
     title: 'Kadachanendhal – Near House',
     location: 'Madurai – Kadachanendhal',
     type: 'Residential House',
