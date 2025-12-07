@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, AspectRatio, Compass } from 'lucide-react';
@@ -9,6 +9,12 @@ import Footer from '@/components/Footer';
 import FloatingSidebar from '@/components/FloatingSidebar';
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselApi,
+} from "@/components/ui/carousel";
 
 const projectsData = [
     {
@@ -124,10 +130,46 @@ export default function ProjectDetail() {
   const router = useRouter();
   const id = params.id;
   const project = projectsData.find(p => p.id === Number(id));
+  const [api, setApi] = useState<CarouselApi>()
+  const autoplayInterval = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    const startAutoplay = () => {
+      autoplayInterval.current = setInterval(() => {
+        if (api.canScrollNext()) {
+          api.scrollNext()
+        } else {
+          api.scrollTo(0)
+        }
+      }, 3000);
+    }
+
+    startAutoplay();
+
+    api.on("pointerDown", () => {
+      if(autoplayInterval.current) clearInterval(autoplayInterval.current);
+    });
+
+    api.on("select", () => {
+      if(autoplayInterval.current) clearInterval(autoplayInterval.current);
+      startAutoplay();
+    });
+
+    return () => {
+      if (autoplayInterval.current) {
+        clearInterval(autoplayInterval.current);
+      }
+    }
+  }, [api]);
+
 
   if (!project) {
     return (
@@ -145,20 +187,30 @@ export default function ProjectDetail() {
       <Header />
       
       <main>
-        {/* Hero Image */}
-        <motion.div 
+        {/* Hero Carousel */}
+        <motion.div
           className="relative h-[50vh] md:h-[60vh] overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <Image 
-            src={project.images[0]} 
-            alt={project.title}
-            layout="fill"
-            objectFit="cover"
-            
-          />
+          <Carousel setApi={setApi} className="w-full h-full">
+            <CarouselContent>
+              {project.images.map((img, i) => (
+                <CarouselItem key={i}>
+                  <div className="relative h-[50vh] md:h-[60vh] w-full">
+                    <Image 
+                      src={img} 
+                      alt={`${project.title} image ${i + 1}`}
+                      layout="fill"
+                      objectFit="cover"
+                      priority={i === 0}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
           <div className="absolute bottom-0 left-0 right-0 container mx-auto px-4 pb-8">
