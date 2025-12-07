@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, Phone, Mail } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import Marquee from '@/components/Marquee';
@@ -64,13 +63,15 @@ const Header = () => {
             >
               <Link href="/">
                 <Image 
-                  src={zeroBrokrLogo}
+                  src="/zerobrokr-logo.png"
                   alt="ZeroBrokr - No Commission"
+                  width={224}
+                  height={56}
                   className={cn(
                     "h-14 w-auto transition-all duration-300",
                     !isScrolled && "brightness-[10] grayscale"
                   )}
-                  unoptimized
+                  
                 />
               </Link>
             </motion.div>
@@ -138,10 +139,12 @@ const Header = () => {
                   {/* Mobile Logo */}
                   <div className="flex items-center mb-8 relative z-10 px-6">
                     <Image 
-                      src={zeroBrokrLogo}
+                      src="/zerobrokr-logo.png"
                       alt="ZeroBrokr - No Commission"
+                      width={224}
+                      height={56}
                       className="h-14 w-auto"
-                      unoptimized
+                      
                     />
                   </div>
 

@@ -1,11 +1,8 @@
 'use client'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MapPin, Bed, Bath, Square, ArrowRight } from 'lucide-react';
+import { MapPin, AspectRatio, Compass, ArrowRight, Square } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import project1 from '@/assets/project1.jpg';
-import project2 from '@/assets/project2.jpg';
-import project3 from '@/assets/project3.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -19,42 +16,73 @@ import {
 const projects = [
   {
     id: 1,
-    images: [project1, project2, project3],
-    title: 'Skyline Residences',
-    location: 'Downtown Metro',
-    type: 'Luxury Apartments',
-    beds: '2-4 BHK',
-    baths: '2-3',
-    area: '1200-2800 sq.ft',
-    status: 'Under Construction',
-    completion: 'Dec 2025',
-    amenities: ['Swimming Pool', 'Gym', 'Sky Garden', 'Security 24/7']
+    images: ['/project1.jpg', '/project2.jpg', '/project3.jpg'],
+    title: 'Kadachanendhal – Near House',
+    location: 'Madurai – Kadachanendhal',
+    type: 'Residential House',
+    landArea: '2.75 Cents',
+    buildingArea: '1050 Sq.ft',
+    facing: 'South Facing',
+    price: '₹57 Lakhs',
+    amenities: ['Borewell', 'Car Parking', 'Sweet Water'],
+    completion: 'Ready to Occupy',
+    status: 'Ready to Occupy',
   },
   {
     id: 2,
-    images: [project2, project3, project1],
-    title: 'Royal Villas',
-    location: 'Lakeside Estate',
-    type: 'Premium Villas',
-    beds: '4-5 BHK',
-    baths: '4-5',
-    area: '3500-5000 sq.ft',
-    status: 'Booking Open',
-    completion: 'Jun 2026',
-    amenities: ['Private Garden', 'Club House', 'Kids Play Area', 'Smart Home']
+    images: ['/project2.jpg', '/project3.jpg', '/project1.jpg'],
+    title: 'Suriyanagar – House for Sale',
+    location: 'Madurai – Suriyanagar',
+    type: 'Residential House',
+    landArea: '3.25 Cents',
+    buildingArea: '1600 Sq.ft',
+    facing: 'East Facing',
+    price: '₹80 Lakhs',
+    amenities: ['Covered Car Parking', 'Modular Kitchen', 'Borewell'],
+    completion: 'Ready to Occupy',
+    status: 'Ready to Occupy',
   },
   {
     id: 3,
-    images: [project3, project1, project2],
-    title: 'Business Park Tower',
-    location: 'Financial District',
-    type: 'Commercial Complex',
-    beds: 'Office Spaces',
-    baths: 'Multiple',
-    area: '800-5000 sq.ft',
-    status: 'Pre-Launch',
-    completion: 'Mar 2027',
-    amenities: ['High-speed Elevators', 'Conference Halls', 'Food Court', 'Parking']
+    images: ['/project3.jpg', '/project1.jpg', '/project2.jpg'],
+    title: 'Kadachanendhal – House for Sale',
+    location: 'Madurai – Kadachanendhal',
+    type: 'Residential House',
+    landArea: '2 Cents',
+    buildingArea: '1175 Sq.ft',
+    facing: 'North Facing',
+    price: '₹61 Lakhs',
+    amenities: ['Car Parking', 'Borewell', 'Peaceful Residential Area'],
+    completion: 'Ready to Occupy',
+    status: 'Ready to Occupy',
+  },
+  {
+    id: 4,
+    images: ['/project4.jpeg', '/project5.jpeg', '/project1.jpg'],
+    title: 'Kadachanendhal – Near House for Sale',
+    location: 'Madurai – Kadachanendhal',
+    type: 'Compact House',
+    landArea: '2.4 Cents',
+    buildingArea: '750 Sq.ft',
+    facing: 'East Facing',
+    price: '₹47 Lakhs',
+    amenities: ['Borewell', 'Road Access', 'Compact Budget-Friendly Home'],
+    completion: 'Ready to Occupy',
+    status: 'Ready to Occupy',
+  },
+  {
+    id: 5,
+    images: ['/project5.jpeg', '/project1.jpg', '/project2.jpg'],
+    title: 'Kadachanendhal – Luxury House',
+    location: 'Madurai – Kadachanendhal',
+    type: 'Premium Spacious House',
+    landArea: '5 Cents',
+    buildingArea: '3250 Sq.ft',
+    facing: 'North Facing',
+    price: '₹2.30 Crore',
+    amenities: ['Spacious Car Parking', 'High-end Interiors', 'Borewell + Corporation Water', 'Prime Residential Zone'],
+    completion: 'Ready to Occupy',
+    status: 'Ready to Occupy',
   },
 ];
 
@@ -74,7 +102,7 @@ const CurrentProjects = () => {
             Current <span className="text-gradient-gold">Ongoing Projects</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Exclusive developments currently shaping the skyline
+            Exclusive developments currently available for you
           </p>
         </motion.div>
 
@@ -84,7 +112,7 @@ const CurrentProjects = () => {
               key={project.id}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group flex"
             >
               <div className="bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full">
@@ -101,7 +129,7 @@ const CurrentProjects = () => {
                               layout="fill"
                               objectFit="cover"
                               className="group-hover:scale-110 transition-transform duration-700"
-                              unoptimized
+                              
                             />
                           </div>
                         </CarouselItem>
@@ -111,7 +139,7 @@ const CurrentProjects = () => {
                     <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
                   </Carousel>
                   <div className="absolute top-4 right-4 bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm shadow-lg z-10">
-                    {project.status}
+                    {project.price}
                   </div>
                 </div>
 
@@ -131,16 +159,19 @@ const CurrentProjects = () => {
                   {/* Specs */}
                   <div className="grid grid-cols-3 gap-4 mb-4 py-4 border-y border-border">
                     <div className="text-center">
-                      <Bed className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                      <div className="text-sm font-semibold">{project.beds}</div>
-                    </div>
-                    <div className="text-center">
-                      <Bath className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                      <div className="text-sm font-semibold">{project.baths}</div>
+                      <AspectRatio className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                      <div className="text-sm font-semibold">{project.landArea}</div>
+                      <div className="text-xs text-muted-foreground">Land Area</div>
                     </div>
                     <div className="text-center">
                       <Square className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                      <div className="text-xs font-semibold">{project.area}</div>
+                      <div className="text-sm font-semibold">{project.buildingArea}</div>
+                      <div className="text-xs text-muted-foreground">Building</div>
+                    </div>
+                    <div className="text-center">
+                      <Compass className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                      <div className="text-sm font-semibold">{project.facing}</div>
+                       <div className="text-xs text-muted-foreground">Facing</div>
                     </div>
                   </div>
 
@@ -153,11 +184,16 @@ const CurrentProjects = () => {
                           {amenity}
                         </span>
                       ))}
+                      {project.amenities.length > 3 && (
+                        <span className="text-xs bg-muted px-3 py-1 rounded-full">
+                          +{project.amenities.length - 3} more
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   <div className="text-sm text-muted-foreground mb-4">
-                    Expected Completion: <span className="font-semibold text-foreground">{project.completion}</span>
+                    Availability: <span className="font-semibold text-foreground">{project.completion}</span>
                   </div>
 
                   <Button 

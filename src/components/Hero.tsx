@@ -2,7 +2,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import heroBg from '@/assets/hero-bg.jpg';
 import Image from 'next/image';
 
 const Hero = () => {
@@ -16,12 +15,12 @@ const Hero = () => {
         transition={{ duration: 1.8, ease: "easeOut" }}
       >
         <Image 
-          src={heroBg}
+          src="/hero-bg.jpg"
           alt="Hero background"
           layout="fill"
           objectFit="cover"
           className="bg-center bg-fixed"
-          unoptimized
+          
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
         

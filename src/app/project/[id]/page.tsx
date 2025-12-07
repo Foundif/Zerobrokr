@@ -2,84 +2,121 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone } from 'lucide-react';
+import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, AspectRatio, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FloatingSidebar from '@/components/FloatingSidebar';
-import project1 from '@/assets/project1.jpg';
-import project2 from '@/assets/project2.jpg';
-import project3 from '@/assets/project3.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const projectsData = [
-  {
-    id: 1,
-    image: project1,
-    title: 'Skyline Residences',
-    location: 'Downtown Metro',
-    type: 'Luxury Apartments',
-    beds: '2-4 BHK',
-    baths: '2-3',
-    area: '1200-2800 sq.ft',
-    status: 'Under Construction',
-    completion: 'Dec 2025',
-    price: '₹85 Lakhs - ₹2.5 Cr',
-    amenities: ['Swimming Pool', 'Gym', 'Sky Garden', 'Security 24/7', 'Yoga Deck', 'Sports Court', 'Party Hall', 'Kids Play Area'],
-    description: 'Experience luxury living at its finest with Skyline Residences. Located in the heart of Downtown Metro, this premium residential project offers world-class amenities and stunning views of the city skyline.',
-    highlights: [
-      'Prime location with excellent connectivity',
-      'Premium specifications and finishes',
-      'Spacious layouts with natural ventilation',
-      'State-of-the-art security systems',
-      'Eco-friendly and sustainable design'
-    ]
-  },
-  {
-    id: 2,
-    image: project2,
-    title: 'Royal Villas',
-    location: 'Lakeside Estate',
-    type: 'Premium Villas',
-    beds: '4-5 BHK',
-    baths: '4-5',
-    area: '3500-5000 sq.ft',
-    status: 'Booking Open',
-    completion: 'Jun 2026',
-    price: '₹3.5 Cr - ₹6 Cr',
-    amenities: ['Private Garden', 'Club House', 'Kids Play Area', 'Smart Home', 'Private Pool', 'Servant Quarter', 'Covered Parking', 'Landscaped Garden'],
-    description: 'Royal Villas offers an exclusive collection of premium villas nestled in the serene Lakeside Estate. Each villa is designed to provide ultimate privacy and luxury living experience.',
-    highlights: [
-      'Spacious villas with private gardens',
-      'Premium smart home automation',
-      'Gated community with 24/7 security',
-      'Close to nature with lake views',
-      'High-end specifications throughout'
-    ]
-  },
-  {
-    id: 3,
-    image: project3,
-    title: 'Business Park Tower',
-    location: 'Financial District',
-    type: 'Commercial Complex',
-    beds: 'Office Spaces',
-    baths: 'Multiple',
-    area: '800-5000 sq.ft',
-    status: 'Pre-Launch',
-    completion: 'Mar 2027',
-    price: '₹60 Lakhs - ₹4 Cr',
-    amenities: ['High-speed Elevators', 'Conference Halls', 'Food Court', 'Parking', 'Power Backup', 'Central AC', 'Security', 'Cafeteria'],
-    description: 'Business Park Tower is a state-of-the-art commercial complex in the Financial District, designed for modern businesses. With premium office spaces and world-class infrastructure.',
-    highlights: [
-      'Strategic location in business hub',
-      'Grade A commercial specifications',
-      'Ample parking space',
-      'High-speed internet connectivity',
-      'Professional property management'
-    ]
-  },
+    {
+      id: 1,
+      images: ['/project1.jpg', '/project2.jpg', '/project3.jpg'],
+      title: 'Kadachanendhal – Near House',
+      location: 'Madurai – Kadachanendhal',
+      type: 'Residential House',
+      landArea: '2.75 Cents',
+      buildingArea: '1050 Sq.ft',
+      facing: 'South Facing',
+      price: '₹57 Lakhs',
+      amenities: ['Borewell', 'Car Parking', 'Sweet Water', 'Gated Community', '24/7 Security'],
+      completion: 'Ready to Occupy',
+      status: 'Ready to Occupy',
+      description: 'A charming and affordable residential house located in the peaceful neighborhood of Kadachanendhal, Madurai. Perfect for small families, this south-facing home is built on a 2.75 cent plot with a building area of 1050 sq.ft. Enjoy essential amenities like a borewell for sweet water and dedicated car parking. The property is ready for immediate occupation.',
+      highlights: [
+        'Affordable pricing in a growing residential area.',
+        'South-facing property ensuring ample sunlight.',
+        'Reliable sweet water supply from a private borewell.',
+        'Ready for immediate move-in.'
+      ]
+    },
+    {
+      id: 2,
+      images: ['/project2.jpg', '/project3.jpg', '/project1.jpg'],
+      title: 'Suriyanagar – House for Sale',
+      location: 'Madurai – Suriyanagar',
+      type: 'Residential House',
+      landArea: '3.25 Cents',
+      buildingArea: '1600 Sq.ft',
+      facing: 'East Facing',
+      price: '₹80 Lakhs',
+      amenities: ['Covered Car Parking', 'Modular Kitchen', 'Borewell', 'Private Terrace', 'Wardrobes'],
+      completion: 'Ready to Occupy',
+      status: 'Ready to Occupy',
+      description: 'This beautiful east-facing house in the desirable Suriyanagar area of Madurai offers a spacious living experience. With a land area of 3.25 cents and a generous 1600 sq.ft building area, this home features a modern modular kitchen, covered car parking, and a private borewell. It is an ideal choice for families looking for a ready-to-occupy home in a prime location.',
+      highlights: [
+        'Prime location in Suriyanagar.',
+        'East-facing for positive energy and morning sun.',
+        'Modern amenities including a modular kitchen.',
+        'Spacious build with immediate availability.'
+      ]
+    },
+    {
+      id: 3,
+      images: ['/project3.jpg', '/project1.jpg', '/project2.jpg'],
+      title: 'Kadachanendhal – House for Sale',
+      location: 'Madurai – Kadachanendhal',
+      type: 'Residential House',
+      landArea: '2 Cents',
+      buildingArea: '1175 Sq.ft',
+      facing: 'North Facing',
+      price: '₹61 Lakhs',
+      amenities: ['Car Parking', 'Borewell', 'Peaceful Residential Area', 'Good Ventilation', 'Near Main Road'],
+      completion: 'Ready to Occupy',
+      status: 'Ready to Occupy',
+      description: 'A well-designed north-facing house situated in a peaceful residential pocket of Kadachanendhal. Built on a 2-cent plot, this 1175 sq.ft home is perfect for those who value tranquility and convenience. It comes with car parking and a borewell. Its proximity to the main road makes it an accessible and attractive option. The house is ready for you to move in.',
+      highlights: [
+        'North-facing property in a calm, residential area.',
+        'Compact and efficient design.',
+        'Easy access to main roads and transportation.',
+        'Ready to occupy with essential amenities.'
+      ]
+    },
+    {
+      id: 4,
+      images: ['/project4.jpeg', '/project5.jpeg', '/project1.jpg'],
+      title: 'Kadachanendhal – Near House for Sale',
+      location: 'Madurai – Kadachanendhal',
+      type: 'Compact House',
+      landArea: '2.4 Cents',
+      buildingArea: '750 Sq.ft',
+      facing: 'East Facing',
+      price: '₹47 Lakhs',
+      amenities: ['Borewell', 'Road Access', 'Compact Budget-Friendly Home', 'Good Neighborhood'],
+      completion: 'Ready to Occupy',
+      status: 'Ready to Occupy',
+      description: 'This compact, budget-friendly home in Kadachanendhal is an excellent opportunity for first-time homebuyers. The east-facing house has a building area of 750 sq.ft on a 2.4-cent plot. It offers great value with essential amenities like a borewell and good road access in a friendly neighborhood. The property is ready for immediate occupation, offering a cozy and affordable living solution.',
+      highlights: [
+        'Extremely budget-friendly option.',
+        'East-facing for a bright and airy feel.',
+        'Located in a good, developing neighborhood.',
+        'Ideal for individuals or small families.'
+      ]
+    },
+    {
+      id: 5,
+      images: ['/project5.jpeg', '/project1.jpg', '/project2.jpg'],
+      title: 'Kadachanendhal – Luxury House',
+      location: 'Madurai – Kadachanendhal',
+      type: 'Premium Spacious House',
+      landArea: '5 Cents',
+      buildingArea: '3250 Sq.ft',
+      facing: 'North Facing',
+      price: '₹2.30 Crore',
+      amenities: ['Spacious Car Parking', 'High-end Interiors', 'Borewell + Corporation Water', 'Prime Residential Zone', 'Private Garden', 'Home Theatre Room'],
+      completion: 'Ready to Occupy',
+      status: 'Ready to Occupy',
+      description: 'Indulge in luxury with this premium, spacious north-facing house in a prime residential zone of Kadachanendhal. Sprawled across a 5-cent plot with a massive 3250 sq.ft built-up area, this home is designed for an opulent lifestyle. It features high-end interiors, spacious car parking, and the convenience of both borewell and corporation water supply. This is a ready-to-occupy dream home for those who seek luxury and space.',
+      highlights: [
+        'Located in a prime, high-demand residential zone.',
+        'Extremely spacious with a 3250 sq.ft build area.',
+        'Luxurious high-end interiors and finishes.',
+        'Dual water source (Borewell and Corporation).',
+        'Perfect for large families seeking a premium lifestyle.'
+      ]
+    },
 ];
 
 export default function ProjectDetail() {
@@ -116,11 +153,11 @@ export default function ProjectDetail() {
           transition={{ duration: 0.6 }}
         >
           <Image 
-            src={project.image} 
+            src={project.images[0]} 
             alt={project.title}
             layout="fill"
             objectFit="cover"
-            unoptimized
+            
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
           
@@ -173,24 +210,24 @@ export default function ProjectDetail() {
                   <h3 className="font-poppins text-2xl font-bold mb-6">Specifications</h3>
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
-                      <Bed className="w-8 h-8 mx-auto mb-2 text-primary" />
-                      <div className="font-semibold mb-1">{project.beds}</div>
-                      <div className="text-sm text-muted-foreground">Bedrooms</div>
-                    </div>
-                    <div className="text-center p-4 bg-muted/30 rounded-xl">
-                      <Bath className="w-8 h-8 mx-auto mb-2 text-primary" />
-                      <div className="font-semibold mb-1">{project.baths}</div>
-                      <div className="text-sm text-muted-foreground">Bathrooms</div>
+                      <AspectRatio className="w-8 h-8 mx-auto mb-2 text-primary" />
+                      <div className="font-semibold mb-1">{project.landArea}</div>
+                      <div className="text-sm text-muted-foreground">Land Area</div>
                     </div>
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
                       <Square className="w-8 h-8 mx-auto mb-2 text-primary" />
-                      <div className="font-semibold mb-1">{project.area}</div>
-                      <div className="text-sm text-muted-foreground">Area</div>
+                      <div className="font-semibold mb-1">{project.buildingArea}</div>
+                      <div className="text-sm text-muted-foreground">Building Area</div>
+                    </div>
+                    <div className="text-center p-4 bg-muted/30 rounded-xl">
+                      <Compass className="w-8 h-8 mx-auto mb-2 text-primary" />
+                      <div className="font-semibold mb-1">{project.facing}</div>
+                      <div className="text-sm text-muted-foreground">Facing</div>
                     </div>
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
                       <Calendar className="w-8 h-8 mx-auto mb-2 text-primary" />
                       <div className="font-semibold mb-1">{project.completion}</div>
-                      <div className="text-sm text-muted-foreground">Completion</div>
+                      <div className="text-sm text-muted-foreground">Availability</div>
                     </div>
                   </div>
                 </div>
@@ -245,7 +282,7 @@ export default function ProjectDetail() {
               >
                 <div className="bg-card rounded-2xl p-6 shadow-premium">
                   <div className="mb-6">
-                    <div className="text-sm text-muted-foreground mb-2">Starting Price</div>
+                    <div className="text-sm text-muted-foreground mb-2">Price</div>
                     <div className="font-poppins text-3xl font-bold text-accent">
                       {project.price}
                     </div>

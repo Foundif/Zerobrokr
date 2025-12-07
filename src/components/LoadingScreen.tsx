@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import zeroBrokrLogo from '@/assets/zerobrokr-logo.png';
 import Image from 'next/image';
 
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
@@ -38,10 +37,12 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           className="flex justify-center"
         >
           <Image 
-            src={zeroBrokrLogo}
+            src="/zerobrokr-logo.png"
             alt="ZeroBrokr - No Commission"
+            width={256}
+            height={64}
             className="h-16 w-auto"
-            unoptimized
+            
           />
         </motion.div>
 
