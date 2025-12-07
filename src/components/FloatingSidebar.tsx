@@ -34,9 +34,8 @@ const FloatingSidebar = () => {
     {
       icon: Share2,
       label: 'Share Website',
-      href: '#',
+      action: () => setShowQrCode(true),
       className: 'bg-blue-500 hover:bg-blue-600',
-      action: () => setShowQrCode(true)
     },
     {
       icon: Phone,
@@ -175,20 +174,24 @@ const FloatingSidebar = () => {
                   >
                     {action.label}
                   </motion.span>
-                  <Button
-                    size="icon"
-                    onClick={action.action}
-                    asChild={!action.action}
-                    className={`w-12 h-12 rounded-full text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer ${action.className}`}
-                  >
-                    {action.action ? (
-                        <action.icon className="w-5 h-5" />
-                    ) : (
-                      <a href={action.href} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center">
-                        <action.icon className="w-5 h-5" />
-                      </a>
-                    )}
-                  </Button>
+                  
+                  {action.href ? (
+                     <a 
+                      href={action.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer", action.className)}
+                    >
+                      <action.icon className="w-5 h-5" />
+                    </a>
+                  ) : (
+                    <button
+                      onClick={action.action}
+                      className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer", action.className)}
+                    >
+                      <action.icon className="w-5 h-5" />
+                    </button>
+                  )}
                 </div>
               </motion.div>
             ))}
