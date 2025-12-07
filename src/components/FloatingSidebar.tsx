@@ -11,6 +11,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import QRCode from 'qrcode.react';
+import { cn } from '@/lib/utils';
 
 const FloatingSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ const FloatingSidebar = () => {
       icon: Phone,
       label: 'Call Now',
       href: 'tel:+919087048878',
-      className: 'bg-green-500 hover:bg-green-600',
+      className: 'bg-blue-900 hover:bg-blue-800',
     },
     {
       icon: Mail,
