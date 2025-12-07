@@ -18,6 +18,11 @@ import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import project1main from '@/assets/project1-main.jpeg';
 import project1 from '@/assets/project1.jpeg';
+import project2main from '@/assets/project2-main.jpeg';
+import project2_1 from '@/assets/project2-1.jpeg';
+import project2_2 from '@/assets/project2-2.jpeg';
+import project2_3 from '@/assets/project2-3.jpeg';
+import project2_4 from '@/assets/project2-4.jpeg';
 
 type Project = {
     id: number;
@@ -51,7 +56,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    images: ['/project2-main.jpeg', '/project2-1.jpeg', '/project2-2.jpeg', '/project2-3.jpeg', '/project2-4.jpeg'],
+    images: [project2main, project2_1, project2_2, project2_3, project2_4],
     title: 'Suriyanagar – House for Sale',
     location: 'Madurai – Suriyanagar',
     type: 'Residential House',
