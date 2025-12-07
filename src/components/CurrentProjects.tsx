@@ -23,6 +23,12 @@ import project2_1 from '@/assets/project2-1.jpeg';
 import project2_2 from '@/assets/project2-2.jpeg';
 import project2_3 from '@/assets/project2-3.jpeg';
 import project2_4 from '@/assets/project2-4.jpeg';
+import project3main from '@/assets/project3-main.jpeg';
+import project3_1 from '@/assets/project3-1.jpeg';
+import project3_2 from '@/assets/project3-2.jpeg';
+import project4main from '@/assets/project4-main.jpeg';
+import project4_1 from '@/assets/project4-1.jpeg';
+import project4_2 from '@/assets/project4-2.jpeg';
 
 type Project = {
     id: number;
@@ -70,7 +76,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    images: ['/project3-main.jpeg', '/project3-1.jpeg', '/project3-2.jpeg'],
+    images: [project3main, project3_1, project3_2],
     title: 'Kadachanendhal – House for Sale',
     location: 'Madurai – Kadachanendhal',
     type: 'Residential House',
@@ -84,7 +90,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    images: ['/project4-main.jpeg', '/project4-1.jpeg', '/project4-2.jpeg'],
+    images: [project4main, project4_1, project4_2],
     title: 'Kadachanendhal – Near House for Sale',
     location: 'Madurai – Kadachanendhal',
     type: 'Compact House',
