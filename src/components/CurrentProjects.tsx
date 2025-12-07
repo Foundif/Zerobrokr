@@ -29,6 +29,18 @@ import project3_2 from '@/assets/project3-2.jpeg';
 import project4main from '@/assets/project4-main.jpeg';
 import project4_1 from '@/assets/project4-1.jpeg';
 import project4_2 from '@/assets/project4-2.jpeg';
+import project5main from '@/assets/project5-main.jpeg';
+import property5_1 from '@/assets/property5-1.jpeg';
+import property5_2 from '@/assets/property5-2.jpeg';
+import property5_3 from '@/assets/property5-3.jpeg';
+import property5_4 from '@/assets/property5-4.jpeg';
+import property5_5 from '@/assets/property5-5.jpeg';
+import property5_6 from '@/assets/property5-6.jpeg';
+import property5_7 from '@/assets/property5-7.jpeg';
+import property5_8 from '@/assets/property5-8.jpeg';
+import property5_9 from '@/assets/property5-9.jpeg';
+import property5_10 from '@/assets/property5-10.jpeg';
+import property5_11 from '@/assets/property5-11.jpeg';
 
 type Project = {
     id: number;
@@ -104,7 +116,7 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    images: ['/project5-main.jpeg', '/project5-1.jpeg', '/project5-2.jpeg', '/project5-3.jpeg', '/project5-4.jpeg', '/project5-5.jpeg', '/project5-6.jpeg', '/project5-7.jpeg', '/project5-8.jpeg', '/project5-9.jpeg', '/project5-10.jpeg', '/project5-11.jpeg'],
+    images: [project5main, property5_1, property5_2, property5_3, property5_4, property5_5, property5_6, property5_7, property5_8, property5_9, property5_10, property5_11],
     title: 'Kadachanendhal – Luxury House',
     location: 'Madurai – Kadachanendhal',
     type: 'Premium Spacious House',
