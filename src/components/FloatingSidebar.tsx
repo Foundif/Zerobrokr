@@ -184,7 +184,7 @@ const FloatingSidebar = () => {
                     {action.action ? (
                         <action.icon className="w-5 h-5" />
                     ) : (
-                      <a href={action.href} target="_blank" rel="noopener noreferrer">
+                      <a href={action.href} target="_blank" rel="noopener noreferrer" className="w-full h-full flex items-center justify-center">
                         <action.icon className="w-5 h-5" />
                       </a>
                     )}
