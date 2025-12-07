@@ -1,7 +1,7 @@
 'use client'
 import { Facebook, Youtube, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import Image from 'next/image';
-import logoWhite from '@/assets/zerobrokr-logo-white.png';
+import logo from '@/assets/zerobrokr-logo.png';
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <Image 
-              src={logoWhite}
+              src={logo}
               alt="ZeroBrokr - No Commission"
               width={192}
               height={48}

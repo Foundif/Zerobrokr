@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import Marquee from '@/components/Marquee';
 import Link from 'next/link';
 import logo from '@/assets/zerobrokr-logo.png';
+import logoWhite from '@/assets/zerobrokr-logo-white.png';
 
 const navigation = [
   { name: 'Home', href: '/#hero' },
@@ -63,16 +64,30 @@ const Header = () => {
               className="flex items-center"
             >
               <Link href="/">
-                <Image 
-                  src={logo}
-                  alt="ZeroBrokr - No Commission"
-                  width={224}
-                  height={56}
-                  className={cn(
-                    "h-14 w-auto transition-all duration-300",
-                  )}
-                  priority
-                />
+                <div className="relative h-14 w-56">
+                   <Image 
+                    src={logoWhite}
+                    alt="ZeroBrokr - No Commission"
+                    layout="fill"
+                    objectFit="contain"
+                    className={cn(
+                      "h-14 w-auto transition-opacity duration-300",
+                      isScrolled ? 'opacity-0' : 'opacity-100'
+                    )}
+                    priority
+                  />
+                   <Image 
+                    src={logo}
+                    alt="ZeroBrokr - No Commission"
+                    layout="fill"
+                    objectFit="contain"
+                    className={cn(
+                      "h-14 w-auto transition-opacity duration-300",
+                       isScrolled ? 'opacity-100' : 'opacity-0'
+                    )}
+                    priority
+                  />
+                </div>
               </Link>
             </motion.div>
 
