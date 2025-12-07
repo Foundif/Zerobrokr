@@ -1,7 +1,8 @@
 'use client'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { MapPin, AspectRatio, Compass, ArrowRight, Square } from 'lucide-react';
+import { MapPin, Compass, ArrowRight, Square } from 'lucide-react';
+import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,7 +17,7 @@ import {
 const projects = [
   {
     id: 1,
-    images: ['/project1.jpg', '/project2.jpg', '/project3.jpg'],
+    images: ['/project1 main.jpeg', '/project1.jpeg'],
     title: 'Kadachanendhal – Near House',
     location: 'Madurai – Kadachanendhal',
     type: 'Residential House',
@@ -30,7 +31,7 @@ const projects = [
   },
   {
     id: 2,
-    images: ['/project2.jpg', '/project3.jpg', '/project1.jpg'],
+    images: ['/project2 main.jpeg', '/project2-1.jpeg', '/project2-2.jpeg', '/project2-3.jpeg', '/project2-4.jpeg'],
     title: 'Suriyanagar – House for Sale',
     location: 'Madurai – Suriyanagar',
     type: 'Residential House',
@@ -158,7 +159,7 @@ const CurrentProjects = () => {
                   {/* Specs */}
                   <div className="grid grid-cols-3 gap-4 mb-4 py-4 border-y border-border">
                     <div className="text-center">
-                      <AspectRatio className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+                      <AspectRatio ratio={1} className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
                       <div className="text-sm font-semibold">{project.landArea}</div>
                       <div className="text-xs text-muted-foreground">Land Area</div>
                     </div>
@@ -215,3 +216,5 @@ const CurrentProjects = () => {
 };
 
 export default CurrentProjects;
+
+    

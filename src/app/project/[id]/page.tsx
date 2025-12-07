@@ -2,7 +2,8 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, AspectRatio, Compass } from 'lucide-react';
+import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, Compass } from 'lucide-react';
+import { AspectRatio } from '@radix-ui/react-aspect-ratio';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -262,7 +263,7 @@ export default function ProjectDetail() {
                   <h3 className="font-poppins text-2xl font-bold mb-6">Specifications</h3>
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
-                      <AspectRatio className="w-8 h-8 mx-auto mb-2 text-primary" />
+                      <AspectRatio ratio={1} className="w-8 h-8 mx-auto mb-2 text-primary" />
                       <div className="font-semibold mb-1">{project.landArea}</div>
                       <div className="text-sm text-muted-foreground">Land Area</div>
                     </div>
@@ -392,3 +393,5 @@ export default function ProjectDetail() {
     </div>
   );
 }
+
+    
