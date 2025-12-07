@@ -15,12 +15,39 @@ import {
 import { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Square } from 'lucide-react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+
+import project1main from '@/assets/project1-main.jpeg';
+import project1 from '@/assets/project1.jpeg';
+import project2main from '@/assets/project2-main.jpeg';
+import project2_1 from '@/assets/project2-1.jpeg';
+import project2_2 from '@/assets/project2-2.jpeg';
+import project2_3 from '@/assets/project2-3.jpeg';
+import project2_4 from '@/assets/project2-4.jpeg';
+import project3main from '@/assets/project3-main.jpeg';
+import project3_1 from '@/assets/project3-1.jpeg';
+import project3_2 from '@/assets/project3-2.jpeg';
+import project4main from '@/assets/project4-main.jpeg';
+import project4_1 from '@/assets/project4-1.jpeg';
+import project4_2 from '@/assets/project4-2.jpeg';
+import project5main from '@/assets/project5-main.jpeg';
+import project5_1 from '@/assets/project5-1.jpeg';
+import project5_2 from '@/assets/project5-2.jpeg';
+import project5_3 from '@/assets/project5-3.jpeg';
+import project5_4 from '@/assets/project5-4.jpeg';
+import project5_5 from '@/assets/project5-5.jpeg';
+import project5_6 from '@/assets/project5-6.jpeg';
+import project5_7 from '@/assets/project5-7.jpeg';
+import project5_8 from '@/assets/project5-8.jpeg';
+import project5_9 from '@/assets/project5-9.jpeg';
+import project5_10 from '@/assets/project5-10.jpeg';
+import project5_11 from '@/assets/project5-11.jpeg';
+
 
 type Project = {
     id: number;
-    images: string[];
+    images: (string | StaticImageData)[];
     title: string;
     location: string;
     type: string;
@@ -36,7 +63,7 @@ type Project = {
 const projects: Project[] = [
     {
     id: 1,
-    images: ['/project1-main.jpeg', '/project1.jpeg'],
+    images: [project1main, project1],
     title: 'Kadachanendhal – Near House',
     location: 'Madurai – Kadachanendhal',
     type: 'Residential House',
@@ -50,7 +77,7 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    images: ['/project2-main.jpeg', '/project2-1.jpeg', '/project2-2.jpeg', '/project2-3.jpeg', '/project2-4.jpeg'],
+    images: [project2main, project2_1, project2_2, project2_3, project2_4],
     title: 'Suriyanagar – House for Sale',
     location: 'Madurai – Suriyanagar',
     type: 'Residential House',
@@ -64,7 +91,7 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    images: ['/project3-main.jpeg', '/project3-1.jpeg', '/project3-2.jpeg'],
+    images: [project3main, project3_1, project3_2],
     title: 'Kadachanendhal – House for Sale',
     location: 'Madurai – Kadachanendhal',
     type: 'Residential House',
@@ -78,7 +105,7 @@ const projects: Project[] = [
   },
   {
     id: 4,
-    images: ['/project4-main.jpeg', '/project4-1.jpeg', '/project4-2.jpeg'],
+    images: [project4main, project4_1, project4_2],
     title: 'Kadachanendhal – Near House for Sale',
     location: 'Madurai – Kadachanendhal',
     type: 'Compact House',
@@ -92,7 +119,7 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    images: ['/project5-main.jpeg', '/project5-1.jpeg', '/project5-2.jpeg', '/project5-3.jpeg', '/project5-4.jpeg', '/project5-5.jpeg', '/project5-6.jpeg', '/project5-7.jpeg', '/project5-8.jpeg', '/project5-9.jpeg', '/project5-10.jpeg', '/project5-11.jpeg'],
+    images: [project5main, project5_1, project5_2, project5_3, project5_4, project5_5, project5_6, project5_7, project5_8, project5_9, project5_10, project5_11],
     title: 'Kadachanendhal – Luxury House',
     location: 'Madurai – Kadachanendhal',
     type: 'Premium Spacious House',
@@ -121,6 +148,7 @@ const ProjectCard = ({ project }: { project: Project }) => (
                   layout="fill"
                   objectFit="cover"
                   className="group-hover:scale-110 transition-transform duration-700"
+                  placeholder="blur"
                 />
               </div>
             </CarouselItem>

@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import zerobrokrLogo from '@/assets/zerobrokr-logo.png';
 
 const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
   const [progress, setProgress] = useState(0);
@@ -37,11 +38,12 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
           className="flex justify-center"
         >
           <Image 
-            src="/zerobrokr-logo.png"
+            src={zerobrokrLogo}
             alt="ZeroBrokr - No Commission"
             width={256}
             height={64}
             className="h-16 w-auto"
+            priority
           />
         </motion.div>
 

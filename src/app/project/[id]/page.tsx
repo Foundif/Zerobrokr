@@ -16,11 +16,16 @@ import {
   CarouselItem,
   CarouselApi,
 } from "@/components/ui/carousel";
+import project1 from '@/assets/project1.jpg';
+import project2 from '@/assets/project2.jpg';
+import project3 from '@/assets/project3.jpg';
+import project4 from '@/assets/project4.jpeg';
+import project5 from '@/assets/project5.jpeg';
 
 const projectsData = [
     {
       id: 1,
-      images: ['/project1.jpg', '/project2.jpg', '/project3.jpg'],
+      images: [project1, project2, project3],
       title: 'Kadachanendhal – Near House',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -41,7 +46,7 @@ const projectsData = [
     },
     {
       id: 2,
-      images: ['/project2.jpg', '/project3.jpg', '/project1.jpg'],
+      images: [project2, project3, project1],
       title: 'Suriyanagar – House for Sale',
       location: 'Madurai – Suriyanagar',
       type: 'Residential House',
@@ -62,7 +67,7 @@ const projectsData = [
     },
     {
       id: 3,
-      images: ['/project3.jpg', '/project1.jpg', '/project2.jpg'],
+      images: [project3, project1, project2],
       title: 'Kadachanendhal – House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -83,7 +88,7 @@ const projectsData = [
     },
     {
       id: 4,
-      images: ['/project4.jpeg', '/project5.jpeg', '/project1.jpg'],
+      images: [project4, project5, project1],
       title: 'Kadachanendhal – Near House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Compact House',
@@ -104,7 +109,7 @@ const projectsData = [
     },
     {
       id: 5,
-      images: ['/project5.jpeg', '/project1.jpg', '/project2.jpg'],
+      images: [project5, project1, project2],
       title: 'Kadachanendhal – Luxury House',
       location: 'Madurai – Kadachanendhal',
       type: 'Premium Spacious House',
@@ -206,6 +211,7 @@ export default function ProjectDetail() {
                       layout="fill"
                       objectFit="cover"
                       priority={i === 0}
+                      placeholder="blur"
                     />
                   </div>
                 </CarouselItem>
