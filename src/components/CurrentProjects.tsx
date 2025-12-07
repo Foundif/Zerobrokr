@@ -106,7 +106,7 @@ const projects: Project[] = [
 ];
 
 const ProjectCard = ({ project }: { project: Project }) => (
-  <Card className="group bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full">
+  <Card className="group bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full h-full">
     {/* Image Carousel */}
     <div className="relative h-64 md:h-56">
       <Carousel className="w-full h-full">
@@ -254,18 +254,24 @@ const CurrentProjects = () => {
           </p>
         </motion.div>
 
-        {/* Mobile Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative md:hidden"
+          className="relative"
         >
-          <Carousel setApi={setApi} className="w-full max-w-md mx-auto" opts={{ loop: true }}>
-            <CarouselContent>
+          <Carousel 
+            setApi={setApi} 
+            className="w-full" 
+            opts={{ 
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-4">
               {projects.map((project, index) => (
-                <CarouselItem key={index}>
-                  <div className="p-1">
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1 h-full">
                     <ProjectCard project={project} />
                   </div>
                 </CarouselItem>
@@ -275,19 +281,6 @@ const CurrentProjects = () => {
             <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2 z-10" />
           </Carousel>
         </motion.div>
-
-        {/* Desktop/Tablet Grid */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </motion.div>
-
       </div>
     </section>
   );
