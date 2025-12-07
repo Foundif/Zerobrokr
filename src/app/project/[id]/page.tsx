@@ -2,8 +2,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, Compass } from 'lucide-react';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, Compass, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -17,10 +16,37 @@ import {
   CarouselApi,
 } from "@/components/ui/carousel";
 
+import project1main from '@/assets/project1-main.jpeg';
+import project1 from '@/assets/project1.jpeg';
+import project2main from '@/assets/project2-main.jpeg';
+import project2_1 from '@/assets/project2-1.jpeg';
+import project2_2 from '@/assets/project2-2.jpeg';
+import project2_3 from '@/assets/project2-3.jpeg';
+import project2_4 from '@/assets/project2-4.jpeg';
+import project3main from '@/assets/project3-main.jpeg';
+import project3_1 from '@/assets/project3-1.jpeg';
+import project3_2 from '@/assets/project3-2.jpeg';
+import project4main from '@/assets/project4-main.jpeg';
+import project4_1 from '@/assets/project4-1.jpeg';
+import project4_2 from '@/assets/project4-2.jpeg';
+import project5main from '@/assets/project5-main.jpeg';
+import property5_1 from '@/assets/property5-1.jpeg';
+import property5_2 from '@/assets/property5-2.jpeg';
+import property5_3 from '@/assets/property5-3.jpeg';
+import property5_4 from '@/assets/property5-4.jpeg';
+import property5_5 from '@/assets/property5-5.jpeg';
+import property5_6 from '@/assets/property5-6.jpeg';
+import property5_7 from '@/assets/property5-7.jpeg';
+import property5_8 from '@/assets/property5-8.jpeg';
+import property5_9 from '@/assets/property5-9.jpeg';
+import property5_10 from '@/assets/property5-10.jpeg';
+import property5_11 from '@/assets/property5-11.jpeg';
+
+
 const projectsData = [
     {
       id: 1,
-      images: ['/project1-main.jpeg', '/project1.jpeg'],
+      images: [project1main, project1],
       title: 'Kadachanendhal – Near House',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -41,7 +67,7 @@ const projectsData = [
     },
     {
       id: 2,
-      images: ['/project2-main.jpeg', '/project2-1.jpeg', '/project2-2.jpeg', '/project2-3.jpeg', '/project2-4.jpeg'],
+      images: [project2main, project2_1, project2_2, project2_3, project2_4],
       title: 'Suriyanagar – House for Sale',
       location: 'Madurai – Suriyanagar',
       type: 'Residential House',
@@ -62,7 +88,7 @@ const projectsData = [
     },
     {
       id: 3,
-      images: ['/project3-main.jpeg', '/project3-1.jpeg', '/project3-2.jpeg'],
+      images: [project3main, project3_1, project3_2],
       title: 'Kadachanendhal – House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -83,7 +109,7 @@ const projectsData = [
     },
     {
       id: 4,
-      images: ['/project4-main.jpeg', '/project4-1.jpeg', '/project4-2.jpeg'],
+      images: [project4main, project4_1, project4_2],
       title: 'Kadachanendhal – Near House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Compact House',
@@ -104,7 +130,7 @@ const projectsData = [
     },
     {
       id: 5,
-      images: ['/project5-main.jpeg', '/property5-1.jpeg', '/property5-2.jpeg', '/property5-3.jpeg', '/property5-4.jpeg', '/property5-5.jpeg', '/property5-6.jpeg', '/property5-7.jpeg', '/property5-8.jpeg', '/property5-9.jpeg', '/property5-10.jpeg', '/property5-11.jpeg'],
+      images: [project5main, property5_1, property5_2, property5_3, property5_4, property5_5, property5_6, property5_7, property5_8, property5_9, property5_10, property5_11],
       title: 'Kadachanendhal – Luxury House',
       location: 'Madurai – Kadachanendhal',
       type: 'Premium Spacious House',
@@ -263,7 +289,7 @@ export default function ProjectDetail() {
                   <h3 className="font-poppins text-2xl font-bold mb-6">Specifications</h3>
                   <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
-                      <AspectRatio ratio={1} className="w-8 h-8 mx-auto mb-2 text-primary" />
+                      <Home className="w-8 h-8 mx-auto mb-2 text-primary" />
                       <div className="font-semibold mb-1">{project.landArea}</div>
                       <div className="text-sm text-muted-foreground">Land Area</div>
                     </div>
@@ -393,5 +419,3 @@ export default function ProjectDetail() {
     </div>
   );
 }
-
-    
