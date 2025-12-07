@@ -11,12 +11,12 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'ZeroBrokr - Real Estate Landing Page',
-  description: 'A Next.js application for a real estate website landing page, built with Firebase Studio.',
+  title: 'ZeroBrokr – Smart Real Estate Platform',
+  description: 'ZeroBrokr is a modern real estate platform offering seamless property discovery, listing management, and advanced customer engagement tools.',
   icons: {
-    icon: '/favicon-32x32.png',
-    shortcut: '/favicon-32x32.png',
-    apple: '/favicon-32x32.png',
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.png',
   },
 };
 
@@ -27,17 +27,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-      </head>
       <body className={poppins.className}>
-          <TooltipProvider>
-            {children}
-            <Toaster />
-            <SonnerToaster />
-          </TooltipProvider>
+        <TooltipProvider>
+          {children}
+          <Toaster />
+          <SonnerToaster />
+        </TooltipProvider>
       </body>
     </html>
   );

@@ -64,6 +64,9 @@ const FloatingSidebar = () => {
 
   return (
     <>
+      {/* This is a hack to make sure tailwind includes these classes */}
+      <div className="hidden bg-blue-500 hover:bg-blue-600 bg-green-500 hover:bg-green-600 bg-red-500 hover:bg-red-600 bg-emerald-500 hover:bg-emerald-600"></div>
+
       {/* QR Code Dialog */}
       <Dialog open={showQrCode} onOpenChange={setShowQrCode}>
         <DialogContent className="sm:max-w-md">
