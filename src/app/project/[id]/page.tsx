@@ -20,7 +20,7 @@ import {
 const projectsData = [
     {
       id: 1,
-      images: ['/project1.jpg', '/project2.jpg', '/project3.jpg'],
+      images: ['/project1-main.jpeg', '/project1.jpeg'],
       title: 'Kadachanendhal – Near House',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -41,7 +41,7 @@ const projectsData = [
     },
     {
       id: 2,
-      images: ['/project2.jpg', '/project3.jpg', '/project1.jpg'],
+      images: ['/project2-main.jpeg', '/project2-1.jpeg', '/project2-2.jpeg', '/project2-3.jpeg', '/project2-4.jpeg'],
       title: 'Suriyanagar – House for Sale',
       location: 'Madurai – Suriyanagar',
       type: 'Residential House',
@@ -62,7 +62,7 @@ const projectsData = [
     },
     {
       id: 3,
-      images: ['/project3.jpg', '/project1.jpg', '/project2.jpg'],
+      images: ['/project3-main.jpeg', '/project3-1.jpeg', '/project3-2.jpeg'],
       title: 'Kadachanendhal – House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -83,7 +83,7 @@ const projectsData = [
     },
     {
       id: 4,
-      images: ['/project4.jpeg', '/project5.jpeg', '/project1.jpg'],
+      images: ['/project4-main.jpeg', '/project4-1.jpeg', '/project4-2.jpeg'],
       title: 'Kadachanendhal – Near House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Compact House',
@@ -104,7 +104,7 @@ const projectsData = [
     },
     {
       id: 5,
-      images: ['/project5.jpeg', '/project1.jpg', '/project2.jpg'],
+      images: ['/project5-main.jpeg', '/property5-1.jpeg', '/property5-2.jpeg', '/property5-3.jpeg', '/property5-4.jpeg', '/property5-5.jpeg', '/property5-6.jpeg', '/property5-7.jpeg', '/property5-8.jpeg', '/property5-9.jpeg', '/property5-10.jpeg', '/property5-11.jpeg'],
       title: 'Kadachanendhal – Luxury House',
       location: 'Madurai – Kadachanendhal',
       type: 'Premium Spacious House',
@@ -393,3 +393,5 @@ export default function ProjectDetail() {
     </div>
   );
 }
+
+    
