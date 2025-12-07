@@ -8,7 +8,6 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import Marquee from '@/components/Marquee';
 import Link from 'next/link';
-import logo from '@/assets/zerobrokr-logo.png';
 
 const navigation = [
   { name: 'Home', href: '/#hero' },
@@ -64,7 +63,7 @@ const Header = () => {
             >
               <Link href="/">
                 <Image 
-                  src={logo}
+                  src="/zerobrokr-logo.png"
                   alt="ZeroBrokr - No Commission"
                   width={224}
                   height={56}
@@ -139,7 +138,7 @@ const Header = () => {
                   {/* Mobile Logo */}
                   <div className="flex items-center mb-8 relative z-10 px-6">
                     <Image 
-                      src={logo}
+                      src="/zerobrokr-logo.png"
                       alt="ZeroBrokr - No Commission"
                       width={224}
                       height={56}

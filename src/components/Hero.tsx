@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import heroBg from '@/assets/hero-bg.jpg';
 
 const Hero = () => {
   return (
@@ -16,7 +15,7 @@ const Hero = () => {
         transition={{ duration: 1.8, ease: "easeOut" }}
       >
         <Image 
-          src={heroBg}
+          src="/hero-bg.jpg"
           alt="Hero background"
           layout="fill"
           objectFit="cover"

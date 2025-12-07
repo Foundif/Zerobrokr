@@ -17,16 +17,10 @@ import {
   CarouselApi,
 } from "@/components/ui/carousel";
 
-import project1 from '@/assets/project1.jpg';
-import project2 from '@/assets/project2.jpg';
-import project3 from '@/assets/project3.jpg';
-import project4 from '@/assets/project4.jpeg';
-import project5 from '@/assets/project5.jpeg';
-
 const projectsData = [
     {
       id: 1,
-      images: [project1, project2, project3],
+      images: ['/project1.jpg', '/project2.jpg', '/project3.jpg'],
       title: 'Kadachanendhal – Near House',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -47,7 +41,7 @@ const projectsData = [
     },
     {
       id: 2,
-      images: [project2, project3, project1],
+      images: ['/project2.jpg', '/project3.jpg', '/project1.jpg'],
       title: 'Suriyanagar – House for Sale',
       location: 'Madurai – Suriyanagar',
       type: 'Residential House',
@@ -68,7 +62,7 @@ const projectsData = [
     },
     {
       id: 3,
-      images: [project3, project1, project2],
+      images: ['/project3.jpg', '/project1.jpg', '/project2.jpg'],
       title: 'Kadachanendhal – House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Residential House',
@@ -89,7 +83,7 @@ const projectsData = [
     },
     {
       id: 4,
-      images: [project4, project5, project1],
+      images: ['/project4.jpeg', '/project5.jpeg', '/project1.jpg'],
       title: 'Kadachanendhal – Near House for Sale',
       location: 'Madurai – Kadachanendhal',
       type: 'Compact House',
@@ -110,7 +104,7 @@ const projectsData = [
     },
     {
       id: 5,
-      images: [project5, project1, project2],
+      images: ['/project5.jpeg', '/project1.jpg', '/project2.jpg'],
       title: 'Kadachanendhal – Luxury House',
       location: 'Madurai – Kadachanendhal',
       type: 'Premium Spacious House',
