@@ -8,11 +8,18 @@ import project2 from '@/assets/project2.jpg';
 import project3 from '@/assets/project3.jpg';
 import Image from 'next/image';
 import Link from 'next/link';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 const projects = [
   {
     id: 1,
-    image: project1,
+    images: [project1, project2, project3],
     title: 'Skyline Residences',
     location: 'Downtown Metro',
     type: 'Luxury Apartments',
@@ -25,7 +32,7 @@ const projects = [
   },
   {
     id: 2,
-    image: project2,
+    images: [project2, project3, project1],
     title: 'Royal Villas',
     location: 'Lakeside Estate',
     type: 'Premium Villas',
@@ -38,7 +45,7 @@ const projects = [
   },
   {
     id: 3,
-    image: project3,
+    images: [project3, project1, project2],
     title: 'Business Park Tower',
     location: 'Financial District',
     type: 'Commercial Complex',
@@ -81,20 +88,31 @@ const CurrentProjects = () => {
               className="group flex"
             >
               <div className="bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full">
-                {/* Image */}
-                <div className="relative h-64 overflow-hidden">
-                  <Image 
-                    src={project.image} 
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="group-hover:scale-110 transition-transform duration-700"
-                    unoptimized
-                  />
-                  <div className="absolute top-4 right-4 bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm shadow-lg">
+                {/* Image Carousel */}
+                <div className="relative">
+                  <Carousel className="w-full">
+                    <CarouselContent>
+                      {project.images.map((img, i) => (
+                        <CarouselItem key={i}>
+                          <div className="relative h-64 overflow-hidden">
+                            <Image 
+                              src={img} 
+                              alt={`${project.title} image ${i + 1}`}
+                              layout="fill"
+                              objectFit="cover"
+                              className="group-hover:scale-110 transition-transform duration-700"
+                              unoptimized
+                            />
+                          </div>
+                        </CarouselItem>
+                      ))}
+                    </CarouselContent>
+                    <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
+                    <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
+                  </Carousel>
+                  <div className="absolute top-4 right-4 bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm shadow-lg z-10">
                     {project.status}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
 
                 {/* Content */}
