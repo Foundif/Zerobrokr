@@ -45,7 +45,7 @@ const projects = [
   },
   {
     id: 3,
-    images: ['/project3.jpg', '/project1.jpg', '/project2.jpg'],
+    images: ['/project3 main.jpeg', '/project3-1.jpeg', '/project3-2.jpeg'],
     title: 'Kadachanendhal – House for Sale',
     location: 'Madurai – Kadachanendhal',
     type: 'Residential House',
@@ -59,7 +59,7 @@ const projects = [
   },
   {
     id: 4,
-    images: ['/project4.jpeg', '/project5.jpeg', '/project1.jpg'],
+    images: ['/project4 main.jpeg', '/project4-1.jpeg', '/project4-2.jpeg'],
     title: 'Kadachanendhal – Near House for Sale',
     location: 'Madurai – Kadachanendhal',
     type: 'Compact House',
@@ -73,7 +73,7 @@ const projects = [
   },
   {
     id: 5,
-    images: ['/project5.jpeg', '/project1.jpg', '/project2.jpg'],
+    images: ['/project5 main.jpeg', '/project5-1.jpeg', '/project5-2.jpeg', '/project5-3.jpeg', '/project5-4.jpeg', '/project5-5.jpeg', '/project5-6.jpeg', '/project5-7.jpeg', '/project5-8.jpeg', '/project5-9.jpeg', '/project5-10.jpeg', '/project5-11.jpeg'],
     title: 'Kadachanendhal – Luxury House',
     location: 'Madurai – Kadachanendhal',
     type: 'Premium Spacious House',
