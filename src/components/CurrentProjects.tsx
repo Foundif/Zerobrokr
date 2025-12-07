@@ -106,6 +106,100 @@ const projects: Project[] = [
   },
 ];
 
+const ProjectCard = ({ project }: { project: Project }) => (
+  <Card className="group bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full">
+    {/* Image Carousel */}
+    <div className="relative h-64 md:h-56">
+      <Carousel className="w-full h-full">
+        <CarouselContent>
+          {project.images.map((img, i) => (
+            <CarouselItem key={i}>
+              <div className="relative h-64 md:h-56 overflow-hidden">
+                <Image 
+                  src={img} 
+                  alt={`${project.title} image ${i + 1}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
+        <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
+      </Carousel>
+      <div className="absolute top-4 right-4 bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm shadow-lg z-10">
+        {project.price}
+      </div>
+    </div>
+
+    {/* Content */}
+    <CardContent className="p-5 flex flex-col flex-grow">
+      <h3 className="font-poppins text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+        {project.title}
+      </h3>
+      
+      <div className="flex items-center text-muted-foreground mb-3">
+        <MapPin className="w-4 h-4 mr-2" />
+        <span className="text-sm">{project.location}</span>
+      </div>
+
+      <div className="mb-4 text-sm text-accent font-semibold">{project.type}</div>
+
+      {/* Specs */}
+      <div className="grid grid-cols-3 gap-4 mb-4 py-4 border-y border-border">
+        <div className="text-center">
+          <AspectRatio ratio={1} className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+          <div className="text-sm font-semibold">{project.landArea}</div>
+          <div className="text-xs text-muted-foreground">Land Area</div>
+        </div>
+        <div className="text-center">
+          <Square className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+          <div className="text-sm font-semibold">{project.buildingArea}</div>
+          <div className="text-xs text-muted-foreground">Building</div>
+        </div>
+        <div className="text-center">
+          <Compass className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
+          <div className="text-sm font-semibold">{project.facing}</div>
+            <div className="text-xs text-muted-foreground">Facing</div>
+        </div>
+      </div>
+
+      {/* Amenities */}
+      <div className="mb-4 flex-grow">
+        <div className="text-sm font-semibold mb-2">Key Amenities:</div>
+        <div className="flex flex-wrap gap-2">
+          {project.amenities.slice(0, 3).map((amenity, i) => (
+            <span key={i} className="text-xs bg-muted px-3 py-1 rounded-full">
+              {amenity}
+            </span>
+          ))}
+          {project.amenities.length > 3 && (
+            <span className="text-xs bg-muted px-3 py-1 rounded-full">
+              +{project.amenities.length - 3} more
+            </span>
+          )}
+        </div>
+      </div>
+
+      <div className="text-sm text-muted-foreground mb-4">
+        Availability: <span className="font-semibold text-foreground">{project.completion}</span>
+      </div>
+
+      <Button 
+        className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group mt-auto"
+        asChild
+      >
+        <Link href={`/project/${project.id}`}>
+          View Details
+          <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+        </Link>
+      </Button>
+    </CardContent>
+  </Card>
+);
+
 const CurrentProjects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
   const [api, setApi] = useState<CarouselApi>()
@@ -161,116 +255,40 @@ const CurrentProjects = () => {
           </p>
         </motion.div>
 
+        {/* Mobile Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative"
+          className="relative md:hidden"
         >
-          <Carousel setApi={setApi} className="w-full max-w-4xl mx-auto" opts={{ loop: true }}>
+          <Carousel setApi={setApi} className="w-full max-w-md mx-auto" opts={{ loop: true }}>
             <CarouselContent>
               {projects.map((project, index) => (
                 <CarouselItem key={index}>
                   <div className="p-1">
-                    <Card className="group bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col md:flex-row w-full">
-                      {/* Image Carousel */}
-                      <div className="relative md:w-1/2">
-                        <Carousel className="w-full h-full">
-                          <CarouselContent>
-                            {project.images.map((img, i) => (
-                              <CarouselItem key={i}>
-                                <div className="relative h-80 md:h-full overflow-hidden">
-                                  <Image 
-                                    src={img} 
-                                    alt={`${project.title} image ${i + 1}`}
-                                    layout="fill"
-                                    objectFit="cover"
-                                    className="group-hover:scale-110 transition-transform duration-700"
-                                  />
-                                </div>
-                              </CarouselItem>
-                            ))}
-                          </CarouselContent>
-                          <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
-                          <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70" />
-                        </Carousel>
-                        <div className="absolute top-4 right-4 bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm shadow-lg z-10">
-                          {project.price}
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <CardContent className="p-5 md:p-6 flex flex-col flex-grow md:w-1/2">
-                        <h3 className="font-poppins text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">
-                          {project.title}
-                        </h3>
-                        
-                        <div className="flex items-center text-muted-foreground mb-3">
-                          <MapPin className="w-4 h-4 mr-2" />
-                          <span className="text-sm">{project.location}</span>
-                        </div>
-
-                        <div className="mb-4 text-sm text-accent font-semibold">{project.type}</div>
-
-                        {/* Specs */}
-                        <div className="grid grid-cols-3 gap-4 mb-4 py-4 border-y border-border">
-                          <div className="text-center">
-                            <AspectRatio ratio={1} className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                            <div className="text-sm font-semibold">{project.landArea}</div>
-                            <div className="text-xs text-muted-foreground">Land Area</div>
-                          </div>
-                          <div className="text-center">
-                            <Square className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                            <div className="text-sm font-semibold">{project.buildingArea}</div>
-                            <div className="text-xs text-muted-foreground">Building</div>
-                          </div>
-                          <div className="text-center">
-                            <Compass className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
-                            <div className="text-sm font-semibold">{project.facing}</div>
-                             <div className="text-xs text-muted-foreground">Facing</div>
-                          </div>
-                        </div>
-
-                        {/* Amenities */}
-                        <div className="mb-4 flex-grow">
-                          <div className="text-sm font-semibold mb-2">Key Amenities:</div>
-                          <div className="flex flex-wrap gap-2">
-                            {project.amenities.slice(0, 3).map((amenity, i) => (
-                              <span key={i} className="text-xs bg-muted px-3 py-1 rounded-full">
-                                {amenity}
-                              </span>
-                            ))}
-                            {project.amenities.length > 3 && (
-                              <span className="text-xs bg-muted px-3 py-1 rounded-full">
-                                +{project.amenities.length - 3} more
-                              </span>
-                            )}
-                          </div>
-                        </div>
-
-                        <div className="text-sm text-muted-foreground mb-4">
-                          Availability: <span className="font-semibold text-foreground">{project.completion}</span>
-                        </div>
-
-                        <Button 
-                          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground group mt-auto"
-                          asChild
-                        >
-                          <Link href={`/project/${project.id}`}>
-                            View Details
-                            <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                          </Link>
-                        </Button>
-                      </CardContent>
-                    </Card>
+                    <ProjectCard project={project} />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 z-10" />
-            <CarouselNext className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 z-10" />
+            <CarouselPrevious className="absolute -left-4 top-1/2 -translate-y-1/2 z-10" />
+            <CarouselNext className="absolute -right-4 top-1/2 -translate-y-1/2 z-10" />
           </Carousel>
         </motion.div>
+
+        {/* Desktop/Tablet Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );
