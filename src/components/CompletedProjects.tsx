@@ -3,13 +3,16 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { CheckCircle } from 'lucide-react';
 import Image from 'next/image';
+import project1 from '@/assets/project1.jpg';
+import project2 from '@/assets/project2.jpg';
+import project3 from '@/assets/project3.jpg';
 
 const completedProjects = [
   {
     id: 1,
     title: 'Premium 3BHK Villa',
     location: 'Othakadai, Madurai',
-    image: '/project1.jpg',
+    image: project1,
     client: 'Mr. Ajith',
     status: 'Sold',
     result: 'Sold within 14 days at best market price'
@@ -18,7 +21,7 @@ const completedProjects = [
     id: 2,
     title: 'DTCP Approved Plots',
     location: 'Kadachanendhal',
-    image: '/project2.jpg',
+    image: project2,
     client: 'Vel Builder',
     status: 'Sold Out',
     result: 'Without brokerage'
@@ -27,7 +30,7 @@ const completedProjects = [
     id: 3,
     title: 'Commercial Building',
     location: 'Kadachanendhal',
-    image: '/project3.jpg',
+    image: project3,
     client: 'Rajesh',
     status: 'Sold',
     result: 'Quick closing, zero commission'
