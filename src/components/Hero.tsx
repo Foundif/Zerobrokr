@@ -60,9 +60,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            {translations.hero.title1}
-            <br />
-            <span className="text-gradient-gold">{translations.hero.title2}</span>
+            <span className="block">{translations.hero.title1}</span>
+            <span className="text-gradient-gold block">{translations.hero.title2}</span>
           </motion.h1>
           
           <motion.p 
