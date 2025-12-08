@@ -4,10 +4,14 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { toast } from 'sonner';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const Contact = () => {
+  const { translations } = useContext(LanguageContext);
+  const content = translations.contact;
+
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [showStickyCTA, setShowStickyCTA] = useState(false);
   const [formData, setFormData] = useState({
@@ -58,10 +62,10 @@ const Contact = () => {
             className="text-center mb-16"
           >
             <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-              Get in <span className="text-gradient-gold">Touch</span>
+              {content.title.split(' ')[0]} <span className="text-gradient-gold">{content.title.split(' ').slice(1).join(' ')}</span>
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-              Let's discuss how we can bring your vision to life
+              {content.subtitle}
             </p>
           </motion.div>
 
@@ -78,7 +82,7 @@ const Contact = () => {
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-poppins font-bold text-lg mb-1">Phone</h3>
+                    <h3 className="font-poppins font-bold text-lg mb-1">{content.phone}</h3>
                     <p className="text-muted-foreground">+91 90870 48878</p>
                   </div>
                 </div>
@@ -88,7 +92,7 @@ const Contact = () => {
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-poppins font-bold text-lg mb-1">Email</h3>
+                    <h3 className="font-poppins font-bold text-lg mb-1">{content.email}</h3>
                     <p className="text-muted-foreground">contact@zerobrokr.com</p>
                   </div>
                 </div>
@@ -98,7 +102,7 @@ const Contact = () => {
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-poppins font-bold text-lg mb-1">Website</h3>
+                    <h3 className="font-poppins font-bold text-lg mb-1">{content.website}</h3>
                     <p className="text-muted-foreground">www.zerobrokr.com</p>
                   </div>
                 </div>
@@ -112,13 +116,13 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="bg-card p-6 md:p-8 lg:p-10 rounded-2xl shadow-premium border border-border">
-                <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-6">Send us a Message</h3>
+                <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-6">{content.form.title}</h3>
                 <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
                   <div className="grid sm:grid-cols-2 gap-5 md:gap-6">
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Full Name *</label>
+                      <label className="block text-sm font-semibold mb-2">{content.form.name}</label>
                       <Input 
-                        placeholder="John Doe" 
+                        placeholder={content.form.namePlaceholder}
                         className="border-border focus:border-accent transition-colors"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -126,9 +130,9 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold mb-2">Phone Number</label>
+                      <label className="block text-sm font-semibold mb-2">{content.form.phone}</label>
                       <Input 
-                        placeholder="+1 (555) 000-0000" 
+                        placeholder={content.form.phonePlaceholder}
                         className="border-border focus:border-accent transition-colors"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -137,10 +141,10 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Email Address *</label>
+                    <label className="block text-sm font-semibold mb-2">{content.form.email}</label>
                     <Input 
                       type="email" 
-                      placeholder="john@example.com" 
+                      placeholder={content.form.emailPlaceholder}
                       className="border-border focus:border-accent transition-colors"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -149,26 +153,23 @@ const Contact = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Property Type</label>
+                    <label className="block text-sm font-semibold mb-2">{content.form.propertyType}</label>
                     <select 
                       className="w-full px-4 py-3 rounded-md border border-border focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 bg-background transition-colors"
                       value={formData.projectType}
                       onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                     >
-                      <option value="">Select Property Type</option>
-                      <option value="house">House Purchase</option>
-                      <option value="land">Land Purchase</option>
-                      <option value="apartment">Apartment</option>
-                      <option value="commercial">Commercial Property</option>
-                      <option value="villa">Villa/Premium Property</option>
-                      <option value="other">Other</option>
+                      <option value="">{content.form.propertyTypePlaceholder}</option>
+                      {content.form.propertyTypes.map((type, i) => (
+                          <option key={i} value={type}>{type}</option>
+                      ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-semibold mb-2">Your Message *</label>
+                    <label className="block text-sm font-semibold mb-2">{content.form.message}</label>
                     <Textarea 
-                      placeholder="Tell us about your property requirements..." 
+                      placeholder={content.form.messagePlaceholder}
                       rows={5}
                       className="border-border focus:border-accent transition-colors resize-none"
                       value={formData.message}
@@ -181,7 +182,7 @@ const Contact = () => {
                     type="submit"
                     className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-lg font-semibold shadow-premium group hover:shadow-gold transition-all"
                   >
-                    Send Message
+                    {content.form.submit}
                     <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 group-hover:rotate-12 transition-all" />
                   </Button>
                 </form>
@@ -200,15 +201,15 @@ const Contact = () => {
       >
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-center sm:text-left">
-            <div className="font-poppins font-bold text-lg">Ready to Find Your Dream Property?</div>
-            <div className="text-sm text-white/80">Zero brokerage - Get started today</div>
+            <div className="font-poppins font-bold text-lg">{content.sticky.title}</div>
+            <div className="text-sm text-white/80">{content.sticky.subtitle}</div>
           </div>
           <Button 
             size="lg"
             className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold hover:scale-105 transition-transform"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            Get Property Details
+            {content.sticky.button}
           </Button>
         </div>
       </motion.div>

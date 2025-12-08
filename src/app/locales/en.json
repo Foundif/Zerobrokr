@@ -43,7 +43,27 @@
   },
   "currentProjects": {
     "title": "Current Available Properties",
-    "subtitle": "Exclusive properties currently available for you"
+    "subtitle": "Exclusive properties currently available for you",
+    "card": {
+      "landArea": "Land Area",
+      "building": "Building",
+      "facing": "Facing",
+      "amenities": "Key Amenities:",
+      "more": "more",
+      "availability": "Availability:",
+      "viewDetails": "View Details"
+    }
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "subtitle": "Hear what our valued clients say about their experience",
+    "project": "Project:",
+    "testimonials": [
+      { "name": "Aravind", "role": "Buyer", "content": "Found my dream villa without paying any brokerage. Super smooth process!", "project": "Premium Villa Purchase" },
+      { "name": "Vel Builders", "role": "Builder Partner", "content": "Their marketing sold our plots faster than expected. Highly recommended.", "project": "DTCP Plot Sales" },
+      { "name": "Rajesh", "role": "Property Seller", "content": "Professional team. Fast results. Hassle-free experience.", "project": "Commercial Building Sale" },
+      { "name": "First-time Buyer", "role": "Homeowner", "content": "Got my dream home under budget with their loan coordination support. Amazing service!", "project": "2BHK Apartment Purchase" }
+    ]
   },
   "services": {
     "title": "Service Packages",
@@ -81,5 +101,61 @@
       "subtitle": "Let us help you buy & sell, with transparency and speed",
       "button": "Schedule a Consultation"
     }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "subtitle": "Excellence that sets us apart in every aspect",
+    "usps": [
+      { "title": "Zero Brokerage Guarantee", "description": "Direct owner deals with no hidden charges or commissions" },
+      { "title": "Pickup & Drop Service", "description": "Convenient transportation from your place to property sites" },
+      { "title": "Fast Closing", "description": "Quick property transactions with complete documentation support" },
+      { "title": "Verified Properties", "description": "All listings thoroughly verified for authenticity and legal compliance" },
+      { "title": "Loan Assistance", "description": "75% home loan support with bank coordination and eligibility" },
+      { "title": "Full Support", "description": "A to Z assistance from property search to handover" }
+    ],
+    "guaranteesTitle": "Our Guarantees",
+    "guarantees": [
+      "✔️ Verified Listings", "✔️ Zero Brokerage", "✔️ 75% Home Loan Assistance", "✔️ A to Z Property Support", "✔️ 300+ Builder Partnerships"
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Let's discuss how we can bring your vision to life",
+    "phone": "Phone",
+    "email": "Email",
+    "website": "Website",
+    "form": {
+      "title": "Send us a Message",
+      "name": "Full Name *",
+      "namePlaceholder": "John Doe",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+1 (555) 000-0000",
+      "email": "Email Address *",
+      "emailPlaceholder": "john@example.com",
+      "propertyType": "Property Type",
+      "propertyTypePlaceholder": "Select Property Type",
+      "propertyTypes": [
+        "House Purchase", "Land Purchase", "Apartment", "Commercial Property", "Villa/Premium Property", "Other"
+      ],
+      "message": "Your Message *",
+      "messagePlaceholder": "Tell us about your property requirements...",
+      "submit": "Send Message"
+    },
+    "sticky": {
+      "title": "Ready to Find Your Dream Property?",
+      "subtitle": "Zero brokerage - Get started today",
+      "button": "Get Property Details"
+    }
+  },
+  "footer": {
+    "description": "More than 5 years in real estate. Your trusted partner with 300+ builder partnerships and zero brokerage guarantee.",
+    "quickLinks": "Quick Links",
+    "links": ["About Us", "Our Projects", "Services", "Testimonials", "Careers"],
+    "ourServices": "Our Services",
+    "services": ["Zero Brokerage", "Pickup & Drop Service", "Fast Closing", "Verified Properties", "Loan Assistance"],
+    "contactUs": "Contact Us",
+    "copyright": "© 2024 ZeroBrokr. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   }
 }

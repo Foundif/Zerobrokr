@@ -2,8 +2,14 @@
 import { Facebook, Youtube, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import logo from '@/assets/zerobrokr-logo.png';
+import { useContext } from 'react';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const Footer = () => {
+  const { translations } = useContext(LanguageContext);
+  const content = translations.footer;
+  const header = translations.header;
+
   return (
     <footer className="bg-secondary text-white pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -18,7 +24,7 @@ const Footer = () => {
               className="h-12 w-auto mb-4"
             />
             <p className="text-gray-300 mb-6 leading-relaxed">
-              More than 5 years in real estate. Your trusted partner with 300+ builder partnerships and zero brokerage guarantee.
+              {content.description}
             </p>
             <div className="flex gap-4">
               <a href="https://www.facebook.com/people/ZeroBrokrcom/61584295989641/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors">
@@ -35,31 +41,27 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Quick Links</h4>
+            <h4 className="font-bold text-lg mb-4">{content.quickLinks}</h4>
             <ul className="space-y-3">
-              <li><a href="/#about" className="text-gray-300 hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="/#projects" className="text-gray-300 hover:text-accent transition-colors">Our Projects</a></li>
-              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Services</a></li>
-              <li><a href="/#testimonials" className="text-gray-300 hover:text-accent transition-colors">Testimonials</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-accent transition-colors">Careers</a></li>
+              {content.links.map((link, i) => (
+                <li key={i}><a href="#" className="text-gray-300 hover:text-accent transition-colors">{link}</a></li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Our Services</h4>
+            <h4 className="font-bold text-lg mb-4">{content.ourServices}</h4>
             <ul className="space-y-3">
-              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Zero Brokerage</a></li>
-              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Pickup & Drop Service</a></li>
-              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Fast Closing</a></li>
-              <li><a href="/#about" className="text-gray-300 hover:text-accent transition-colors">Verified Properties</a></li>
-              <li><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">Loan Assistance</a></li>
+              {content.services.map((service, i) => (
+                 <li key={i}><a href="/#services" className="text-gray-300 hover:text-accent transition-colors">{service}</a></li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-bold text-lg mb-4">Contact Us</h4>
+            <h4 className="font-bold text-lg mb-4">{content.contactUs}</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
@@ -80,10 +82,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-gray-300 text-sm">
-            <p>&copy; 2024 ZeroBrokr. All rights reserved.</p>
+            <p>{content.copyright}</p>
             <div className="flex items-center gap-6">
-              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-accent transition-colors">{content.privacy}</a>
+              <a href="#" className="hover:text-accent transition-colors">{content.terms}</a>
             </div>
           </div>
         </div>

@@ -131,7 +131,11 @@ const projects: Project[] = [
   },
 ];
 
-const ProjectCard = ({ project }: { project: Project }) => (
+const ProjectCard = ({ project }: { project: Project }) => {
+  const { translations } = useContext(LanguageContext);
+  const cardTranslations = translations.currentProjects.card;
+  
+  return (
   <Card className="group bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full h-full">
     {/* Image Carousel */}
     <div className="relative h-64 md:h-56">
@@ -177,23 +181,23 @@ const ProjectCard = ({ project }: { project: Project }) => (
         <div className="text-center">
           <Square className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
           <div className="text-sm font-semibold">{project.landArea}</div>
-          <div className="text-xs text-muted-foreground">Land Area</div>
+          <div className="text-xs text-muted-foreground">{cardTranslations.landArea}</div>
         </div>
         <div className="text-center">
           <Square className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
           <div className="text-sm font-semibold">{project.buildingArea}</div>
-          <div className="text-xs text-muted-foreground">Building</div>
+          <div className="text-xs text-muted-foreground">{cardTranslations.building}</div>
         </div>
         <div className="text-center">
           <Compass className="w-5 h-5 mx-auto mb-1 text-muted-foreground" />
           <div className="text-sm font-semibold">{project.facing}</div>
-            <div className="text-xs text-muted-foreground">Facing</div>
+            <div className="text-xs text-muted-foreground">{cardTranslations.facing}</div>
         </div>
       </div>
 
       {/* Amenities */}
       <div className="mb-4 flex-grow">
-        <div className="text-sm font-semibold mb-2">Key Amenities:</div>
+        <div className="text-sm font-semibold mb-2">{cardTranslations.amenities}</div>
         <div className="flex flex-wrap gap-2">
           {project.amenities.slice(0, 3).map((amenity, i) => (
             <span key={i} className="text-xs bg-muted px-3 py-1 rounded-full">
@@ -202,14 +206,14 @@ const ProjectCard = ({ project }: { project: Project }) => (
           ))}
           {project.amenities.length > 3 && (
             <span className="text-xs bg-muted px-3 py-1 rounded-full">
-              +{project.amenities.length - 3} more
+              +{project.amenities.length - 3} {cardTranslations.more}
             </span>
           )}
         </div>
       </div>
 
       <div className="text-sm text-muted-foreground mb-4">
-        Availability: <span className="font-semibold text-foreground">{project.completion}</span>
+        {cardTranslations.availability} <span className="font-semibold text-foreground">{project.completion}</span>
       </div>
 
       <Button 
@@ -217,13 +221,13 @@ const ProjectCard = ({ project }: { project: Project }) => (
         asChild
       >
         <Link href={`/project/${project.id}`}>
-          View Details
+          {cardTranslations.viewDetails}
           <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
         </Link>
       </Button>
     </CardContent>
   </Card>
-);
+)};
 
 const CurrentProjects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
@@ -275,7 +279,7 @@ const CurrentProjects = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            {translations.currentProjects.title.split(' ')[0]} <span className="text-gradient-gold">{translations.currentProjects.title.split(' ').slice(1).join(' ')}</span>
+            {translations.currentProjects.title.split(' ').slice(0, 2).join(' ')} <span className="text-gradient-gold">{translations.currentProjects.title.split(' ').slice(2).join(' ')}</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
             {translations.currentProjects.subtitle}

@@ -2,49 +2,29 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Shield, Clock, DollarSign, Award, Leaf, Users } from 'lucide-react';
 import StatsCounter from './StatsCounter';
-
-const usps = [
-  {
-    icon: Shield,
-    title: 'Zero Brokerage Guarantee',
-    description: 'Direct owner deals with no hidden charges or commissions',
-  },
-  {
-    icon: Users,
-    title: 'Pickup & Drop Service',
-    description: 'Convenient transportation from your place to property sites',
-  },
-  {
-    icon: Clock,
-    title: 'Fast Closing',
-    description: 'Quick property transactions with complete documentation support',
-  },
-  {
-    icon: Award,
-    title: 'Verified Properties',
-    description: 'All listings thoroughly verified for authenticity and legal compliance',
-  },
-  {
-    icon: DollarSign,
-    title: 'Loan Assistance',
-    description: '75% home loan support with bank coordination and eligibility',
-  },
-  {
-    icon: Leaf,
-    title: 'Full Support',
-    description: 'A to Z assistance from property search to handover',
-  },
-];
-
-const counters = [
-  { target: 5, label: 'Years in Real Estate', suffix: '+' },
-  { target: 300, label: 'Builder Partners', suffix: '+' },
-  { target: 45, label: 'Properties Sold', suffix: '' },
-  { target: 0, label: 'Brokerage Fee', suffix: '%' },
-];
+import { useContext } from 'react';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const WhyChooseUs = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { translations } = useContext(LanguageContext);
+  const content = translations.whyChooseUs;
+
+  const usps = [
+    { icon: Shield, ...content.usps[0] },
+    { icon: Users, ...content.usps[1] },
+    { icon: Clock, ...content.usps[2] },
+    { icon: Award, ...content.usps[3] },
+    { icon: DollarSign, ...content.usps[4] },
+    { icon: Leaf, ...content.usps[5] },
+  ];
+
+  const counters = [
+    { target: 5, label: translations.about.stats.years, suffix: '+' },
+    { target: 300, label: translations.about.stats.partners, suffix: '+' },
+    { target: 45, label: translations.about.stats.sold, suffix: '' },
+    { target: 0, label: translations.about.stats.brokerage, suffix: '%' },
+  ];
 
   return (
     <section ref={ref} className="py-24 bg-background">
@@ -56,10 +36,10 @@ const WhyChooseUs = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            Why <span className="text-gradient-gold">Choose Us</span>
+            {content.title.split(' ')[0]} <span className="text-gradient-gold">{content.title.split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Excellence that sets us apart in every aspect
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -124,10 +104,10 @@ const WhyChooseUs = () => {
           className="max-w-4xl mx-auto text-center"
         >
           <h3 className="font-poppins text-3xl font-bold mb-8">
-            Our <span className="text-gradient-gold">Guarantees</span>
+            {content.guaranteesTitle.split(' ')[0]} <span className="text-gradient-gold">{content.guaranteesTitle.split(' ')[1]}</span>
           </h3>
           <div className="flex flex-wrap justify-center gap-6">
-            {['✔️ Verified Listings', '✔️ Zero Brokerage', '✔️ 75% Home Loan Assistance', '✔️ A to Z Property Support', '✔️ 300+ Builder Partnerships'].map((cert, index) => (
+            {content.guarantees.map((cert, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}

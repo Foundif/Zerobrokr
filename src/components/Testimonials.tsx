@@ -1,53 +1,15 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Quote, Star } from 'lucide-react';
-
-const testimonials = [
-  {
-    id: 1,
-    name: 'Aravind',
-    role: 'Buyer',
-    content: 'Found my dream villa without paying any brokerage. Super smooth process!',
-    rating: 5,
-    project: 'Premium Villa Purchase',
-  },
-  {
-    id: 2,
-    name: 'Vel Builders',
-    role: 'Builder Partner',
-    content: 'Their marketing sold our plots faster than expected. Highly recommended.',
-    rating: 5,
-    project: 'DTCP Plot Sales',
-  },
-  {
-    id: 3,
-    name: 'Rajesh',
-    role: 'Property Seller',
-    content: 'Professional team. Fast results. Hassle-free experience.',
-    rating: 5,
-    project: 'Commercial Building Sale',
-  },
-  {
-    id: 4,
-    name: 'First-time Buyer',
-    role: 'Homeowner',
-    content: 'Got my dream home under budget with their loan coordination support. Amazing service!',
-    rating: 5,
-    project: '2BHK Apartment Purchase',
-  },
-];
-
-const clientLogos = [
-  { name: 'Tech Corp', width: 120 },
-  { name: 'Finance Group', width: 140 },
-  { name: 'Retail Chain', width: 100 },
-  { name: 'Healthcare', width: 130 },
-  { name: 'Education', width: 110 },
-  { name: 'Hospitality', width: 125 },
-];
+import { useContext } from 'react';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const Testimonials = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { translations } = useContext(LanguageContext);
+  const testimonialContent = translations.testimonials;
+
+  const testimonials = testimonialContent.testimonials.map(t => ({...t, rating: 5}));
 
   return (
     <section id="testimonials" ref={ref} className="py-24 bg-background">
@@ -59,10 +21,10 @@ const Testimonials = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            Client <span className="text-gradient-gold">Testimonials</span>
+            {testimonialContent.title.split(' ')[0]} <span className="text-gradient-gold">{testimonialContent.title.split(' ')[1]}</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Hear what our valued clients say about their experience
+            {testimonialContent.subtitle}
           </p>
         </motion.div>
 
@@ -70,7 +32,7 @@ const Testimonials = () => {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-16 md:mb-20">
           {testimonials.map((testimonial, index) => (
             <motion.div
-              key={testimonial.id}
+              key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.15 }}
@@ -92,7 +54,7 @@ const Testimonials = () => {
                 <div className="font-poppins font-semibold text-foreground">{testimonial.name}</div>
                 <div className="text-sm text-muted-foreground mb-2">{testimonial.role}</div>
                 <div className="text-xs text-accent font-semibold">
-                  Project: {testimonial.project}
+                  {testimonialContent.project} {testimonial.project}
                 </div>
               </div>
             </motion.div>
