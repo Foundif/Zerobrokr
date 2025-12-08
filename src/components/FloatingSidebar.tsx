@@ -1,6 +1,7 @@
+
 'use client'
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Phone, Mail, MessageSquare, ArrowUp, X, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -12,11 +13,14 @@ import {
 } from "@/components/ui/dialog";
 import QRCode from 'qrcode.react';
 import { cn } from '@/lib/utils';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const FloatingSidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [showQrCode, setShowQrCode] = useState(false);
+  const { translations } = useContext(LanguageContext);
+  const sidebarTranslations = translations.sidebar;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,25 +38,25 @@ const FloatingSidebar = () => {
   const quickActions = [
     {
       icon: Share2,
-      label: 'Share Website',
+      label: sidebarTranslations.share,
       action: () => setShowQrCode(true),
       className: 'bg-blue-500 hover:bg-blue-600',
     },
     {
       icon: Phone,
-      label: 'Call Now',
+      label: sidebarTranslations.call,
       href: 'tel:+919087048878',
       className: 'bg-blue-900 hover:bg-blue-800',
     },
     {
       icon: Mail,
-      label: 'Email Us',
+      label: sidebarTranslations.email,
       href: 'mailto:contact@zerobrokr.com',
       className: 'bg-red-500 hover:bg-red-600',
     },
     {
       icon: MessageSquare,
-      label: 'WhatsApp',
+      label: sidebarTranslations.whatsapp,
       href: 'https://wa.me/919087048878',
       className: 'bg-emerald-500 hover:bg-emerald-600',
     },
@@ -64,9 +68,9 @@ const FloatingSidebar = () => {
       <Dialog open={showQrCode} onOpenChange={setShowQrCode}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle className="font-poppins">Share ZeroBrokr</DialogTitle>
+            <DialogTitle className="font-poppins">{sidebarTranslations.shareTitle}</DialogTitle>
             <DialogDescription>
-              Scan the QR code below to open zerobrokr.com on another device.
+              {sidebarTranslations.shareDescription}
             </DialogDescription>
           </DialogHeader>
           <div className="flex items-center justify-center p-4 bg-muted/50 rounded-lg">
@@ -143,7 +147,7 @@ const FloatingSidebar = () => {
                       transition={{ delay: 0.6 }}
                       className="bg-background/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-lg shadow-lg text-sm font-semibold whitespace-nowrap border border-border opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      Scroll to Top
+                      {sidebarTranslations.scrollTop}
                     </motion.span>
                     <Button
                       onClick={scrollToTop}

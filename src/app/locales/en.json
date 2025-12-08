@@ -1,3 +1,4 @@
+
 {
   "header": {
     "marquee": "Site visits by appointment only. Please inform 5 hours before for booking.",
@@ -157,5 +158,14 @@
     "copyright": "© 2024 ZeroBrokr. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
+  },
+  "sidebar": {
+    "share": "Share Website",
+    "call": "Call Now",
+    "email": "Email Us",
+    "whatsapp": "WhatsApp",
+    "scrollTop": "Scroll to Top",
+    "shareTitle": "Share ZeroBrokr",
+    "shareDescription": "Scan the QR code below to open zerobrokr.com on another device."
   }
 }
