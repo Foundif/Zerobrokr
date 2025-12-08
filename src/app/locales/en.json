@@ -55,6 +55,84 @@
       "viewDetails": "View Details"
     }
   },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Kadachanendhal – Near House",
+      "type": "Residential House",
+      "amenities": ["Borewell", "Car Parking", "Sweet Water", "Gated Community", "24/7 Security"],
+      "completion": "Ready to Occupy",
+      "status": "Ready to Occupy",
+      "description": "A charming and affordable residential house located in the peaceful neighborhood of Kadachanendhal, Madurai. Perfect for small families, this south-facing home is built on a 2.75 cent plot with a building area of 1050 sq.ft. Enjoy essential amenities like a borewell for sweet water and dedicated car parking. The property is ready for immediate occupation.",
+      "highlights": [
+        "Affordable pricing in a growing residential area.",
+        "South-facing property ensuring ample sunlight.",
+        "Reliable sweet water supply from a private borewell.",
+        "Ready for immediate move-in."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Suriyanagar – House for Sale",
+      "type": "Residential House",
+      "amenities": ["Covered Car Parking", "Modular Kitchen", "Borewell", "Private Terrace", "Wardrobes"],
+      "completion": "Ready to Occupy",
+      "status": "Ready to Occupy",
+      "description": "This beautiful east-facing house in the desirable Suriyanagar area of Madurai offers a spacious living experience. With a land area of 3.25 cents and a generous 1600 sq.ft building area, this home features a modern modular kitchen, covered car parking, and a private borewell. It is an ideal choice for families looking for a ready-to-occupy home in a prime location.",
+      "highlights": [
+        "Prime location in Suriyanagar.",
+        "East-facing for positive energy and morning sun.",
+        "Modern amenities including a modular kitchen.",
+        "Spacious build with immediate availability."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Kadachanendhal – House for Sale",
+      "type": "Residential House",
+      "amenities": ["Car Parking", "Borewell", "Peaceful Residential Area", "Good Ventilation", "Near Main Road"],
+      "completion": "Ready to Occupy",
+      "status": "Ready to Occupy",
+      "description": "A well-designed north-facing house situated in a peaceful residential pocket of Kadachanendhal. Built on a 2-cent plot, this 1175 sq.ft home is perfect for those who value tranquility and convenience. It comes with car parking and a borewell. Its proximity to the main road makes it an accessible and attractive option. The house is ready for you to move in.",
+      "highlights": [
+        "North-facing property in a calm, residential area.",
+        "Compact and efficient design.",
+        "Easy access to main roads and transportation.",
+        "Ready to occupy with essential amenities."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Kadachanendhal – Near House for Sale",
+      "type": "Compact House",
+      "amenities": ["Borewell", "Road Access", "Compact Budget-Friendly Home", "Good Neighborhood"],
+      "completion": "Ready to Occupy",
+      "status": "Ready to Occupy",
+      "description": "This compact, budget-friendly home in Kadachanendhal is an excellent opportunity for first-time homebuyers. The east-facing house has a building area of 750 sq.ft on a 2.4-cent plot. It offers great value with essential amenities like a borewell and good road access in a friendly neighborhood. The property is ready for immediate occupation, offering a cozy and affordable living solution.",
+      "highlights": [
+        "Extremely budget-friendly option.",
+        "East-facing for a bright and airy feel.",
+        "Located in a good, developing neighborhood.",
+        "Ideal for individuals or small families."
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Kadachanendhal – Luxury House",
+      "type": "Premium Spacious House",
+      "amenities": ["Spacious Car Parking", "High-end Interiors", "Borewell + Corporation Water", "Prime Residential Zone", "Private Garden", "Home Theatre Room"],
+      "completion": "Ready to Occupy",
+      "status": "Ready to Occupy",
+      "description": "Indulge in luxury with this premium, spacious north-facing house in a prime residential zone of Kadachanendhal. Sprawled across a 5-cent plot with a massive 3250 sq.ft built-up area, this home is designed for an opulent lifestyle. It features high-end interiors, spacious car parking, and the convenience of both borewell and corporation water supply. This is a ready-to-occupy dream home for those who seek luxury and space.",
+      "highlights": [
+        "Located in a prime, high-demand residential zone.",
+        "Extremely spacious with a 3250 sq.ft build area.",
+        "Luxurious high-end interiors and finishes.",
+        "Dual water source (Borewell and Corporation).",
+        "Perfect for large families seeking a premium lifestyle."
+      ]
+    }
+  ],
   "testimonials": {
     "title": "Client Testimonials",
     "subtitle": "Hear what our valued clients say about their experience",

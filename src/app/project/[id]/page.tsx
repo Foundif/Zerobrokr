@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, CheckCircle, Phone, Compass, Home } from 'lucide-react';
@@ -15,148 +15,20 @@ import {
   CarouselItem,
   CarouselApi,
 } from "@/components/ui/carousel";
+import { staticProjectsData } from '@/app/data/projects';
+import { LanguageContext } from '@/app/contexts/language-context';
 
-import project1main from '@/assets/project1-main.jpeg';
-import project1 from '@/assets/project1.jpeg';
-import project2main from '@/assets/project2-main.jpeg';
-import project2_1 from '@/assets/project2-1.jpeg';
-import project2_2 from '@/assets/project2-2.jpeg';
-import project2_3 from '@/assets/project2-3.jpeg';
-import project2_4 from '@/assets/project2-4.jpeg';
-import project3main from '@/assets/project3-main.jpeg';
-import project3_1 from '@/assets/project3-1.jpeg';
-import project3_2 from '@/assets/project3-2.jpeg';
-import project4main from '@/assets/project4-main.jpeg';
-import project4_1 from '@/assets/project4-1.jpeg';
-import project4_2 from '@/assets/project4-2.jpeg';
-import project5main from '@/assets/project5-main.jpeg';
-import property5_1 from '@/assets/property5-1.jpeg';
-import property5_2 from '@/assets/property5-2.jpeg';
-import property5_3 from '@/assets/property5-3.jpeg';
-import property5_4 from '@/assets/property5-4.jpeg';
-import property5_5 from '@/assets/property5-5.jpeg';
-import property5_6 from '@/assets/property5-6.jpeg';
-import property5_7 from '@/assets/property5-7.jpeg';
-import property5_8 from '@/assets/property5-8.jpeg';
-import property5_9 from '@/assets/property5-9.jpeg';
-import property5_10 from '@/assets/property5-10.jpeg';
-import property5_11 from '@/assets/property5-11.jpeg';
-
-
-const projectsData = [
-    {
-      id: 1,
-      images: [project1main, project1],
-      title: 'Kadachanendhal – Near House',
-      location: 'Madurai – Kadachanendhal',
-      type: 'Residential House',
-      landArea: '2.75 Cents',
-      buildingArea: '1050 Sq.ft',
-      facing: 'South Facing',
-      price: '₹57 Lakhs',
-      amenities: ['Borewell', 'Car Parking', 'Sweet Water', 'Gated Community', '24/7 Security'],
-      completion: 'Ready to Occupy',
-      status: 'Ready to Occupy',
-      description: 'A charming and affordable residential house located in the peaceful neighborhood of Kadachanendhal, Madurai. Perfect for small families, this south-facing home is built on a 2.75 cent plot with a building area of 1050 sq.ft. Enjoy essential amenities like a borewell for sweet water and dedicated car parking. The property is ready for immediate occupation.',
-      highlights: [
-        'Affordable pricing in a growing residential area.',
-        'South-facing property ensuring ample sunlight.',
-        'Reliable sweet water supply from a private borewell.',
-        'Ready for immediate move-in.'
-      ]
-    },
-    {
-      id: 2,
-      images: [project2main, project2_1, project2_2, project2_3, project2_4],
-      title: 'Suriyanagar – House for Sale',
-      location: 'Madurai – Suriyanagar',
-      type: 'Residential House',
-      landArea: '3.25 Cents',
-      buildingArea: '1600 Sq.ft',
-      facing: 'East Facing',
-      price: '₹80 Lakhs',
-      amenities: ['Covered Car Parking', 'Modular Kitchen', 'Borewell', 'Private Terrace', 'Wardrobes'],
-      completion: 'Ready to Occupy',
-      status: 'Ready to Occupy',
-      description: 'This beautiful east-facing house in the desirable Suriyanagar area of Madurai offers a spacious living experience. With a land area of 3.25 cents and a generous 1600 sq.ft building area, this home features a modern modular kitchen, covered car parking, and a private borewell. It is an ideal choice for families looking for a ready-to-occupy home in a prime location.',
-      highlights: [
-        'Prime location in Suriyanagar.',
-        'East-facing for positive energy and morning sun.',
-        'Modern amenities including a modular kitchen.',
-        'Spacious build with immediate availability.'
-      ]
-    },
-    {
-      id: 3,
-      images: [project3main, project3_1, project3_2],
-      title: 'Kadachanendhal – House for Sale',
-      location: 'Madurai – Kadachanendhal',
-      type: 'Residential House',
-      landArea: '2 Cents',
-      buildingArea: '1175 Sq.ft',
-      facing: 'North Facing',
-      price: '₹61 Lakhs',
-      amenities: ['Car Parking', 'Borewell', 'Peaceful Residential Area', 'Good Ventilation', 'Near Main Road'],
-      completion: 'Ready to Occupy',
-      status: 'Ready to Occupy',
-      description: 'A well-designed north-facing house situated in a peaceful residential pocket of Kadachanendhal. Built on a 2-cent plot, this 1175 sq.ft home is perfect for those who value tranquility and convenience. It comes with car parking and a borewell. Its proximity to the main road makes it an accessible and attractive option. The house is ready for you to move in.',
-      highlights: [
-        'North-facing property in a calm, residential area.',
-        'Compact and efficient design.',
-        'Easy access to main roads and transportation.',
-        'Ready to occupy with essential amenities.'
-      ]
-    },
-    {
-      id: 4,
-      images: [project4main, project4_1, project4_2],
-      title: 'Kadachanendhal – Near House for Sale',
-      location: 'Madurai – Kadachanendhal',
-      type: 'Compact House',
-      landArea: '2.4 Cents',
-      buildingArea: '750 Sq.ft',
-      facing: 'East Facing',
-      price: '₹47 Lakhs',
-      amenities: ['Borewell', 'Road Access', 'Compact Budget-Friendly Home', 'Good Neighborhood'],
-      completion: 'Ready to Occupy',
-      status: 'Ready to Occupy',
-      description: 'This compact, budget-friendly home in Kadachanendhal is an excellent opportunity for first-time homebuyers. The east-facing house has a building area of 750 sq.ft on a 2.4-cent plot. It offers great value with essential amenities like a borewell and good road access in a friendly neighborhood. The property is ready for immediate occupation, offering a cozy and affordable living solution.',
-      highlights: [
-        'Extremely budget-friendly option.',
-        'East-facing for a bright and airy feel.',
-        'Located in a good, developing neighborhood.',
-        'Ideal for individuals or small families.'
-      ]
-    },
-    {
-      id: 5,
-      images: [project5main, property5_1, property5_2, property5_3, property5_4, property5_5, property5_6, property5_7, property5_8, property5_9, property5_10, property5_11],
-      title: 'Kadachanendhal – Luxury House',
-      location: 'Madurai – Kadachanendhal',
-      type: 'Premium Spacious House',
-      landArea: '5 Cents',
-      buildingArea: '3250 Sq.ft',
-      facing: 'North Facing',
-      price: '₹2.30 Crore',
-      amenities: ['Spacious Car Parking', 'High-end Interiors', 'Borewell + Corporation Water', 'Prime Residential Zone', 'Private Garden', 'Home Theatre Room'],
-      completion: 'Ready to Occupy',
-      status: 'Ready to Occupy',
-      description: 'Indulge in luxury with this premium, spacious north-facing house in a prime residential zone of Kadachanendhal. Sprawled across a 5-cent plot with a massive 3250 sq.ft built-up area, this home is designed for an opulent lifestyle. It features high-end interiors, spacious car parking, and the convenience of both borewell and corporation water supply. This is a ready-to-occupy dream home for those who seek luxury and space.',
-      highlights: [
-        'Located in a prime, high-demand residential zone.',
-        'Extremely spacious with a 3250 sq.ft build area.',
-        'Luxurious high-end interiors and finishes.',
-        'Dual water source (Borewell and Corporation).',
-        'Perfect for large families seeking a premium lifestyle.'
-      ]
-    },
-];
 
 export default function ProjectDetail() {
   const params = useParams();
   const router = useRouter();
   const id = params.id;
-  const project = projectsData.find(p => p.id === Number(id));
+  
+  const { translations } = useContext(LanguageContext);
+
+  const project = staticProjectsData.find(p => p.id === Number(id));
+  const projectTranslation = translations.projects.find(p => p.id === Number(id));
+
   const [api, setApi] = useState<CarouselApi>()
   const autoplayInterval = useRef<NodeJS.Timeout | null>(null);
 
@@ -198,7 +70,7 @@ export default function ProjectDetail() {
   }, [api]);
 
 
-  if (!project) {
+  if (!project || !projectTranslation) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -228,8 +100,8 @@ export default function ProjectDetail() {
                   <div className="relative h-[50vh] md:h-[60vh] w-full">
                     <Image 
                       src={img} 
-                      alt={`${project.title} image ${i + 1}`}
-                      layout="fill"
+                      alt={`${projectTranslation.title} image ${i + 1}`}
+                      fill
                       objectFit="cover"
                       priority={i === 0}
                     />
@@ -256,10 +128,10 @@ export default function ProjectDetail() {
               transition={{ delay: 0.3 }}
             >
               <div className="inline-block bg-accent text-secondary px-4 py-2 rounded-full font-semibold text-sm mb-4">
-                {project.status}
+                {projectTranslation.status}
               </div>
               <h1 className="font-poppins text-4xl md:text-6xl font-bold text-white mb-2">
-                {project.title}
+                {projectTranslation.title}
               </h1>
               <div className="flex items-center text-white/90 text-lg">
                 <MapPin className="w-5 h-5 mr-2" />
@@ -281,7 +153,7 @@ export default function ProjectDetail() {
               >
                 <h2 className="font-poppins text-3xl font-bold mb-4">About This Project</h2>
                 <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                  {project.description}
+                  {projectTranslation.description}
                 </p>
 
                 {/* Specifications */}
@@ -305,7 +177,7 @@ export default function ProjectDetail() {
                     </div>
                     <div className="text-center p-4 bg-muted/30 rounded-xl">
                       <Calendar className="w-8 h-8 mx-auto mb-2 text-primary" />
-                      <div className="font-semibold mb-1">{project.completion}</div>
+                      <div className="font-semibold mb-1">{projectTranslation.completion}</div>
                       <div className="text-sm text-muted-foreground">Availability</div>
                     </div>
                   </div>
@@ -315,7 +187,7 @@ export default function ProjectDetail() {
                 <div className="mb-8">
                   <h3 className="font-poppins text-2xl font-bold mb-6">World-Class Amenities</h3>
                   <div className="grid sm:grid-cols-2 gap-3">
-                    {project.amenities.map((amenity, index) => (
+                    {projectTranslation.amenities.map((amenity, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
@@ -334,7 +206,7 @@ export default function ProjectDetail() {
                 <div>
                   <h3 className="font-poppins text-2xl font-bold mb-6">Key Highlights</h3>
                   <div className="space-y-3">
-                    {project.highlights.map((highlight, index) => (
+                    {projectTranslation.highlights.map((highlight, index) => (
                       <motion.div
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
@@ -370,15 +242,15 @@ export default function ProjectDetail() {
                   <div className="space-y-3 mb-6">
                     <div className="flex justify-between py-3 border-b border-border">
                       <span className="text-muted-foreground">Type</span>
-                      <span className="font-semibold">{project.type}</span>
+                      <span className="font-semibold">{projectTranslation.type}</span>
                     </div>
                     <div className="flex justify-between py-3 border-b border-border">
                       <span className="text-muted-foreground">Status</span>
-                      <span className="font-semibold text-accent">{project.status}</span>
+                      <span className="font-semibold text-accent">{projectTranslation.status}</span>
                     </div>
                     <div className="flex justify-between py-3">
                       <span className="text-muted-foreground">Possession</span>
-                      <span className="font-semibold">{project.completion}</span>
+                      <span className="font-semibold">{projectTranslation.completion}</span>
                     </div>
                   </div>
 

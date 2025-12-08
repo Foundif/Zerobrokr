@@ -11,129 +11,22 @@ import {
   CarouselPrevious,
   CarouselApi,
 } from "@/components/ui/carousel";
-import { useEffect, useRef, useState, useContext } from 'react';
+import { useEffect, useRef, useState, useContext, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Square } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import project1main from '@/assets/project1-main.jpeg';
-import project1 from '@/assets/project1.jpeg';
-import project2main from '@/assets/project2-main.jpeg';
-import project2_1 from '@/assets/project2-1.jpeg';
-import project2_2 from '@/assets/project2-2.jpeg';
-import project2_3 from '@/assets/project2-3.jpeg';
-import project2_4 from '@/assets/project2-4.jpeg';
-import project3main from '@/assets/project3-main.jpeg';
-import project3_1 from '@/assets/project3-1.jpeg';
-import project3_2 from '@/assets/project3-2.jpeg';
-import project4main from '@/assets/project4-main.jpeg';
-import project4_1 from '@/assets/project4-1.jpeg';
-import project4_2 from '@/assets/project4-2.jpeg';
-import project5main from '@/assets/project5-main.jpeg';
-import property5_1 from '@/assets/property5-1.jpeg';
-import property5_2 from '@/assets/property5-2.jpeg';
-import property5_3 from '@/assets/property5-3.jpeg';
-import property5_4 from '@/assets/property5-4.jpeg';
-import property5_5 from '@/assets/property5-5.jpeg';
-import property5_6 from '@/assets/property5-6.jpeg';
-import property5_7 from '@/assets/property5-7.jpeg';
-import property5_8 from '@/assets/property5-8.jpeg';
-import property5_9 from '@/assets/property5-9.jpeg';
-import property5_10 from '@/assets/property5-10.jpeg';
-import property5_11 from '@/assets/property5-11.jpeg';
 import { LanguageContext } from '@/app/contexts/language-context';
-
-type Project = {
-    id: number;
-    images: (string | StaticImageData)[];
-    title: string;
-    location: string;
-    type: string;
-    landArea: string;
-    buildingArea: string;
-    facing: string;
-    price: string;
-    amenities: string[];
-    completion: string;
-    status: string;
-};
-
-const projects: Project[] = [
-    {
-    id: 1,
-    images: [project1main, project1],
-    title: 'Kadachanendhal – Near House',
-    location: 'Madurai – Kadachanendhal',
-    type: 'Residential House',
-    landArea: '2.75 Cents',
-    buildingArea: '1050 Sq.ft',
-    facing: 'South Facing',
-    price: '₹57 Lakhs',
-    amenities: ['Borewell', 'Car Parking', 'Sweet Water'],
-    completion: 'Ready to Occupy',
-    status: 'Ready to Occupy',
-  },
-  {
-    id: 2,
-    images: [project2main, project2_1, project2_2, project2_3, project2_4],
-    title: 'Suriyanagar – House for Sale',
-    location: 'Madurai – Suriyanagar',
-    type: 'Residential House',
-    landArea: '3.25 Cents',
-    buildingArea: '1600 Sq.ft',
-    facing: 'East Facing',
-    price: '₹80 Lakhs',
-    amenities: ['Covered Car Parking', 'Modular Kitchen', 'Borewell'],
-    completion: 'Ready to Occupy',
-    status: 'Ready to Occupy',
-  },
-  {
-    id: 3,
-    images: [project3main, project3_1, project3_2],
-    title: 'Kadachanendhal – House for Sale',
-    location: 'Madurai – Kadachanendhal',
-    type: 'Residential House',
-    landArea: '2 Cents',
-    buildingArea: '1175 Sq.ft',
-    facing: 'North Facing',
-    price: '₹61 Lakhs',
-    amenities: ['Car Parking', 'Borewell', 'Peaceful Residential Area'],
-    completion: 'Ready to Occupy',
-    status: 'Ready to Occupy',
-  },
-  {
-    id: 4,
-    images: [project4main, project4_1, project4_2],
-    title: 'Kadachanendhal – Near House for Sale',
-    location: 'Madurai – Kadachanendhal',
-    type: 'Compact House',
-    landArea: '2.4 Cents',
-    buildingArea: '750 Sq.ft',
-    facing: 'East Facing',
-    price: '₹47 Lakhs',
-    amenities: ['Borewell', 'Road Access', 'Compact Budget-Friendly Home'],
-    completion: 'Ready to Occupy',
-    status: 'Ready to Occupy',
-  },
-  {
-    id: 5,
-    images: [project5main, property5_1, property5_2, property5_3, property5_4, property5_5, property5_6, property5_7, property5_8, property5_9, property5_10, property5_11],
-    title: 'Kadachanendhal – Luxury House',
-    location: 'Madurai – Kadachanendhal',
-    type: 'Premium Spacious House',
-    landArea: '5 Cents',
-    buildingArea: '3250 Sq.ft',
-    facing: 'North Facing',
-    price: '₹2.30 Crore',
-    amenities: ['Spacious Car Parking', 'High-end Interiors', 'Borewell + Corporation Water', 'Prime Residential Zone'],
-    completion: 'Ready to Occupy',
-    status: 'Ready to Occupy',
-  },
-];
+import { staticProjectsData, Project } from '@/app/data/projects';
 
 const ProjectCard = ({ project }: { project: Project }) => {
   const { translations } = useContext(LanguageContext);
   const cardTranslations = translations.currentProjects.card;
+  const projectTranslation = translations.projects.find(p => p.id === project.id);
+
+  if (!projectTranslation) {
+    return null;
+  }
   
   return (
   <Card className="group bg-card rounded-2xl overflow-hidden shadow-premium hover:shadow-gold transition-all duration-500 hover:-translate-y-2 flex flex-col w-full h-full">
@@ -146,7 +39,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               <div className="relative h-64 md:h-56 overflow-hidden">
                 <Image 
                   src={img} 
-                  alt={`${project.title} image ${i + 1}`}
+                  alt={`${projectTranslation.title} image ${i + 1}`}
                   width={400}
                   height={300}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -166,7 +59,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
     {/* Content */}
     <CardContent className="p-5 flex flex-col flex-grow">
       <h3 className="font-poppins text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-        {project.title}
+        {projectTranslation.title}
       </h3>
       
       <div className="flex items-center text-muted-foreground mb-3">
@@ -174,7 +67,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <span className="text-sm">{project.location}</span>
       </div>
 
-      <div className="mb-4 text-sm text-accent font-semibold">{project.type}</div>
+      <div className="mb-4 text-sm text-accent font-semibold">{projectTranslation.type}</div>
 
       {/* Specs */}
       <div className="grid grid-cols-3 gap-4 mb-4 py-4 border-y border-border">
@@ -199,21 +92,21 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <div className="mb-4 flex-grow">
         <div className="text-sm font-semibold mb-2">{cardTranslations.amenities}</div>
         <div className="flex flex-wrap gap-2">
-          {project.amenities.slice(0, 3).map((amenity, i) => (
+          {projectTranslation.amenities.slice(0, 3).map((amenity, i) => (
             <span key={i} className="text-xs bg-muted px-3 py-1 rounded-full">
               {amenity}
             </span>
           ))}
-          {project.amenities.length > 3 && (
+          {projectTranslation.amenities.length > 3 && (
             <span className="text-xs bg-muted px-3 py-1 rounded-full">
-              +{project.amenities.length - 3} {cardTranslations.more}
+              +{projectTranslation.amenities.length - 3} {cardTranslations.more}
             </span>
           )}
         </div>
       </div>
 
       <div className="text-sm text-muted-foreground mb-4">
-        {cardTranslations.availability} <span className="font-semibold text-foreground">{project.completion}</span>
+        {cardTranslations.availability} <span className="font-semibold text-foreground">{projectTranslation.completion}</span>
       </div>
 
       <Button 
@@ -301,7 +194,7 @@ const CurrentProjects = () => {
             }}
           >
             <CarouselContent className="-ml-4">
-              {projects.map((project, index) => (
+              {staticProjectsData.map((project, index) => (
                 <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                   <div className="p-1 h-full">
                     <ProjectCard project={project} />
