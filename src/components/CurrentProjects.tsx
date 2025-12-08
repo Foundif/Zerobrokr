@@ -11,7 +11,7 @@ import {
   CarouselPrevious,
   CarouselApi,
 } from "@/components/ui/carousel";
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useContext } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Square } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
@@ -41,6 +41,7 @@ import property5_8 from '@/assets/property5-8.jpeg';
 import property5_9 from '@/assets/property5-9.jpeg';
 import property5_10 from '@/assets/property5-10.jpeg';
 import property5_11 from '@/assets/property5-11.jpeg';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 type Project = {
     id: number;
@@ -228,6 +229,8 @@ const CurrentProjects = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
   const [api, setApi] = useState<CarouselApi>()
   const autoplayInterval = useRef<NodeJS.Timeout | null>(null);
+  const { translations } = useContext(LanguageContext);
+
 
   useEffect(() => {
     if (!api) {
@@ -272,10 +275,10 @@ const CurrentProjects = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            Current <span className="text-gradient-gold">Available Properties</span>
+            {translations.currentProjects.title.split(' ')[0]} <span className="text-gradient-gold">{translations.currentProjects.title.split(' ').slice(1).join(' ')}</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            Exclusive properties currently available for you
+            {translations.currentProjects.subtitle}
           </p>
         </motion.div>
 

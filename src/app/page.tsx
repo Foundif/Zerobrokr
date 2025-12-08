@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -14,17 +14,25 @@ import Footer from '@/components/Footer';
 import FloatingSidebar from '@/components/FloatingSidebar';
 import LoadingScreen from '@/components/LoadingScreen';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import { LanguageContext } from './contexts/language-context';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const { setLanguage } = useContext(LanguageContext);
 
   useEffect(() => {
     // Enable smooth scrolling
     document.documentElement.style.scrollBehavior = 'smooth';
+
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+      setLanguage(savedLanguage);
+    }
+    
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
-  }, []);
+  }, [setLanguage]);
 
   return (
     <>

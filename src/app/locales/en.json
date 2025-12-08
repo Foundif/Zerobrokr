@@ -1,0 +1,85 @@
+{
+  "header": {
+    "marquee": "Site visits by appointment only. Please inform 5 hours before for booking.",
+    "navigation": [
+      { "name": "Home", "href": "/#hero" },
+      { "name": "About", "href": "/#about" },
+      { "name": "Projects", "href": "/#projects" },
+      { "name": "Services", "href": "/#services" },
+      { "name": "Testimonials", "href": "/#testimonials" },
+      { "name": "Contact", "href": "/#contact" }
+    ],
+    "getQuote": "Get Quote",
+    "callUs": "Call Us",
+    "email": "Email",
+    "getFreeQuote": "Get Free Quote"
+  },
+  "hero": {
+    "title1": "Find Your Dream Property,",
+    "title2": "Zero Brokerage",
+    "subtitle": "Direct Owner Deals • 75% Home Loan • Complete A to Z Support",
+    "enquireNow": "Enquire Now",
+    "viewProjects": "View Projects"
+  },
+  "about": {
+    "title1": "About",
+    "subtitle": "More than 5 years in real estate with 300+ builder partnerships",
+    "stats": {
+      "years": "Years in Real Estate",
+      "partners": "Builder Partners",
+      "brokerage": "Brokerage Fee",
+      "sold": "Properties Sold"
+    },
+    "values": [
+      { "title": "Zero Brokerage", "description": "Direct owner deals with no hidden charges or commissions" },
+      { "title": "Verified Properties", "description": "All listings thoroughly verified for authenticity" },
+      { "title": "Full Support", "description": "Complete A to Z assistance from search to handover" },
+      { "title": "Fast Closing", "description": "Quick property transactions with hassle-free process" }
+    ],
+    "mission": {
+      "title": "Our Mission",
+      "description": "To revolutionize property transactions by eliminating brokerage fees and providing transparent, efficient service. We help you buy, sell, and invest with confidence, speed, and zero commission."
+    }
+  },
+  "currentProjects": {
+    "title": "Current Available Properties",
+    "subtitle": "Exclusive properties currently available for you"
+  },
+  "services": {
+    "title": "Service Packages",
+    "subtitle": "Direct Owner, No Brokerage, 75% Home Loan - We Start With A to Z Support With You",
+    "notice": "Site visits are by appointment only. Please inform 5 hours before booking.",
+    "packages": [
+      {
+        "title": "Basic Package",
+        "price": "₹599",
+        "description": "Perfect for nearby properties within 10km.",
+        "features": ["3 House/Land Site Visits", "Pickup & Drop Service", "1 Site Visit Support", "1 Register Office Visit", "Below 10Km Only"]
+      },
+      {
+        "title": "Standard Package",
+        "price": "₹799",
+        "description": "Extended coverage for properties 10-15km away.",
+        "features": ["3 House/Land Site Visits", "Pickup & Drop Service", "1 Site Visit Support", "1 Register Office Visit", "Above 10Km to 15Km"]
+      },
+      {
+        "title": "Premium Package",
+        "price": "₹999",
+        "description": "More visits, more options nearby.",
+        "features": ["5 House/Land Site Visits", "Pickup & Drop Service", "1 Site Visit Support", "1 Register Office Visit", "Below 10Km Only"]
+      },
+      {
+        "title": "Deluxe Package",
+        "price": "₹1299",
+        "description": "Our most comprehensive package.",
+        "features": ["5 House/Land Site Visits", "Pickup & Drop Service", "1 Site Visit Support", "1 Register Office Visit", "Above 10Km to 15Km"]
+      }
+    ],
+    "choosePlan": "Choose Plan",
+    "cta": {
+      "title": "Ready to Start Your Property Journey?",
+      "subtitle": "Let us help you buy & sell, with transparency and speed",
+      "button": "Schedule a Consultation"
+    }
+  }
+}

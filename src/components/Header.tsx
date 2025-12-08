@@ -1,8 +1,8 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Menu, Phone, Mail } from 'lucide-react';
+import { Menu, Phone, Mail, Globe } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -10,19 +10,18 @@ import Marquee from '@/components/Marquee';
 import Link from 'next/link';
 import logo from '@/assets/zerobrokr-logo.png';
 import logoWhite from '@/assets/zerobrokr-logo-white.png';
-
-const navigation = [
-  { name: 'Home', href: '/#hero' },
-  { name: 'About', href: '/#about' },
-  { name: 'Projects', href: '/#projects' },
-  { name: 'Services', href: '/#services' },
-  { name: 'Testimonials', href: '/#testimonials' },
-  { name: 'Contact', href: '/#contact' },
-];
+import { LanguageContext } from '@/app/contexts/language-context';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage, translations } = useContext(LanguageContext);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,6 +44,8 @@ const Header = () => {
     'text-foreground': isScrolled,
   });
 
+  const navigation = translations.header.navigation;
+
   return (
     <>
       <motion.header
@@ -53,7 +54,7 @@ const Header = () => {
         transition={{ duration: 0.6 }}
         className={headerClasses}
       >
-        <Marquee text="Site visits by appointment only. Please inform 5 hours before for booking." />
+        <Marquee text={translations.header.marquee} />
         <nav className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -122,6 +123,18 @@ const Header = () => {
               transition={{ duration: 0.5 }}
               className="hidden lg:flex items-center space-x-4"
             >
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="icon" className={cn(textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}>
+                    <Globe className="h-5 w-5" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLanguage('ta')}>தமிழ்</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
               <a href="tel:+919087048878" className={cn("text-sm flex items-center gap-2 transition-colors hover:text-accent", textColorClass)}>
                 <Phone className="w-4 h-4" />
                 <span className="font-semibold">+91 90870 48878</span>
@@ -130,20 +143,33 @@ const Header = () => {
                 className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold"
                 asChild
               >
-                <Link href="/#contact">Get Quote</Link>
+                <Link href="/#contact">{translations.header.getQuote}</Link>
               </Button>
             </motion.div>
 
             {/* Mobile Menu Button */}
             <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
               <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className={cn("lg:hidden", textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}
-                >
-                  <Menu className="h-6 w-6" />
-                </Button>
+                 <div className="flex items-center gap-2">
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="ghost" size="icon" className={cn("lg:hidden", textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}>
+                        <Globe className="h-5 w-5" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setLanguage('ta')}>தமிழ்</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className={cn("lg:hidden", textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}
+                  >
+                    <Menu className="h-6 w-6" />
+                  </Button>
+                </div>
               </SheetTrigger>
               <SheetContent side="right" className="w-full sm:w-80 bg-gradient-to-b from-background via-background to-muted/50 backdrop-blur-xl border-l-2 border-accent/20 p-0">
                 <div className="flex flex-col h-full pt-8 relative">
@@ -195,7 +221,7 @@ const Header = () => {
                         <Phone className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <div className="text-xs text-muted-foreground">Call Us</div>
+                        <div className="text-xs text-muted-foreground">{translations.header.callUs}</div>
                         <div className="font-semibold">+91 90870 48878</div>
                       </div>
                     </a>
@@ -207,7 +233,7 @@ const Header = () => {
                         <Mail className="w-5 h-5 text-primary" />
                       </div>
                       <div>
-                        <div className="text-xs text-muted-foreground">Email</div>
+                        <div className="text-xs text-muted-foreground">{translations.header.email}</div>
                         <div className="font-semibold">contact@zerobrokr.com</div>
                       </div>
                     </a>
@@ -215,7 +241,7 @@ const Header = () => {
                       className="w-full bg-accent hover:bg-accent/90 text-secondary font-semibold py-6 shadow-gold"
                       asChild
                     >
-                      <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>Get Free Quote</Link>
+                      <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>{translations.header.getFreeQuote}</Link>
                     </Button>
                   </div>
                 </div>

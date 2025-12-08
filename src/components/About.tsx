@@ -1,23 +1,21 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Award, Clock, Shield, TrendingUp } from 'lucide-react';
-
-const stats = [
-  { icon: Clock, value: '5+', label: 'Years in Real Estate' },
-  { icon: Award, value: '300+', label: 'Builder Partners' },
-  { icon: Shield, value: '0%', label: 'Brokerage Fee' },
-  { icon: TrendingUp, value: '45', label: 'Properties Sold' },
-];
-
-const values = [
-  { title: 'Zero Brokerage', description: 'Direct owner deals with no hidden charges or commissions' },
-  { title: 'Verified Properties', description: 'All listings thoroughly verified for authenticity' },
-  { title: 'Full Support', description: 'Complete A to Z assistance from search to handover' },
-  { title: 'Fast Closing', description: 'Quick property transactions with hassle-free process' },
-];
+import { useContext } from 'react';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const About = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { translations } = useContext(LanguageContext);
+
+  const stats = [
+    { icon: Clock, value: '5+', label: translations.about.stats.years },
+    { icon: Award, value: '300+', label: translations.about.stats.partners },
+    { icon: Shield, value: '0%', label: translations.about.stats.brokerage },
+    { icon: TrendingUp, value: '45', label: translations.about.stats.sold },
+  ];
+
+  const values = translations.about.values;
 
   return (
     <section id="about" ref={ref} className="py-24 bg-background relative overflow-hidden">
@@ -30,10 +28,10 @@ const About = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            About <span className="text-gradient-gold">ZeroBrokr</span>
+            {translations.about.title1} <span className="text-gradient-gold">ZeroBrokr</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            More than 5 years in real estate with 300+ builder partnerships
+            {translations.about.subtitle}
           </p>
         </motion.div>
 
@@ -86,10 +84,9 @@ const About = () => {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="mt-20 text-center max-w-4xl mx-auto p-10 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5 rounded-2xl border border-primary/20"
         >
-          <h3 className="font-poppins text-3xl font-bold mb-4">Our Mission</h3>
+          <h3 className="font-poppins text-3xl font-bold mb-4">{translations.about.mission.title}</h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            To revolutionize property transactions by eliminating brokerage fees and providing transparent, 
-            efficient service. We help you buy, sell, and invest with confidence, speed, and zero commission.
+            {translations.about.mission.description}
           </p>
         </motion.div>
       </div>

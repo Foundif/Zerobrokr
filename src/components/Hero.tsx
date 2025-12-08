@@ -4,8 +4,12 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import heroBg from '@/assets/hero-bg.jpg';
+import { useContext } from 'react';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const Hero = () => {
+  const { translations } = useContext(LanguageContext);
+
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Parallax Effect */}
@@ -56,8 +60,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            Find Your Dream Property,<br />
-            <span className="text-gradient-gold">Zero Brokerage</span>
+            {translations.hero.title1}
+            <br />
+            <span className="text-gradient-gold">{translations.hero.title2}</span>
           </motion.h1>
           
           <motion.p 
@@ -66,7 +71,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.6 }}
           >
-            Direct Owner Deals • 75% Home Loan • Complete A to Z Support
+            {translations.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -80,7 +85,7 @@ const Hero = () => {
               className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-secondary font-semibold px-6 md:px-8 py-5 md:py-6 text-base md:text-lg group shadow-gold"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Enquire Now
+              {translations.hero.enquireNow}
               <ArrowRight className="ml-2 h-4 md:h-5 w-4 md:w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
@@ -89,7 +94,7 @@ const Hero = () => {
               className="w-full sm:w-auto px-6 md:px-8 py-5 md:py-6 text-base md:text-lg"
               onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              View Projects
+              {translations.hero.viewProjects}
             </Button>
           </motion.div>
         </motion.div>

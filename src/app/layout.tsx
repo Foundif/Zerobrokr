@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as SonnerToaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { LanguageProvider } from './contexts/language-context';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,11 +29,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={poppins.className}>
-        <TooltipProvider>
-          {children}
-          <Toaster />
-          <SonnerToaster />
-        </TooltipProvider>
+        <LanguageProvider>
+          <TooltipProvider>
+            {children}
+            <Toaster />
+            <SonnerToaster />
+          </TooltipProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
