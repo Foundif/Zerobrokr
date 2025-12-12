@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Toaster as SonnerToaster } from '@/components/ui/sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { LanguageProvider } from './contexts/language-context';
+import Script from 'next/script';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -28,6 +29,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+       <head>
+        <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnload" />
+      </head>
       <body className={poppins.className}>
         <LanguageProvider>
           <TooltipProvider>

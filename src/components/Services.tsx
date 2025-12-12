@@ -4,6 +4,14 @@ import { Building2, Home, Ruler, Palette, CheckCircle, Info } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { useContext } from 'react';
 import { LanguageContext } from '@/app/contexts/language-context';
+import { createOrder } from '@/app/(actions)/payment';
+import { toast } from 'sonner';
+
+declare global {
+  interface Window {
+    Razorpay: any;
+  }
+}
 
 const serviceIcons = [Building2, Home, Ruler, Palette];
 
@@ -11,6 +19,54 @@ const Services = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.05 });
   const { translations } = useContext(LanguageContext);
   const services = translations.services.packages;
+  const content = translations.services;
+
+  const handlePayment = async (price: string, title: string) => {
+    const amount = Number(price.replace(/[^0-9]/g, ''));
+    
+    toast.loading('Initializing payment...');
+
+    const result = await createOrder({ amount });
+
+    if (!result.success || !result.order) {
+      toast.error(result.message || 'Payment failed. Please try again.');
+      return;
+    }
+
+    const order = result.order;
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      name: 'ZeroBrokr',
+      description: `Payment for ${title}`,
+      order_id: order.id,
+      handler: function (response: any) {
+        toast.success(`Payment successful! Payment ID: ${response.razorpay_payment_id}`);
+      },
+      prefill: {
+        name: 'Customer Name',
+        email: 'customer@example.com',
+        contact: '9999999999',
+      },
+      notes: {
+        address: 'ZeroBrokr Corporate Office',
+      },
+      theme: {
+        color: '#1E90FF',
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    
+    rzp.on('payment.failed', function (response: any) {
+      toast.error(`Payment failed: ${response.error.description}`);
+    });
+    
+    toast.dismiss();
+    rzp.open();
+  };
 
   return (
     <section id="services" ref={ref} className="py-24 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
@@ -26,10 +82,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            {translations.services.title.split(' ')[0]} <span className="text-gradient-gold">{translations.services.title.split(' ')[1]}</span>
+            {content.title.split(' ')[0]} <span className="text-gradient-gold">{content.title.split(' ')[1]}</span>
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            {translations.services.subtitle}
+            {content.subtitle}
           </p>
         </motion.div>
 
@@ -43,7 +99,7 @@ const Services = () => {
           <div className="max-w-2xl mx-auto bg-primary/10 border-2 border-primary/30 rounded-xl p-4 flex items-center justify-center gap-3">
             <Info className="w-6 h-6 text-primary flex-shrink-0" />
             <p className="font-semibold text-primary text-center">
-              {translations.services.notice}
+              {content.notice}
             </p>
           </div>
         </motion.div>
@@ -103,9 +159,9 @@ const Services = () => {
                   {/* Button */}
                   <Button 
                     className="w-full mt-auto bg-primary hover:bg-primary/90 group-hover:bg-accent group-hover:text-secondary transition-colors"
-                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    onClick={() => handlePayment(service.price, service.title)}
                   >
-                    {translations.services.choosePlan}
+                    {content.choosePlan}
                   </Button>
                 </div>
               </motion.div>
@@ -121,16 +177,16 @@ const Services = () => {
           className="mt-12 md:mt-16 text-center max-w-3xl mx-auto p-8 md:p-10 bg-gradient-to-r from-primary via-primary/90 to-primary rounded-2xl md:rounded-3xl text-white shadow-2xl"
         >
           <h3 className="font-poppins text-2xl md:text-3xl font-bold mb-3 md:mb-4">
-            {translations.services.cta.title}
+            {content.cta.title}
           </h3>
           <p className="text-white/90 mb-5 md:mb-6 text-base md:text-lg">
-            {translations.services.cta.subtitle}
+            {content.cta.subtitle}
           </p>
           <Button 
             className="bg-accent hover:bg-accent/90 text-secondary font-semibold px-8 py-4 rounded-full shadow-gold transition-all duration-300 hover:scale-105"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            {translations.services.cta.button}
+            {content.cta.button}
           </Button>
         </motion.div>
       </div>
