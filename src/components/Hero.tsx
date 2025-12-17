@@ -30,7 +30,7 @@ const Hero = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="relative z-10 text-center max-w-4xl px-4"
       >
-        <h1 className="font-poppins text-4xl md:text-7xl font-extrabold leading-tight mb-4">
+        <h1 className="font-poppins text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-4">
           {translations.hero.title1} <span className="text-gradient-gold">{translations.hero.title2}</span>
         </h1>
         <p className="text-lg md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
