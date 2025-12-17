@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { LanguageContext } from '@/app/contexts/language-context';
-import heroBg from '@/assets/hero-bg.jpg';
+import heroBg from '@/assets/image.jpg';
 
 const Hero = () => {
   const { translations } = useContext(LanguageContext);

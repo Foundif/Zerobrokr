@@ -71,7 +71,7 @@ export default function Gallery() {
   }, [api, startAutoplay]);
 
   return (
-    <section id="gallery" ref={ref} className="py-24 bg-background">
+    <section id="gallery" ref={ref} className="py-12 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -81,40 +81,28 @@ export default function Gallery() {
         >
           <Carousel
             setApi={setApi}
-            opts={{ loop: true }}
+            opts={{ loop: true, align: "start" }}
             className="w-full"
           >
-            <CarouselContent>
+            <CarouselContent className="-ml-4">
               {galleryImages.map((img, index) => (
-                <CarouselItem key={index} className="p-0">
-                  <div className="relative aspect-[16/9] w-full">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover"
-                    />
+                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
 
-          {/* Dots Navigation */}
-          <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2">
-            {galleryImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={cn(
-                  'h-2 w-2 rounded-full transition-all duration-300',
-                  current === index ? 'w-6 bg-white' : 'bg-white/50'
-                )}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
