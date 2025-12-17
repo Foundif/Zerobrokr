@@ -30,17 +30,17 @@ const Hero = () => {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="relative z-10 text-center max-w-4xl px-4"
       >
-        <h1 className="font-poppins text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+        <h1 className="font-poppins text-3xl sm:text-5xl md:text-6xl font-bold leading-tight mb-4">
           {translations.hero.title1} <span className="text-gradient-gold">{translations.hero.title2}</span>
         </h1>
-        <p className="text-lg md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+        <p className="text-base md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
           {translations.hero.subtitle}
         </p>
-        <div className="flex justify-center gap-4">
-          <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold hover:scale-105 transition-transform">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <Button asChild size="lg" className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold hover:scale-105 transition-transform">
             <Link href="/#contact">{translations.hero.enquireNow}</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-black font-semibold hover:scale-105 transition-transform">
+          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-2 border-white text-white bg-transparent hover:bg-white hover:text-black font-semibold hover:scale-105 transition-transform">
             <Link href="/#projects">{translations.hero.viewProjects}</Link>
           </Button>
         </div>
