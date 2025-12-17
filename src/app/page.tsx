@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import Gallery from '@/components/Gallery';
 import About from '@/components/About';
 import CurrentProjects from '@/components/CurrentProjects';
 // import CompletedProjects from '@/components/CompletedProjects';
@@ -48,6 +49,7 @@ export default function Home() {
           <div className="relative z-10">
             <Header />
             <Hero />
+            <Gallery />
             <About />
             <CurrentProjects />
             {/* <CompletedProjects /> */}
