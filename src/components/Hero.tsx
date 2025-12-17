@@ -3,14 +3,18 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
-import { motion } from 'framer-motion';
+import heroBg1 from '@/assets/hero-bg.jpg';
+import heroBg2 from '@/assets/hero-bg-2.jpeg';
+import heroBg3 from '@/assets/hero-bg-3.jpeg';
+import heroBg4 from '@/assets/hero-bg-4.jpeg';
+import heroBg5 from '@/assets/hero-bg-5.jpeg';
 
 const heroImages = [
-    "https://picsum.photos/seed/hero1/1920/1080",
-    "https://picsum.photos/seed/hero2/1920/1080",
-    "https://picsum.photos/seed/hero3/1920/1080",
-    "https://picsum.photos/seed/hero4/1920/1080",
-    "https://picsum.photos/seed/hero5/1920/1080"
+    heroBg1,
+    heroBg2,
+    heroBg3,
+    heroBg4,
+    heroBg5
 ];
 
 const Hero = () => {
@@ -74,7 +78,6 @@ const Hero = () => {
                   style={{objectFit: 'cover'}}
                   className="bg-center"
                   priority={index === 0}
-                  data-ai-hint="modern house"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
               </div>
