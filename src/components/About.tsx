@@ -9,10 +9,10 @@ const About = () => {
   const { translations } = useContext(LanguageContext);
 
   const stats = [
-    { icon: Clock, value: '5+', label: translations.about.stats.years },
-    { icon: Award, value: '300+', label: translations.about.stats.partners },
+    { icon: Clock, value: '10+', label: translations.about.stats.years },
+    { icon: Award, value: '500+', label: translations.about.stats.partners },
     { icon: Shield, value: '0%', label: translations.about.stats.brokerage },
-    { icon: TrendingUp, value: '45', label: translations.about.stats.sold },
+    { icon: TrendingUp, value: '150', label: translations.about.stats.sold },
   ];
 
   const values = translations.about.values;
