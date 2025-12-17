@@ -70,40 +70,19 @@ const Hero = () => {
       >
         <CarouselContent>
           {heroImages.map((img, index) => (
-            <CarouselItem key={index}>
-              <motion.div
-                className="absolute inset-0 z-0"
-                initial={{ scale: 1.2, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1.8, ease: "easeOut" }}
-              >
+            <CarouselItem key={index} className="h-full">
+              <div className="relative h-full w-full">
                 <Image 
                   src={img}
                   alt={`Hero background ${index + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="bg-center bg-fixed"
+                  fill
+                  style={{objectFit: 'cover'}}
+                  className="bg-center"
                   priority={index === 0}
                   data-ai-hint="modern house"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-                
-                <motion.div
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)',
-                    backgroundSize: '30px 30px'
-                  }}
-                  animate={{
-                    backgroundPosition: ['0px 0px', '30px 30px']
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-              </motion.div>
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
