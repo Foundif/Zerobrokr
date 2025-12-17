@@ -13,10 +13,10 @@ const Hero = () => {
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center text-white">
       <div className="absolute inset-0 z-0">
-        <Image 
+        <Image
           src={heroBg}
           alt="Luxury modern house"
-          layout="fill"
+          fill
           objectFit="cover"
           priority
           className="filter brightness-50"

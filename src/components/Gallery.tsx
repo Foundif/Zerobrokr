@@ -74,19 +74,6 @@ export default function Gallery() {
     <section id="gallery" ref={ref} className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="font-poppins text-4xl md:text-6xl font-bold mb-4">
-            Our <span className="text-gradient-gold">Property Gallery</span>
-          </h2>
-          <p className="text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto">
-            A glimpse into the quality and style of homes we offer.
-          </p>
-        </motion.div>
-        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
