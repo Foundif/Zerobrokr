@@ -20,9 +20,9 @@ const WhyChooseUs = () => {
   ];
 
   const counters = [
-    { target: 5, label: translations.about.stats.years, suffix: '+' },
-    { target: 300, label: translations.about.stats.partners, suffix: '+' },
-    { target: 45, label: translations.about.stats.sold, suffix: '' },
+    { target: 10, label: translations.about.stats.years, suffix: '+' },
+    { target: 500, label: translations.about.stats.partners, suffix: '+' },
+    { target: 150, label: translations.about.stats.sold, suffix: '' },
     { target: 0, label: translations.about.stats.brokerage, suffix: '%' },
   ];
 

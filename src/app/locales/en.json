@@ -18,7 +18,7 @@
   "hero": {
     "title1": "Find Your Dream Property,",
     "title2": "Zero Brokerage",
-    "subtitle": "Direct Owner Deals • 75% Home Loan • Complete A to Z Support",
+    "subtitle": "Direct Owner Deals • 90% Home Loan • Complete A to Z Support",
     "enquireNow": "Enquire Now",
     "viewProjects": "View Projects"
   },
@@ -146,7 +146,7 @@
   },
   "services": {
     "title": "Service Packages",
-    "subtitle": "Direct Owner, No Brokerage, 75% Home Loan - We Start With A to Z Support With You",
+    "subtitle": "Direct Owner, No Brokerage, 90% Home Loan - We Start With A to Z Support With You",
     "notice": "Site visits are by appointment only. Please inform 5 hours before booking.",
     "packages": [
       {
@@ -189,12 +189,12 @@
       { "title": "Pickup & Drop Service", "description": "Convenient transportation from your place to property sites" },
       { "title": "Fast Closing", "description": "Quick property transactions with complete documentation support" },
       { "title": "Verified Properties", "description": "All listings thoroughly verified for authenticity and legal compliance" },
-      { "title": "Loan Assistance", "description": "75% home loan support with bank coordination and eligibility" },
+      { "title": "Loan Assistance", "description": "90% home loan support with bank coordination and eligibility" },
       { "title": "Full Support", "description": "A to Z assistance from property search to handover" }
     ],
     "guaranteesTitle": "Our Guarantees",
     "guarantees": [
-      "✔️ Verified Listings", "✔️ Zero Brokerage", "✔️ 75% Home Loan Assistance", "✔️ A to Z Property Support", "✔️ 300+ Builder Partnerships"
+      "✔️ Verified Listings", "✔️ Zero Brokerage", "✔️ 90% Home Loan Assistance", "✔️ A to Z Property Support", "✔️ 300+ Builder Partnerships"
     ]
   },
   "contact": {
