@@ -57,13 +57,13 @@ const Hero = () => {
   
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative h-screen overflow-hidden">
       <Carousel
         setApi={setApi}
-        className="absolute inset-0 z-0"
+        className="w-full h-full"
         opts={{ loop: true }}
       >
-        <CarouselContent>
+        <CarouselContent className="h-full">
           {heroImages.map((img, index) => (
             <CarouselItem key={index} className="h-full">
               <div className="relative h-full w-full">
