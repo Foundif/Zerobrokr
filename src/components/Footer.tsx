@@ -1,9 +1,18 @@
 'use client'
-import { Facebook, Youtube, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
 import Image from 'next/image';
 import logo from '@/assets/zerobrokr-logo.png';
 import { useContext } from 'react';
 import { LanguageContext } from '@/app/contexts/language-context';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger,
+  DialogDescription
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   const { translations } = useContext(LanguageContext);
@@ -87,6 +96,35 @@ const Footer = () => {
               <a href="#" className="hover:text-accent transition-colors">{content.privacy}</a>
               <a href="#" className="hover:text-accent transition-colors">{content.terms}</a>
             </div>
+          </div>
+          <div className="text-center text-gray-400 text-xs mt-6">
+            <Dialog>
+              <DialogTrigger asChild>
+                <span className="cursor-pointer hover:text-accent transition-colors">
+                  Designed by Foundif Innovations
+                </span>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-md bg-secondary text-white border-accent">
+                <DialogHeader>
+                  <DialogTitle className="font-poppins text-accent">Contact Foundif Innovations</DialogTitle>
+                  <DialogDescription className="text-gray-300">
+                    Choose your preferred method to get in touch.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="flex flex-col gap-4 py-4">
+                  <a href="tel:+919363200237" className="w-full">
+                    <Button variant="outline" className="w-full bg-transparent border-accent text-accent hover:bg-accent hover:text-secondary">
+                      <Phone className="mr-2 h-4 w-4" /> Call Now
+                    </Button>
+                  </a>
+                  <a href="https://wa.me/919363200237" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">
+                      <MessageSquare className="mr-2 h-4 w-4" /> WhatsApp
+                    </Button>
+                  </a>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
