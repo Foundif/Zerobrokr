@@ -10,6 +10,7 @@ import {
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Link from 'next/link';
 
 // Images
 import heroBg1 from '@/assets/hero-bg.jpg';
@@ -19,11 +20,11 @@ import heroBg4 from '@/assets/hero-bg-4.jpeg';
 import heroBg5 from '@/assets/hero-bg-5.jpeg';
 
 const galleryImages = [
-  { src: heroBg1, alt: 'Modern house exterior' },
-  { src: heroBg2, alt: 'Spacious living room with a view' },
-  { src: heroBg3, alt: 'Luxury kitchen with island' },
-  { src: heroBg4, alt: 'Elegant bedroom with large window' },
-  { src: heroBg5, alt: 'Backyard with swimming pool' },
+  { src: heroBg1, alt: 'Modern house exterior', href: '/#about' },
+  { src: heroBg2, alt: 'Spacious living room with a view', href: '/#projects' },
+  { src: heroBg3, alt: 'Luxury kitchen with island', href: '/#services' },
+  { src: heroBg4, alt: 'Elegant bedroom with large window', href: '/#testimonials' },
+  { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#contact' },
 ];
 
 export default function Gallery() {
@@ -83,15 +84,17 @@ export default function Gallery() {
             <CarouselContent>
               {galleryImages.map((img, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 100vw"
-                      className="object-cover"
-                    />
-                  </div>
+                  <Link href={img.href}>
+                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl cursor-pointer">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 100vw"
+                        className="object-contain"
+                      />
+                    </div>
+                  </Link>
                 </CarouselItem>
               ))}
             </CarouselContent>
