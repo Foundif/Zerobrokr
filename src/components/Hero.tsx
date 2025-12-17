@@ -3,49 +3,112 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import heroBg from '@/assets/hero-bg.jpg';
-import { useContext } from 'react';
+import { useContext, useState, useEffect, useCallback, useRef } from 'react';
 import { LanguageContext } from '@/app/contexts/language-context';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
+import { cn } from '@/lib/utils';
+
+
+const heroImages = [
+    "https://picsum.photos/seed/hero1/1920/1080",
+    "https://picsum.photos/seed/hero2/1920/1080",
+    "https://picsum.photos/seed/hero3/1920/1080",
+    "https://picsum.photos/seed/hero4/1920/1080",
+    "https://picsum.photos/seed/hero5/1920/1080"
+];
 
 const Hero = () => {
   const { translations } = useContext(LanguageContext);
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const autoplayInterval = useRef<NodeJS.Timeout | null>(null);
+
+  const startAutoplay = useCallback(() => {
+    if (autoplayInterval.current) {
+      clearInterval(autoplayInterval.current);
+    }
+    autoplayInterval.current = setInterval(() => {
+      api?.scrollNext();
+    }, 5000);
+  }, [api]);
+  
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+  
+    setCurrent(api.selectedScrollSnap());
+    startAutoplay();
+  
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+      startAutoplay();
+    };
+  
+    api.on("select", onSelect);
+    api.on("pointerDown", () => {
+      if (autoplayInterval.current) {
+        clearInterval(autoplayInterval.current);
+      }
+    });
+    
+    return () => {
+      api.off("select", onSelect);
+      if (autoplayInterval.current) {
+        clearInterval(autoplayInterval.current);
+      }
+    };
+  }, [api, startAutoplay]);
+  
 
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax Effect */}
-      <motion.div
+      <Carousel
+        setApi={setApi}
         className="absolute inset-0 z-0"
-        initial={{ scale: 1.2, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.8, ease: "easeOut" }}
+        opts={{ loop: true }}
       >
-        <Image 
-          src={heroBg}
-          alt="Hero background"
-          layout="fill"
-          objectFit="cover"
-          className="bg-center bg-fixed"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
-        
-        {/* Animated Overlay Pattern */}
-        <motion.div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)',
-            backgroundSize: '30px 30px'
-          }}
-          animate={{
-            backgroundPosition: ['0px 0px', '30px 30px']
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-      </motion.div>
+        <CarouselContent>
+          {heroImages.map((img, index) => (
+            <CarouselItem key={index}>
+              <motion.div
+                className="absolute inset-0 z-0"
+                initial={{ scale: 1.2, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1.8, ease: "easeOut" }}
+              >
+                <Image 
+                  src={img}
+                  alt={`Hero background ${index + 1}`}
+                  layout="fill"
+                  objectFit="cover"
+                  className="bg-center bg-fixed"
+                  priority={index === 0}
+                  data-ai-hint="modern house"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
+                
+                <motion.div
+                  className="absolute inset-0"
+                  style={{
+                    backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)',
+                    backgroundSize: '30px 30px'
+                  }}
+                  animate={{
+                    backgroundPosition: ['0px 0px', '30px 30px']
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+              </motion.div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
@@ -99,20 +162,19 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 10, 0] }}
-        transition={{ 
-          opacity: { delay: 1.2 },
-          y: { repeat: Infinity, duration: 1.5 }
-        }}
-      >
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center p-2">
-          <div className="w-1 h-3 bg-white/70 rounded-full animate-pulse" />
-        </div>
-      </motion.div>
+      {/* Dots Navigation */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => api?.scrollTo(index)}
+            className={cn(
+              "w-2 h-2 rounded-full transition-all",
+              current === index ? "w-6 bg-white" : "bg-white/50"
+            )}
+          />
+        ))}
+      </div>
     </section>
   );
 };
