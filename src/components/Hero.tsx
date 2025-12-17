@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { cn } from '@/lib/utils';
-
+import { motion } from 'framer-motion';
 
 const heroImages = [
     "https://picsum.photos/seed/hero1/1920/1080",
@@ -63,9 +63,9 @@ const Hero = () => {
         className="w-full h-full"
         opts={{ loop: true }}
       >
-        <CarouselContent className="h-full">
+        <CarouselContent className="-ml-0 h-full">
           {heroImages.map((img, index) => (
-            <CarouselItem key={index} className="h-full">
+            <CarouselItem key={index} className="pl-0 h-full">
               <div className="relative h-full w-full">
                 <Image 
                   src={img}
