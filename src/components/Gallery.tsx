@@ -28,7 +28,6 @@ const galleryImages = [
 
 export default function Gallery() {
   const [api, setApi] = useState<CarouselApi | undefined>();
-  const [current, setCurrent] = useState(0);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
 
@@ -46,12 +45,10 @@ export default function Gallery() {
 
   useEffect(() => {
     if (!api) return;
-
-    setCurrent(api.selectedScrollSnap());
+    
     startAutoplay();
 
     const onSelect = () => {
-      setCurrent(api.selectedScrollSnap());
       startAutoplay();
     };
 
@@ -77,32 +74,28 @@ export default function Gallery() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative rounded-2xl overflow-hidden shadow-premium"
         >
           <Carousel
             setApi={setApi}
             opts={{ loop: true, align: "start" }}
             className="w-full"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent>
               {galleryImages.map((img, index) => (
-                <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div className="p-1">
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="object-contain transition-transform duration-500"
-                      />
-                    </div>
+                <CarouselItem key={index}>
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 100vw"
+                      className="object-cover"
+                    />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
           </Carousel>
-
         </motion.div>
       </div>
     </section>
