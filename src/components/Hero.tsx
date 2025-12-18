@@ -13,11 +13,12 @@ import {
   CarouselNext,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import heroBg1 from '@/assets/hero-bg.jpg';
-import heroBg2 from '@/assets/hero-bg-2.jpeg';
-import heroBg3 from '@/assets/hero-bg-3.jpeg';
-import heroBg4 from '@/assets/hero-bg-4.jpeg';
-import heroBg5 from '@/assets/hero-bg-5.jpeg';
+import heroBg1 from '@/assets/1.png';
+import heroBg2 from '@/assets/2.png';
+import heroBg3 from '@/assets/3.png';
+import heroBg4 from '@/assets/4.png';
+import heroBg5 from '@/assets/5.png';
+import heroBg6 from '@/assets/6.png';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -27,6 +28,7 @@ const galleryImages = [
   { src: heroBg3, alt: 'Luxury kitchen with island', href: '/#services' },
   { src: heroBg4, alt: 'Elegant bedroom with large window', href: '/#testimonials' },
   { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#contact' },
+  { src: heroBg6, alt: 'Another beautiful property', href: '/#contact' },
 ];
 
 const AUTOPLAY_INTERVAL = 5000; // 5 seconds
@@ -102,11 +104,11 @@ const Hero = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 text-2xl">
-            &lt;
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 flex items-center justify-center">
+             <ChevronLeft className="w-6 h-6" />
           </CarouselPrevious>
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 text-2xl">
-            &gt;
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 flex items-center justify-center">
+            <ChevronRight className="w-6 h-6" />
           </CarouselNext>
         </Carousel>
       </div>
