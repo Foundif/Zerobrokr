@@ -16,8 +16,7 @@
     "getFreeQuote": "Get Free Quote"
   },
   "hero": {
-    "title1": "Find Your Dream Property,",
-    "title2": "Zero Brokerage",
+    "title": "Find Your Dream Property, {gradient}with Zero Brokerage{/gradient}",
     "subtitle": "Direct Owner Deals • 90% Home Loan • Complete A to Z Support",
     "enquireNow": "Enquire Now",
     "viewProjects": "View Projects"
