@@ -45,8 +45,8 @@ export default function Home() {
       {!loading && (
         <main className="min-h-screen relative">
           <AnimatedBackground />
-          <div className="relative z-10">
-            <Header />
+          <Header />
+          <div className="relative z-10 pt-[108px]">
             <Hero />
             <About />
             <CurrentProjects />

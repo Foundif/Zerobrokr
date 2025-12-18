@@ -99,7 +99,7 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center text-white group">
+    <section id="hero" className="relative h-[calc(100vh-108px)] flex items-center justify-center text-white group">
       <div className="absolute inset-0 z-0">
         <Carousel
           setApi={setApi}
@@ -110,7 +110,7 @@ const Hero = () => {
             {galleryImages.map((img, index) => (
               <CarouselItem key={index}>
                  <Link href={img.href}>
-                  <div className="relative h-screen w-full">
+                  <div className="relative h-[calc(100vh-108px)] w-full">
                     <Image
                       src={img.src}
                       alt={img.alt}
