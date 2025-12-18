@@ -93,7 +93,7 @@ const Hero = () => {
                       src={img.src}
                       alt={img.alt}
                       fill
-                      objectFit="cover"
+                      style={{ objectFit: "contain" }}
                       priority={index === 0}
                     />
                   </div>
