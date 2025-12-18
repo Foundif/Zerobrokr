@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <>
       <motion.header
-        initial={{ y: -100 }}
+        initial={{ y: 0 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
         className={headerClasses}
