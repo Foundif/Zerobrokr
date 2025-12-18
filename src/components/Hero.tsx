@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -28,6 +28,8 @@ const galleryImages = [
   { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#contact' },
 ];
 
+const AUTOPLAY_INTERVAL = 5000; // 5 seconds
+
 const Hero = () => {
   const { translations } = useContext(LanguageContext);
   const heroTranslations = translations.hero;
@@ -44,14 +46,13 @@ const Hero = () => {
 
     autoplayRef.current = setInterval(() => {
       api.scrollNext();
-    }, 5000);
+    }, AUTOPLAY_INTERVAL);
   }, [api]);
 
   useEffect(() => {
     if (!api) return;
     
     startAutoplay();
-
     setCurrent(api.selectedScrollSnap());
 
     const onSelect = () => {
@@ -76,7 +77,7 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center text-white">
+    <section id="hero" className="relative h-screen flex items-center justify-center text-white group">
       <div className="absolute inset-0 z-0">
         <Carousel
           setApi={setApi}
@@ -100,21 +101,36 @@ const Hero = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70 rounded-full h-10 w-10" />
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 text-white border-none hover:bg-black/70 rounded-full h-10 w-10" />
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12" />
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12" />
         </Carousel>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-2 p-2 bg-black/20 backdrop-blur-sm rounded-full">
         {galleryImages.map((_, index) => (
           <button
             key={index}
-            onClick={() => api?.scrollTo(index)}
+            onClick={() => {
+              if (autoplayRef.current) clearInterval(autoplayRef.current);
+              api?.scrollTo(index);
+              startAutoplay();
+            }}
             className={cn(
-              "w-2 h-2 rounded-full transition-all",
-              current === index ? "p-1.5 bg-white" : "bg-white/50"
+              "w-12 h-1 rounded-full bg-white/30 overflow-hidden"
             )}
-          />
+          >
+            <AnimatePresence>
+              {current === index && (
+                <motion.div
+                  className="h-full bg-white"
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  exit={{ width: '100%' }}
+                  transition={{ duration: AUTOPLAY_INTERVAL / 1000, ease: "linear" }}
+                />
+              )}
+            </AnimatePresence>
+          </button>
         ))}
       </div>
     </section>
