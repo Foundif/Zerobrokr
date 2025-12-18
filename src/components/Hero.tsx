@@ -19,6 +19,7 @@ import heroBg3 from '@/assets/hero-bg-3.jpeg';
 import heroBg4 from '@/assets/hero-bg-4.jpeg';
 import heroBg5 from '@/assets/hero-bg-5.jpeg';
 import { cn } from '@/lib/utils';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryImages = [
   { src: heroBg1, alt: 'Modern house exterior', href: '/#about' },
@@ -101,11 +102,11 @@ const Hero = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 text-2xl">
-            &#8249;
+          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12">
+            <ChevronLeft className="h-6 w-6" />
           </CarouselPrevious>
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 text-2xl">
-            &#8250;
+          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12">
+            <ChevronRight className="h-6 w-6" />
           </CarouselNext>
         </Carousel>
       </div>
