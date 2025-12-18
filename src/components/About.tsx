@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, Clock, Shield, TrendingUp } from 'lucide-react';
+import { Award, Clock, Shield, TrendingUp, Users, Truck, Banknote, Building } from 'lucide-react';
 import { useContext } from 'react';
 import { LanguageContext } from '@/app/contexts/language-context';
 
@@ -15,7 +15,12 @@ const About = () => {
     { icon: TrendingUp, value: '150', label: translations.about.stats.sold },
   ];
 
-  const values = translations.about.values;
+  const values = [
+    { icon: Users, title: translations.about.values[0].title, description: translations.about.values[0].description },
+    { icon: Truck, title: translations.about.values[1].title, description: translations.about.values[1].description },
+    { icon: Banknote, title: translations.about.values[2].title, description: translations.about.values[2].description },
+    { icon: Building, title: translations.about.values[3].title, description: translations.about.values[3].description },
+  ];
 
   return (
     <section id="about" ref={ref} className="py-24 bg-background relative overflow-hidden">
@@ -59,7 +64,7 @@ const About = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {values.map((value, index) => (
             <motion.div
@@ -67,12 +72,13 @@ const About = () => {
               initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              className="p-8 bg-gradient-to-br from-card to-muted/30 rounded-lg border border-border hover:border-accent/50 transition-all duration-300 group"
+              className="p-8 bg-gradient-to-br from-card to-muted/30 rounded-lg border border-border hover:border-accent/50 transition-all duration-300 group text-center"
             >
-              <h3 className="font-poppins text-2xl font-bold mb-3 group-hover:text-accent transition-colors">
+              <value.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
+              <h3 className="font-poppins text-xl font-bold mb-3 group-hover:text-accent transition-colors">
                 {value.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+              <p className="text-muted-foreground leading-relaxed text-sm">{value.description}</p>
             </motion.div>
           ))}
         </motion.div>

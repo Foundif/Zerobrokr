@@ -30,20 +30,20 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const desktopImages = [
-  { src: heroBg1, alt: 'Modern house exterior', href: '/#about' },
-  { src: heroBg2, alt: 'Spacious living room with a view', href: '/#projects' },
+  { src: heroBg1, alt: 'Modern house exterior', href: '/#services' },
+  { src: heroBg2, alt: 'Spacious living room with a view', href: '/#contact' },
   { src: heroBg3, alt: 'Luxury kitchen with island', href: '/#services' },
-  { src: heroBg4, alt: 'Elegant bedroom with large window', href: '/#testimonials' },
-  { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#contact' },
+  { src: heroBg4, alt: 'Elegant bedroom with large window', href: '/#contact' },
+  { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#services' },
   { src: heroBg6, alt: 'Another beautiful property', href: '/#contact' },
 ];
 
 const mobileImages = [
-    { src: heroBg11, alt: 'Modern house exterior', href: '/#about' },
-    { src: heroBg12, alt: 'Spacious living room with a view', href: '/#projects' },
+    { src: heroBg11, alt: 'Modern house exterior', href: '/#services' },
+    { src: heroBg12, alt: 'Spacious living room with a view', href: '/#contact' },
     { src: heroBg13, alt: 'Luxury kitchen with island', href: '/#services' },
-    { src: heroBg14, alt: 'Elegant bedroom with large window', href: '/#testimonials' },
-    { src: heroBg15, alt: 'Backyard with swimming pool', href: '/#contact' },
+    { src: heroBg14, alt: 'Elegant bedroom with large window', href: '/#contact' },
+    { src: heroBg15, alt: 'Backyard with swimming pool', href: '/#services' },
     { src: heroBg16, alt: 'Another beautiful property', href: '/#contact' },
   ];
 
@@ -103,12 +103,12 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <Carousel
           setApi={setApi}
-          opts={{ loop: true }}
+          opts={{ loop: true, ml: '0' }}
           className="w-full h-full"
         >
-          <CarouselContent>
+          <CarouselContent className="-ml-0">
             {galleryImages.map((img, index) => (
-              <CarouselItem key={index}>
+              <CarouselItem key={index} className="pl-0">
                  <Link href={img.href}>
                   <div className="relative h-screen w-full">
                     <Image
