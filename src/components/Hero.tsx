@@ -19,10 +19,17 @@ import heroBg3 from '@/assets/3.png';
 import heroBg4 from '@/assets/4.png';
 import heroBg5 from '@/assets/5.png';
 import heroBg6 from '@/assets/6.png';
+import heroBg11 from '@/assets/11.png';
+import heroBg12 from '@/assets/12.png';
+import heroBg13 from '@/assets/13.png';
+import heroBg14 from '@/assets/14.png';
+import heroBg15 from '@/assets/15.png';
+import heroBg16 from '@/assets/16.png';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
-const galleryImages = [
+const desktopImages = [
   { src: heroBg1, alt: 'Modern house exterior', href: '/#about' },
   { src: heroBg2, alt: 'Spacious living room with a view', href: '/#projects' },
   { src: heroBg3, alt: 'Luxury kitchen with island', href: '/#services' },
@@ -30,6 +37,15 @@ const galleryImages = [
   { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#contact' },
   { src: heroBg6, alt: 'Another beautiful property', href: '/#contact' },
 ];
+
+const mobileImages = [
+    { src: heroBg11, alt: 'Modern house exterior', href: '/#about' },
+    { src: heroBg12, alt: 'Spacious living room with a view', href: '/#projects' },
+    { src: heroBg13, alt: 'Luxury kitchen with island', href: '/#services' },
+    { src: heroBg14, alt: 'Elegant bedroom with large window', href: '/#testimonials' },
+    { src: heroBg15, alt: 'Backyard with swimming pool', href: '/#contact' },
+    { src: heroBg16, alt: 'Another beautiful property', href: '/#contact' },
+  ];
 
 const AUTOPLAY_INTERVAL = 5000; // 5 seconds
 
@@ -39,6 +55,9 @@ const Hero = () => {
   const [api, setApi] = useState<CarouselApi | undefined>();
   const [current, setCurrent] = useState(0);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const isMobile = useIsMobile();
+
+  const galleryImages = isMobile ? mobileImages : desktopImages;
 
   const startAutoplay = useCallback(() => {
     if (!api) return;
