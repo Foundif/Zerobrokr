@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils';
 import Marquee from '@/components/Marquee';
 import Link from 'next/link';
 import logo from '@/assets/zerobrokr-logo.png';
-import logoWhite from '@/assets/zerobrokr-logo-white.png';
 import { LanguageContext } from '@/app/contexts/language-context';
 import {
   DropdownMenu,
@@ -19,30 +18,12 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { language, setLanguage, translations } = useContext(LanguageContext);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const headerClasses = cn(
-    "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-    {
-      'bg-transparent': !isScrolled,
-      'bg-background/95 backdrop-blur-lg shadow-premium border-b border-border': isScrolled,
-    }
-  );
+  const headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-lg shadow-premium border-b border-border";
   
-  const textColorClass = cn({
-    'text-white': !isScrolled,
-    'text-foreground': isScrolled,
-  });
+  const textColorClass = 'text-foreground';
 
   const navigation = translations.header.navigation;
 
@@ -67,25 +48,11 @@ const Header = () => {
               <Link href="/">
                 <div className="relative h-14 w-56">
                    <Image 
-                    src={logoWhite}
-                    alt="ZeroBrokr - No Commission"
-                    layout="fill"
-                    objectFit="contain"
-                    className={cn(
-                      "h-14 w-auto transition-opacity duration-300",
-                      isScrolled ? 'opacity-0' : 'opacity-100'
-                    )}
-                    priority
-                  />
-                   <Image 
                     src={logo}
                     alt="ZeroBrokr - No Commission"
                     layout="fill"
                     objectFit="contain"
-                    className={cn(
-                      "h-14 w-auto transition-opacity duration-300",
-                       isScrolled ? 'opacity-100' : 'opacity-0'
-                    )}
+                    className="h-14 w-auto"
                     priority
                   />
                 </div>
@@ -106,7 +73,7 @@ const Header = () => {
                     className={cn(
                       "px-4 py-2 text-sm font-medium rounded-lg transition-colors relative group",
                       textColorClass,
-                      isScrolled ? "hover:bg-muted" : "hover:bg-white/10"
+                      "hover:bg-muted"
                     )}
                   >
                     {item.name}
@@ -125,7 +92,7 @@ const Header = () => {
             >
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className={cn(textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}>
+                  <Button variant="ghost" size="icon" className={cn(textColorClass, "hover:bg-muted")}>
                     <Globe className="h-5 w-5" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -153,7 +120,7 @@ const Header = () => {
                  <div className="flex items-center gap-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className={cn("lg:hidden", textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}>
+                      <Button variant="ghost" size="icon" className={cn("lg:hidden", textColorClass, "hover:bg-muted")}>
                         <Globe className="h-5 w-5" />
                       </Button>
                     </DropdownMenuTrigger>
@@ -165,7 +132,7 @@ const Header = () => {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className={cn("lg:hidden", textColorClass, !isScrolled && "hover:bg-white/10 hover:text-white")}
+                    className={cn("lg:hidden", textColorClass, "hover:bg-muted")}
                   >
                     <Menu className="h-6 w-6" />
                   </Button>
