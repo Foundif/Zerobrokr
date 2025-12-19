@@ -85,7 +85,7 @@ const Hero = () => {
           {galleryImages.map((img, index) => (
             <CarouselItem key={index}>
                <Link href={img.href}>
-                <div className="relative w-full aspect-[16/9] md:h-[80vh] h-[50vh] bg-black">
+                <div className="relative w-full aspect-[16/9] md:h-[80vh] h-[50vh] bg-white">
                   <Image
                     src={img.src}
                     alt={img.alt}
