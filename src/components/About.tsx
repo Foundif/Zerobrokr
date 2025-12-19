@@ -18,7 +18,7 @@ const About = () => {
   const values = translations.about.values;
 
   return (
-    <section id="about" ref={ref} className="py-24 bg-background relative overflow-hidden">
+    <section id="about" ref={ref} className="pt-12 pb-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
