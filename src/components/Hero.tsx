@@ -13,12 +13,12 @@ import {
   CarouselNext,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import heroBg1 from '@/assets/1.png';
-import heroBg2 from '@/assets/2.png';
-import heroBg3 from '@/assets/3.png';
-import heroBg4 from '@/assets/4.png';
-import heroBg5 from '@/assets/5.png';
-import heroBg6 from '@/assets/6.png';
+import heroBg1 from '@/assets/100.jpg';
+import heroBg2 from '@/assets/101.jpg';
+import heroBg3 from '@/assets/102.jpg';
+import heroBg4 from '@/assets/103.jpg';
+import heroBg5 from '@/assets/104.jpg';
+import heroBg6 from '@/assets/105.jpg';
 import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -113,33 +113,6 @@ const Hero = () => {
         </Carousel>
       </div>
       
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex space-x-2 p-2 bg-black/20 backdrop-blur-sm rounded-full">
-        {galleryImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              if (autoplayRef.current) clearInterval(autoplayRef.current);
-              api?.scrollTo(index);
-              startAutoplay();
-            }}
-            className={cn(
-              "w-12 h-1 rounded-full bg-white/30 overflow-hidden"
-            )}
-          >
-            <AnimatePresence>
-              {current === index && (
-                <motion.div
-                  className="h-full bg-white"
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  exit={{ width: '100%' }}
-                  transition={{ duration: AUTOPLAY_INTERVAL / 1000, ease: "linear" }}
-                />
-              )}
-            </AnimatePresence>
-          </button>
-        ))}
-      </div>
     </section>
   );
 };
