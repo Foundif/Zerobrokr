@@ -1,10 +1,8 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { useContext, useState, useEffect, useCallback, useRef } from 'react';
-import { LanguageContext } from '@/app/contexts/language-context';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -19,7 +17,6 @@ import heroBg3 from '@/assets/102.jpg';
 import heroBg4 from '@/assets/103.jpg';
 import heroBg5 from '@/assets/104.jpg';
 import heroBg6 from '@/assets/105.jpg';
-import { cn } from '@/lib/utils';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const galleryImages = [
@@ -34,10 +31,7 @@ const galleryImages = [
 const AUTOPLAY_INTERVAL = 5000; // 5 seconds
 
 const Hero = () => {
-  const { translations } = useContext(LanguageContext);
-  const heroTranslations = translations.hero;
   const [api, setApi] = useState<CarouselApi | undefined>();
-  const [current, setCurrent] = useState(0);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
 
   const startAutoplay = useCallback(() => {
@@ -56,10 +50,8 @@ const Hero = () => {
     if (!api) return;
     
     startAutoplay();
-    setCurrent(api.selectedScrollSnap());
 
     const onSelect = () => {
-      setCurrent(api.selectedScrollSnap());
       startAutoplay();
     };
 
@@ -80,7 +72,7 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center text-white group">
+    <section id="hero" className="relative group md:h-screen w-full flex items-center justify-center">
       <div className="absolute inset-0 z-0">
         <Carousel
           setApi={setApi}
@@ -91,12 +83,12 @@ const Hero = () => {
             {galleryImages.map((img, index) => (
               <CarouselItem key={index}>
                  <Link href={img.href}>
-                  <div className="relative h-screen w-full">
+                  <div className="relative h-full w-full md:h-screen aspect-[16/9] md:aspect-auto">
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      style={{ objectFit: "contain" }}
+                      className="md:object-cover object-contain"
                       priority={index === 0}
                     />
                   </div>
