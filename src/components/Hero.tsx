@@ -75,39 +75,36 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="relative group w-full h-[50vh] md:h-[80vh] flex items-center justify-center pt-28">
-      <div className="absolute inset-0 z-0 top-28">
-        <Carousel
-          setApi={setApi}
-          opts={{ loop: true }}
-          className="w-full h-full"
-        >
-          <CarouselContent>
-            {galleryImages.map((img, index) => (
-              <CarouselItem key={index}>
-                 <Link href={img.href}>
-                  <div className="relative w-full h-[50vh] md:h-[calc(80vh-7rem)]">
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      fill
-                      className="object-cover"
-                      priority={index === 0}
-                    />
-                  </div>
-                </Link>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 flex items-center justify-center">
-             <ChevronLeft className="w-6 h-6" />
-          </CarouselPrevious>
-          <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 flex items-center justify-center">
-            <ChevronRight className="w-6 h-6" />
-          </CarouselNext>
-        </Carousel>
-      </div>
-      
+    <section id="hero" className="relative group w-full flex items-center justify-center pt-[100px]">
+      <Carousel
+        setApi={setApi}
+        opts={{ loop: true }}
+        className="w-full"
+      >
+        <CarouselContent>
+          {galleryImages.map((img, index) => (
+            <CarouselItem key={index}>
+               <Link href={img.href}>
+                <div className="relative w-full aspect-[16/9] md:h-[80vh] h-[50vh] bg-black">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    className="object-contain"
+                    priority={index === 0}
+                  />
+                </div>
+              </Link>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 flex items-center justify-center">
+           <ChevronLeft className="w-6 h-6" />
+        </CarouselPrevious>
+        <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/30 text-white border-none hover:bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full h-12 w-12 flex items-center justify-center">
+          <ChevronRight className="w-6 h-6" />
+        </CarouselNext>
+      </Carousel>
     </section>
   );
 };
