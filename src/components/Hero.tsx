@@ -1,8 +1,9 @@
+
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, useContext } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -18,6 +19,7 @@ import heroBg4 from '@/assets/103.jpg';
 import heroBg5 from '@/assets/104.jpg';
 import heroBg6 from '@/assets/105.jpg';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { LanguageContext } from '@/app/contexts/language-context';
 
 const galleryImages = [
   { src: heroBg1, alt: 'Modern house exterior', href: '/#about' },
@@ -33,6 +35,8 @@ const AUTOPLAY_INTERVAL = 5000; // 5 seconds
 const Hero = () => {
   const [api, setApi] = useState<CarouselApi | undefined>();
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+  const { translations } = useContext(LanguageContext);
+  const heroTranslations = translations.hero;
 
   const startAutoplay = useCallback(() => {
     if (!api) return;
@@ -72,7 +76,7 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="relative group md:h-screen w-full flex items-center justify-center">
+    <section id="hero" className="relative group w-full flex items-center justify-center pt-20 md:pt-0">
       <div className="absolute inset-0 z-0">
         <Carousel
           setApi={setApi}
@@ -83,12 +87,12 @@ const Hero = () => {
             {galleryImages.map((img, index) => (
               <CarouselItem key={index}>
                  <Link href={img.href}>
-                  <div className="relative h-full w-full md:h-screen aspect-[16/9] md:aspect-auto">
+                  <div className="relative w-full aspect-[16/9] md:h-screen md:aspect-auto">
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      className="md:object-cover object-contain"
+                      className="object-cover"
                       priority={index === 0}
                     />
                   </div>
