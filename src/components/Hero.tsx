@@ -61,7 +61,7 @@ const Hero = () => {
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const { translations } = useContext(LanguageContext);
   const isMobile = useIsMobile();
-  const [images, setImages] = useState<GalleryImage[]>(mobileImages);
+  const [images, setImages] = useState<GalleryImage[]>([]);
 
   useEffect(() => {
     // We need to wait for the isMobile value to be determined on the client
@@ -116,15 +116,15 @@ const Hero = () => {
   if (isMobile === undefined) {
     // Render a placeholder or nothing during server-side rendering
     // and initial client-side rendering before isMobile is determined.
-    return <div className="pt-[100px] w-full aspect-[16/9] md:h-[80vh] h-[50vh] bg-muted" />;
+    return <div className="pt-[120px] w-full aspect-[16/9] md:h-[80vh] h-[50vh] bg-muted" />;
   }
 
   return (
-    <section id="hero" className="relative group w-full flex items-center justify-center pt-[100px]">
+    <section id="hero" className="relative group w-full flex items-center justify-center pt-[120px] md:px-4">
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
-        className="w-full"
+        className="w-full md:rounded-lg overflow-hidden"
       >
         <CarouselContent>
           {images.map((img, index) => (
