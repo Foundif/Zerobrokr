@@ -120,7 +120,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative group w-full flex items-center justify-center pt-[120px]">
+    <section id="hero" className="relative group w-full flex items-center justify-center pt-[120px] md:pt-[130px]">
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
@@ -135,7 +135,7 @@ const Hero = () => {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-contain md:rounded-lg"
+                    className="object-cover md:rounded-lg"
                     priority={index === 0}
                   />
                 </div>
