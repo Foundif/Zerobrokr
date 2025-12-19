@@ -124,7 +124,7 @@ const Hero = () => {
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
-        className="w-full md:rounded-lg overflow-hidden"
+        className="w-full overflow-hidden"
       >
         <CarouselContent>
           {images.map((img, index) => (
@@ -135,7 +135,7 @@ const Hero = () => {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-contain"
+                    className="object-contain md:rounded-lg"
                     priority={index === 0}
                   />
                 </div>
