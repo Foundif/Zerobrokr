@@ -36,7 +36,6 @@ const Hero = () => {
   const [api, setApi] = useState<CarouselApi | undefined>();
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const { translations } = useContext(LanguageContext);
-  const heroTranslations = translations.hero;
 
   const startAutoplay = useCallback(() => {
     if (!api) return;
@@ -76,8 +75,8 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="relative group w-full h-[50vh] md:h-[80vh] flex items-center justify-center pt-20 md:pt-0">
-      <div className="absolute inset-0 z-0">
+    <section id="hero" className="relative group w-full h-[50vh] md:h-[80vh] flex items-center justify-center pt-28">
+      <div className="absolute inset-0 z-0 top-28">
         <Carousel
           setApi={setApi}
           opts={{ loop: true }}
@@ -87,7 +86,7 @@ const Hero = () => {
             {galleryImages.map((img, index) => (
               <CarouselItem key={index}>
                  <Link href={img.href}>
-                  <div className="relative w-full h-[50vh] md:h-[80vh]">
+                  <div className="relative w-full h-[50vh] md:h-[calc(80vh-7rem)]">
                     <Image
                       src={img.src}
                       alt={img.alt}
