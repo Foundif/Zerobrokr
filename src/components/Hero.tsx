@@ -1,4 +1,3 @@
-
 'use client';
 import { motion } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
@@ -120,7 +119,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative group w-full flex items-center justify-center pt-[120px] md:pt-[130px]">
+    <section id="hero" className="relative group w-full flex items-center justify-center pt-24 md:pt-[130px]">
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
@@ -135,7 +134,7 @@ const Hero = () => {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-cover md:rounded-lg"
+                    className="object-contain md:object-cover md:rounded-lg"
                     priority={index === 0}
                   />
                 </div>
