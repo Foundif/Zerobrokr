@@ -12,12 +12,12 @@ import {
   CarouselNext,
   type CarouselApi,
 } from '@/components/ui/carousel';
-import heroBg1 from '@/assets/100.jpg';
-import heroBg2 from '@/assets/101.jpg';
-import heroBg3 from '@/assets/102.jpg';
-import heroBg4 from '@/assets/103.jpg';
-import heroBg5 from '@/assets/104.jpg';
-import heroBg6 from '@/assets/105.jpg';
+import heroBg1 from '@/assets/1.png';
+import heroBg2 from '@/assets/2.png';
+import heroBg3 from '@/assets/3.png';
+import heroBg4 from '@/assets/4.png';
+import heroBg5 from '@/assets/5.png';
+import heroBg6 from '@/assets/6.png';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { LanguageContext } from '@/app/contexts/language-context';
 
