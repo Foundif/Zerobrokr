@@ -36,8 +36,8 @@ type GalleryImage = {
 };
 
 const mobileImages: GalleryImage[] = [
-  { src: heroBg1, alt: 'Modern house exterior', href: '/#about' },
-  { src: heroBg2, alt: 'Spacious living room with a view', href: '/#projects' },
+  { src: heroBg1, alt: 'Modern house exterior', href: '/#services' },
+  { src: heroBg2, alt: 'Spacious living room with a view', href: '/#contact' },
   { src: heroBg3, alt: 'Luxury kitchen with island', href: '/#services' },
   { src: heroBg4, alt: 'Elegant bedroom with large window', href: '/#testimonials' },
   { src: heroBg5, alt: 'Backyard with swimming pool', href: '/#contact' },
@@ -45,8 +45,8 @@ const mobileImages: GalleryImage[] = [
 ];
 
 const desktopImages: GalleryImage[] = [
-    { src: desktopImg1, alt: 'Desktop image 1', href: '/#about' },
-    { src: desktopImg2, alt: 'Desktop image 2', href: '/#projects' },
+    { src: desktopImg1, alt: 'Desktop image 1', href: '/#services' },
+    { src: desktopImg2, alt: 'Desktop image 2', href: '/#contact' },
     { src: desktopImg3, alt: 'Desktop image 3', href: '/#services' },
     { src: desktopImg4, alt: 'Desktop image 4', href: '/#testimonials' },
     { src: desktopImg5, alt: 'Desktop image 5', href: '/#contact' },
@@ -134,7 +134,7 @@ const Hero = () => {
                     src={img.src}
                     alt={img.alt}
                     fill
-                    className="object-contain md:object-cover md:rounded-lg"
+                    className={isMobile ? "object-contain" : "object-cover md:rounded-lg"}
                     priority={index === 0}
                   />
                 </div>
