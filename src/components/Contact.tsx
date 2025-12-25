@@ -1,3 +1,4 @@
+'use client'
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
@@ -53,7 +54,7 @@ const Contact = () => {
 
   return (
     <>
-      <section id="contact" ref={ref} className="py-24 bg-gradient-to-b from-muted/30 to-background">
+      <section id="contact" ref={ref} className="py-24 bg-gradient-to-b from-muted/30 to-background pb-32 md:pb-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
