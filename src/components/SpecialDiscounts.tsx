@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { ShoppingCart, Shirt, Smartphone, Hotel, Home, Utensils } from 'lucide-react';
 import { Card, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
-import cardImage from '@/assets/project1-main.jpeg';
+import cardImage from '@/assets/card.png';
 
 const discountItems = [
   { icon: Shirt, title: "Dress Shop", discount: "20%" },
