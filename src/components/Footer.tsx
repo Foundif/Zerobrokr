@@ -1,224 +1,210 @@
+
 'use client'
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useContext } from 'react';
-import { motion } from 'framer-motion';
+import { Phone, Mail, MessageSquare, ArrowUp, X, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Menu, Phone, Mail, Globe } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import Marquee from '@/components/Marquee';
-import Link from 'next/link';
-import logo from '@/assets/zerobrokr-logo.png';
-import { LanguageContext } from '@/app/contexts/language-context';
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import QRCode from 'qrcode.react';
+import { cn } from '@/lib/utils';
+import { LanguageContext } from '@/app/contexts/language-context';
 
-const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { language, setLanguage, translations } = useContext(LanguageContext);
+const FloatingSidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [showQrCode, setShowQrCode] = useState(false);
+  const { translations } = useContext(LanguageContext);
+  const sidebarTranslations = translations.sidebar;
 
-  const headerClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-background/95 backdrop-blur-lg shadow-premium border-b border-border";
-  
-  const textColorClass = 'text-foreground';
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  const navigation = translations.header.navigation;
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
+  const quickActions = [
+    {
+      icon: Share2,
+      label: sidebarTranslations.share,
+      action: () => setShowQrCode(true),
+      className: 'bg-blue-500 hover:bg-blue-600',
+    },
+    {
+      icon: Phone,
+      label: sidebarTranslations.call,
+      href: 'tel:+918807970430',
+      className: 'bg-blue-900 hover:bg-blue-800',
+    },
+    {
+      icon: Mail,
+      label: sidebarTranslations.email,
+      href: 'mailto:Zerobrokr@gmail.com',
+      className: 'bg-red-500 hover:bg-red-600',
+    },
+    {
+      icon: MessageSquare,
+      label: sidebarTranslations.whatsapp,
+      href: 'https://wa.me/918807970430',
+      className: 'bg-emerald-500 hover:bg-emerald-600',
+    },
+  ];
 
   return (
     <>
-      <motion.header
-        initial={{ y: 0 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6 }}
-        className={headerClasses}
-      >
-        <Marquee text={translations.header.marquee} />
-        <nav className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center"
-            >
-              <Link href="/">
-                <div className="relative h-14 w-56">
-                   <Image 
-                    src={logo}
-                    alt="ZeroBrokr - No Commission"
-                    layout="fill"
-                    objectFit="contain"
-                    className="h-14 w-auto"
-                    priority
-                  />
-                </div>
-              </Link>
-            </motion.div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-              {navigation.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      "px-4 py-2 text-sm font-medium rounded-lg transition-colors relative group",
-                      textColorClass,
-                      "hover:bg-muted"
-                    )}
-                  >
-                    {item.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
-                  </Link>
-                </motion.div>
-              ))}
+      {/* QR Code Dialog */}
+      <Dialog open={showQrCode} onOpenChange={setShowQrCode}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="font-poppins">{sidebarTranslations.shareTitle}</DialogTitle>
+            <DialogDescription>
+              {sidebarTranslations.shareDescription}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center justify-center p-4 bg-muted/50 rounded-lg">
+            <div className="bg-white p-4 rounded-lg shadow-md">
+              <QRCode value="https://zerobrokr.com" size={200} />
             </div>
-
-            {/* Desktop CTA */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="hidden lg:flex items-center space-x-4"
-            >
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className={cn(textColorClass, "hover:bg-muted")}>
-                    <Globe className="h-5 w-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => setLanguage('ta')}>தமிழ்</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-
-              <a href="tel:+918807970430" className={cn("text-sm flex items-center gap-2 transition-colors hover:text-accent", textColorClass)}>
-                <Phone className="w-4 h-4" />
-                <span className="font-semibold">+91 8807970430</span>
-              </a>
-              <Button 
-                className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold"
-                asChild
+          </div>
+        </DialogContent>
+      </Dialog>
+    
+      {/* Floating Action Button */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        className="fixed right-4 md:right-6 bottom-6 z-40"
+      >
+        <Button
+          onClick={() => setIsOpen(!isOpen)}
+          size="icon"
+          className="w-14 h-14 rounded-full bg-accent hover:bg-accent/90 text-secondary shadow-2xl shadow-accent/50 hover:scale-110 transition-all duration-300"
+        >
+          <AnimatePresence mode="wait">
+            {isOpen ? (
+              <motion.div
+                key="close"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                <Link href="/#contact">{translations.header.getQuote}</Link>
-              </Button>
-            </motion.div>
+                <X className="w-6 h-6" />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="menu"
+                initial={{ rotate: -90, opacity: 0 }}
+                animate={{ rotate: 0, opacity: 1 }}
+                exit={{ rotate: 90, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="relative"
+              >
+                <MessageSquare className="w-6 h-6" />
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </Button>
+      </motion.div>
 
-            {/* Mobile Menu Button */}
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                 <div className="flex items-center gap-2">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="ghost" size="icon" className={cn("lg:hidden", textColorClass, "hover:bg-muted")}>
-                        <Globe className="h-5 w-5" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem onClick={() => setLanguage('en')}>English</DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => setLanguage('ta')}>தமிழ்</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className={cn("lg:hidden", textColorClass, "hover:bg-muted")}
-                  >
-                    <Menu className="h-6 w-6" />
-                  </Button>
-                </div>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:w-80 bg-gradient-to-b from-background via-background to-muted/50 backdrop-blur-xl border-l-2 border-accent/20 p-0">
-                <div className="flex flex-col h-full pt-8 relative">
-                  {/* Background Decoration */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full blur-3xl" />
-                  <div className="absolute bottom-20 left-0 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-                  
-                  {/* Mobile Logo */}
-                  <div className="flex items-center mb-8 relative z-10 px-6">
-                    <Image 
-                      src={logo}
-                      alt="ZeroBrokr - No Commission"
-                      width={224}
-                      height={56}
-                      className="h-14 w-auto"
-                    />
-                  </div>
-
-                  {/* Mobile Navigation */}
-                  <nav className="flex-1 space-y-2 relative z-10 overflow-y-auto px-6">
-                    {navigation.map((item, index) => (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.05 }}
-                      >
-                        <Link
-                          href={item.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="w-full text-left px-4 py-4 text-lg font-medium rounded-xl hover:bg-muted transition-all duration-300 group block"
-                        >
-                          <span className="flex items-center justify-between">
-                            {item.name}
-                            <span className="w-2 h-2 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </span>
-                        </Link>
-                      </motion.div>
-                    ))}
-                  </nav>
-
-                  {/* Mobile Contact Info */}
-                  <div className="border-t border-border/50 p-6 space-y-4 relative z-10 mt-auto">
-                    <a
-                      href="tel:+918807970430"
-                      className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
+      {/* Quick Actions Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed right-4 md:right-6 bottom-24 z-40 flex flex-col items-end gap-3"
+          >
+            {/* Scroll to Top Button */}
+            <AnimatePresence>
+              {showScrollTop && (
+                <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 100, opacity: 0 }}
+                    transition={{ duration: 0.3, delay: 0.3 }}
+                    className="group"
+                >
+                  <div className="flex items-center gap-3">
+                    <motion.span
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.6 }}
+                      className="bg-background/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-lg shadow-lg text-sm font-semibold whitespace-nowrap border border-border opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Phone className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">{translations.header.callUs}</div>
-                        <div className="font-semibold">+91 8807970430</div>
-                      </div>
-                    </a>
-                    <a
-                      href="mailto:Zerobrokr@gmail.com"
-                      className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
+                      {sidebarTranslations.scrollTop}
+                    </motion.span>
+                    <Button
+                      onClick={scrollToTop}
+                      size="icon"
+                      className="w-12 h-12 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-premium hover:scale-110 transition-all duration-300"
                     >
-                      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Mail className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-muted-foreground">{translations.header.email}</div>
-                        <div className="font-semibold">Zerobrokr@gmail.com</div>
-                      </div>
-                    </a>
-                    <Button 
-                      className="w-full bg-accent hover:bg-accent/90 text-secondary font-semibold py-6 shadow-gold"
-                      asChild
-                    >
-                      <Link href="/#contact" onClick={() => setMobileMenuOpen(false)}>{translations.header.getFreeQuote}</Link>
+                      <ArrowUp className="w-5 h-5" />
                     </Button>
                   </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {quickActions.map((action, index) => (
+              <motion.div
+                key={action.label}
+                initial={{ x: 100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                transition={{ duration: 0.3, delay: (quickActions.length - 1 - index) * 0.1 }}
+                className="group"
+              >
+                <div className="flex items-center gap-3">
+                  <motion.span
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.3 + (quickActions.length - 1 - index) * 0.1 }}
+                    className="bg-background/95 backdrop-blur-sm text-foreground px-4 py-2 rounded-lg shadow-lg text-sm font-semibold whitespace-nowrap border border-border opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    {action.label}
+                  </motion.span>
+                  
+                  {action.href ? (
+                     <a 
+                      href={action.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer", action.className)}
+                    >
+                      <action.icon className="w-5 h-5" />
+                    </a>
+                  ) : (
+                    <button
+                      onClick={action.action}
+                      className={cn("w-12 h-12 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer", action.className)}
+                    >
+                      <action.icon className="w-5 h-5" />
+                    </button>
+                  )}
                 </div>
-              </SheetContent>
-            </Sheet>
-          </div>
-        </nav>
-      </motion.header>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
 
-export default Header;
+export default FloatingSidebar;
