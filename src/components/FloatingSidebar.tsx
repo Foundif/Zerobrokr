@@ -45,19 +45,19 @@ const FloatingSidebar = () => {
     {
       icon: Phone,
       label: sidebarTranslations.call,
-      href: 'tel:+919087048878',
+      href: 'tel:+918807970430',
       className: 'bg-blue-900 hover:bg-blue-800',
     },
     {
       icon: Mail,
       label: sidebarTranslations.email,
-      href: 'mailto:contact@zerobrokr.com',
+      href: 'mailto:Zerobrokr@gmail.com',
       className: 'bg-red-500 hover:bg-red-600',
     },
     {
       icon: MessageSquare,
       label: sidebarTranslations.whatsapp,
-      href: 'https://wa.me/919087048878',
+      href: 'https://wa.me/918807970430',
       className: 'bg-emerald-500 hover:bg-emerald-600',
     },
   ];
