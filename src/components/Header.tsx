@@ -102,9 +102,9 @@ const Header = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <a href="tel:+919087048878" className={cn("text-sm flex items-center gap-2 transition-colors hover:text-accent", textColorClass)}>
+              <a href="tel:+918807970430" className={cn("text-sm flex items-center gap-2 transition-colors hover:text-accent", textColorClass)}>
                 <Phone className="w-4 h-4" />
-                <span className="font-semibold">+91 90870 48878</span>
+                <span className="font-semibold">+91 8807970430</span>
               </a>
               <Button 
                 className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold"
@@ -181,7 +181,7 @@ const Header = () => {
                   {/* Mobile Contact Info */}
                   <div className="border-t border-border/50 p-6 space-y-4 relative z-10 mt-auto">
                     <a
-                      href="tel:+919087048878"
+                      href="tel:+918807970430"
                       className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
                     >
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -189,11 +189,11 @@ const Header = () => {
                       </div>
                       <div>
                         <div className="text-xs text-muted-foreground">{translations.header.callUs}</div>
-                        <div className="font-semibold">+91 90870 48878</div>
+                        <div className="font-semibold">+91 8807970430</div>
                       </div>
                     </a>
                     <a
-                      href="mailto:contact@zerobrokr.com"
+                      href="mailto:Zerobrokr@gmail.com"
                       className="flex items-center gap-3 text-sm hover:text-accent transition-colors"
                     >
                       <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -201,7 +201,7 @@ const Header = () => {
                       </div>
                       <div>
                         <div className="text-xs text-muted-foreground">{translations.header.email}</div>
-                        <div className="font-semibold">contact@zerobrokr.com</div>
+                        <div className="font-semibold">Zerobrokr@gmail.com</div>
                       </div>
                     </a>
                     <Button 
