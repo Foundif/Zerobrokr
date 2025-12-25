@@ -2,7 +2,7 @@
 'use client'
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useContext } from 'react';
-import { Phone, Mail, MessageSquare, ArrowUp, X, Share2 } from 'lucide-react';
+import { Phone, Mail, MessageSquare, ArrowUp, X, Share2, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -21,6 +21,7 @@ const FloatingSidebar = () => {
   const [showQrCode, setShowQrCode] = useState(false);
   const { translations } = useContext(LanguageContext);
   const sidebarTranslations = translations.sidebar;
+  const contactTranslations = translations.contact;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +35,19 @@ const FloatingSidebar = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setIsOpen(false);
   };
+  
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    setIsOpen(false);
+  };
 
   const quickActions = [
+    {
+      icon: Home,
+      label: contactTranslations.sticky.button,
+      action: scrollToContact,
+      className: 'bg-accent hover:bg-accent/90 text-secondary',
+    },
     {
       icon: Share2,
       label: sidebarTranslations.share,
