@@ -192,28 +192,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-      {/* Sticky CTA - Hidden on mobile when floating sidebar is present */}
-      <motion.div
-        initial={{ y: 100 }}
-        animate={{ y: showStickyCTA ? 0 : 100 }}
-        transition={{ duration: 0.3 }}
-        className="hidden md:block fixed bottom-0 left-0 right-0 bg-primary text-white py-4 px-4 shadow-2xl z-40 border-t-4 border-accent"
-      >
-        <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <div className="font-poppins font-bold text-lg">{content.sticky.title}</div>
-            <div className="text-sm text-white/80">{content.sticky.subtitle}</div>
-          </div>
-          <Button 
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-secondary font-semibold shadow-gold hover:scale-105 transition-transform"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            {content.sticky.button}
-          </Button>
-        </div>
-      </motion.div>
     </>
   );
 };
