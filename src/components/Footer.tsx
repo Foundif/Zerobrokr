@@ -1,5 +1,5 @@
 'use client'
-import { Facebook, Youtube, Instagram, Mail, Phone, MapPin, MessageSquare } from 'lucide-react';
+import { Facebook, Youtube, Instagram, Mail, Phone, MapPin, MessageSquare, Globe } from 'lucide-react';
 import Image from 'next/image';
 import logo from '@/assets/zerobrokr-logo.png';
 import { useContext } from 'react';
@@ -104,7 +104,7 @@ const Footer = () => {
                   Designed by Foundif Innovations
                 </span>
               </DialogTrigger>
-              <DialogContent className="sm:max-w-md bg-secondary text-white border-accent">
+              <DialogContent className="sm:max-w-md bg-black text-white border-accent">
                 <DialogHeader>
                   <DialogTitle className="font-poppins text-accent">Contact Foundif Innovations</DialogTitle>
                   <DialogDescription className="text-gray-300">
@@ -113,13 +113,23 @@ const Footer = () => {
                 </DialogHeader>
                 <div className="flex flex-col gap-4 py-4">
                   <a href="tel:+919363200237" className="w-full">
-                    <Button variant="outline" className="w-full bg-transparent border-accent text-accent hover:bg-accent hover:text-secondary">
+                    <Button variant="outline" className="w-full bg-transparent border-accent text-accent hover:bg-accent hover:text-black">
                       <Phone className="mr-2 h-4 w-4" /> Call Now
                     </Button>
                   </a>
                   <a href="https://wa.me/919363200237" target="_blank" rel="noopener noreferrer" className="w-full">
-                    <Button className="w-full bg-emerald-500 hover:bg-emerald-600 text-white">
+                    <Button variant="outline" className="w-full bg-transparent border-emerald-500 text-emerald-500 hover:bg-emerald-500 hover:text-black">
                       <MessageSquare className="mr-2 h-4 w-4" /> WhatsApp
+                    </Button>
+                  </a>
+                  <a href="https://foundif.com" target="_blank" rel="noopener noreferrer" className="w-full">
+                    <Button variant="outline" className="w-full bg-transparent border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-black">
+                      <Globe className="mr-2 h-4 w-4" /> Visit Website
+                    </Button>
+                  </a>
+                  <a href="mailto:find@foundif.com" className="w-full">
+                    <Button variant="outline" className="w-full bg-transparent border-red-400 text-red-400 hover:bg-red-400 hover:text-black">
+                      <Mail className="mr-2 h-4 w-4" /> Email Us
                     </Button>
                   </a>
                 </div>
