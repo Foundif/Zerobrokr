@@ -119,7 +119,7 @@ const Hero = () => {
   }
 
   return (
-    <section id="hero" className="relative group w-full flex items-center justify-center pt-24 md:pt-[130px]">
+    <section id="hero" className="relative group w-full flex items-center justify-center pt-24 md:pt-28">
       <Carousel
         setApi={setApi}
         opts={{ loop: true }}
