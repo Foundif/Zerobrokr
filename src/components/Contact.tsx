@@ -83,7 +83,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-poppins font-bold text-lg mb-1">{content.phone}</h3>
-                    <p className="text-muted-foreground">+91 90870 48878</p>
+                    <p className="text-muted-foreground">+91 8807970430</p>
                   </div>
                 </div>
 
@@ -93,7 +93,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-poppins font-bold text-lg mb-1">{content.email}</h3>
-                    <p className="text-muted-foreground">contact@zerobrokr.com</p>
+                    <p className="text-muted-foreground">Zerobrokr@gmail.com</p>
                   </div>
                 </div>
 
