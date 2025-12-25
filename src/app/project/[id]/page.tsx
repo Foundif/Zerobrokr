@@ -22,12 +22,19 @@ import { LanguageContext } from '@/app/contexts/language-context';
 export default function ProjectDetail() {
   const params = useParams();
   const router = useRouter();
-  const id = params.id;
   
   const { translations } = useContext(LanguageContext);
 
-  const project = staticProjectsData.find(p => p.id === Number(id));
-  const projectTranslation = translations.projects.find(p => p.id === Number(id));
+  const [id, setId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (params?.id) {
+      setId(params.id as string);
+    }
+  }, [params]);
+
+  const project = id ? staticProjectsData.find(p => p.id === Number(id)) : null;
+  const projectTranslation = id ? translations.projects.find(p => p.id === Number(id)) : null;
 
   const [api, setApi] = useState<CarouselApi>()
   const autoplayInterval = useRef<NodeJS.Timeout | null>(null);
