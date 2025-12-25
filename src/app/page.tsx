@@ -15,6 +15,7 @@ import FloatingSidebar from '@/components/FloatingSidebar';
 import LoadingScreen from '@/components/LoadingScreen';
 import AnimatedBackground from '@/components/AnimatedBackground';
 import { LanguageContext } from './contexts/language-context';
+import SpecialDiscounts from '@/components/SpecialDiscounts';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -54,6 +55,7 @@ export default function Home() {
             <Testimonials />
             <Services />
             <WhyChooseUs />
+            <SpecialDiscounts />
             <Contact />
             <Footer />
             <FloatingSidebar />
