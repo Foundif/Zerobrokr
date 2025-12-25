@@ -267,7 +267,7 @@ export default function ProjectDetail() {
                       variant="outline"
                       className="w-full border-foreground/50 hover:border-accent"
                       size="lg"
-                      onClick={() => window.location.href = 'tel:+911234567890'}
+                      onClick={() => window.location.href = 'tel:+918807970430'}
                     >
                       <Phone className="mr-2 h-4 w-4" />
                       Call Now
