@@ -7,12 +7,12 @@ import Image from 'next/image';
 import cardImage from '@/assets/card.png';
 
 const discountItems = [
-  { icon: Shirt, title: "Dress Shop", discount: "20%" },
-  { icon: Smartphone, title: "Mobile Shop", discount: "15%" },
-  { icon: ShoppingCart, title: "Grocery Store", discount: "10%" },
-  { icon: Hotel, title: "Hotel", discount: "25%" },
-  { icon: Home, title: "Home Appliances", discount: "30%" },
-  { icon: Utensils, title: "Metal Store", discount: "15%" },
+  { icon: Shirt, title: "Dress Shop", discount: "2/3%" },
+  { icon: Smartphone, title: "Mobile Shop", discount: "2/3%" },
+  { icon: ShoppingCart, title: "Grocery Store", discount: "2/3%" },
+  { icon: Hotel, title: "Hotel", discount: "2/3%" },
+  { icon: Home, title: "Home Appliances", discount: "2/3%" },
+  { icon: Utensils, title: "Metal Store", discount: "2/3%" },
 ];
 
 const SpecialDiscounts = () => {
