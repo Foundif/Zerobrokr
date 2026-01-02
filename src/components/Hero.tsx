@@ -13,7 +13,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { LanguageContext } from '@/app/contexts/language-context';
 
 import heroBg1 from '@/assets/1.png';
-import heroBg2 from '@/assets/2.png';
+import heroBg2 from '@/assets/2.jpg';
 import heroBg3 from '@/assets/3.png';
 import heroBg4 from '@/assets/4.png';
 import heroBg5 from '@/assets/5.png';
